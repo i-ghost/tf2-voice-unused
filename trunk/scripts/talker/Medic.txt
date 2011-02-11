@@ -14,6 +14,7 @@ Criterion "IsHelpCapMedic" "MedicHelpCap" "1" "required" weight 0
 
 Response MedicChargeReady
 {
+	scene "scenes/Player/Medic/low/528.vcd" 
 	scene "scenes/Player/Medic/low/529.vcd" 
 	scene "scenes/Player/Medic/low/530.vcd" 
 }
@@ -248,6 +249,17 @@ Rule InvulnerableSpeechMedic
 	criteria ConceptMedicChargeDeployed IsMedic  IsInvulnerable MedicNotInvulnerableSpeech
 	ApplyContext "MedicInvulnerableSpeech:1:30"
 	Response InvulnerableSpeechMedic
+}
+
+Response InvulnerableSpeechMeleeMedic
+{
+	scene "scenes/Player/Medic/low/taunt05_vocal16.vcd" 
+}
+Rule InvulnerableSpeechMedic
+{
+	criteria ConceptFireWeapon IsMedic IsWeaponMelee  IsInvulnerable MedicNotInvulnerableSpeech
+	ApplyContext "MedicInvulnerableSpeech:1:30"
+	Response InvulnerableSpeechMeleeMedic
 }
 
 Response KilledPlayerManyMedic
@@ -634,6 +646,7 @@ Rule PlayerActivateChargeMedic
 
 Response PlayerChargeReadyMedic
 {
+	scene "scenes/Player/Medic/low/528.vcd" 
 	scene "scenes/Player/Medic/low/529.vcd" 
 	scene "scenes/Player/Medic/low/530.vcd" 
 }
