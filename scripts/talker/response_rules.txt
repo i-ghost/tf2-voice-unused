@@ -371,7 +371,7 @@ criterion "WeaponIsBow" "item_name" "The Huntsman" "required" weight 10
 criterion "WeaponIsPickaxe" "item_name" "The Equalizer" "required" weight 10
 criterion "WeaponIsDirectHit" "item_name" "The Direct Hit" "required" weight 10
 criterion "WeaponIsBanner" "item_name" "The Buff Banner" "required" weight 10
-criterion "WeaponIsSword" "item_name" "The Eyelander" "required" weight 10
+criterion "WeaponIsSword" "playerweapon" "tf_weapon_sword" "required" weight 10
 criterion "WeaponIsDefender" "item_name" "The Scottish Resistance" "required" weight 10
 criterion "WeaponIsUbersaw" "item_name" "The Ubersaw" "required" weight 10
 criterion "WeaponIsFrontierJustice" "item_name" "The Frontier Justice" "required" weight 10
@@ -380,6 +380,9 @@ criterion "ItemIsGoldenWrench" "item_name" "Golden Wrench" "required" weight 10
 criterion "WeaponIsShortstop" "item_name" "The Shortstop" "required" weight 10
 criterion "WeaponIsMadMilk" "item_name" "Mad Milk" "required" weight 10
 criterion "WeaponIsHolyMackerel" "item_name" "The Holy Mackerel" "required" weight 10
+// Custom added criterion
+criterion "WeaponIsPainTrain" "item_name" "The Pain Train" "required" weight 10
+criterion "WeaponIsFryingPan" "item_name" "The Frying Pan" "required" weight 10
 
 
 criterion "IsCrossHairEnemy" "crosshair_enemy" "Yes" "required" 

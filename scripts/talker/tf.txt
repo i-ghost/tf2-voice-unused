@@ -377,7 +377,7 @@
 	}
 	response "MedicTauntKritzkrieg"
 	{
-		scene "scenes/player/medic/low/taunt06.vcd"
+	scene "scenes/player/medic/low/taunt06.vcd"
 	}
 	response "MedicTauntUbersaw"
 	{

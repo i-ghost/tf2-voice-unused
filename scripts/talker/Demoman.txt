@@ -9,6 +9,7 @@ Criterion "DemomanNotKillSpeech" "DemomanKillSpeech" "!=1" "required" weight 0
 Criterion "DemomanNotKillSpeechMelee" "DemomanKillSpeechMelee" "!=1" "required" weight 0
 Criterion "DemomanNotSaidHealThanks" "DemomanSaidHealThanks" "!=1" "required"
 Criterion "IsHelpCapDemoman" "DemomanHelpCap" "1" "required" weight 0
+Criterion "DemomanNotInvulnerableSpeech" "DemomanInvulnerableSpeech" "!=1" "required" weight 0
 
 
 Response PlayerCloakedSpyDemomanDemoman
@@ -216,6 +217,42 @@ Rule DefendOnThePointDemoman
 	Response DefendOnThePointDemoman
 }
 
+// Invuln responses for Grenade Launcher
+Response InvulnerableSpeechDemoman2
+{
+	scene "scenes/Player/Demoman/low/1027.vcd" 
+	scene "scenes/Player/Demoman/low/1028.vcd" 
+	scene "scenes/Player/Demoman/low/1017.vcd" 
+	scene "scenes/Player/Demoman/low/1015.vcd" 
+}
+
+
+Rule InvulnerableSpeechDemoman2
+{
+	criteria ConceptFireWeapon IsDemoman WeaponIsGrenade IsInvulnerable DemomanNotInvulnerableSpeech
+	ApplyContext "DemomanInvulnerableSpeech:1:30"
+	Response InvulnerableSpeechDemoman2
+}
+// End invuln responses for GL
+
+// Invulnerable responses for Sticky launcher
+Response InvulnerableSpeechDemoman
+{
+	scene "scenes/Player/Demoman/low/1021.vcd"
+	scene "scenes/Player/Demoman/low/1022.vcd" 
+	scene "scenes/Player/Demoman/low/1019.vcd" 
+	scene "scenes/Player/Demoman/low/1023.vcd"  
+	scene "scenes/Player/Demoman/low/1018.vcd" 
+}
+
+Rule InvulnerableSpeechDemoman
+{
+	criteria ConceptFireWeapon IsDemoman WeaponIsPipebomb IsInvulnerable DemomanNotInvulnerableSpeech
+	ApplyContext "DemomanInvulnerableSpeech:1:30"
+	Response InvulnerableSpeechDemoman
+}
+// End invuln responses for Sticky
+
 Response KilledPlayerManyDemoman
 {
 	scene "scenes/Player/Demoman/low/1000.vcd" 
@@ -234,14 +271,80 @@ Rule KilledPlayerManyDemoman
 Response KilledPlayerMeleeDemoman
 {
 	scene "scenes/Player/Demoman/low/998.vcd" 
+	scene "scenes/Player/Demoman/low/3566.vcd" 
+	scene "scenes/Player/Demoman/low/3567.vcd" 
+	scene "scenes/Player/Demoman/low/3568.vcd" 
+	scene "scenes/Player/Demoman/low/3569.vcd"
+	scene "scenes/Player/Demoman/low/3570.vcd" 
+	scene "scenes/Player/Demoman/low/3571.vcd" 
+	scene "scenes/Player/Demoman/low/3572.vcd" 
+	scene "scenes/Player/Demoman/low/3573.vcd" 
+	scene "scenes/Player/Demoman/low/3577.vcd" 
+	scene "scenes/Player/Demoman/low/3574.vcd"  
+	scene "scenes/Player/Demoman/low/3575.vcd"
 }
 Rule KilledPlayerMeleeDemoman
 {
-	criteria ConceptKilledPlayer KilledPlayerDelay 30PercentChance  IsWeaponMelee DemomanNotKillSpeechMelee IsDemoman
+	criteria ConceptKilledPlayer KilledPlayerDelay WeaponIsBottle 30PercentChance  IsWeaponMelee DemomanNotKillSpeechMelee IsDemoman
 	ApplyContext "DemomanKillSpeechMelee:1:10"
 	applycontexttoworld
 	Response KilledPlayerMeleeDemoman
 }
+
+// Eyelander responses
+Response KilledPlayerSwordDemoman
+{
+	scene "scenes/Player/Demoman/low/3565.vcd" 
+}
+
+Rule KilledPlayerSwordDemoman
+{
+	criteria ConceptKilledPlayer KilledPlayerDelay WeaponIsSword 30PercentChance IsNotVictimDemoman  IsWeaponMelee DemomanNotKillSpeechMelee IsDemoman
+	ApplyContext "DemomanKillSpeechMelee:1:10"
+	applycontexttoworld
+	Response KilledPlayerSwordDemoman
+}
+
+Response KilledPlayerSword2Demoman
+{
+	scene "scenes/Player/Demoman/low/3564.vcd"
+}
+
+Rule KilledPlayerSword2Demoman
+{
+	criteria ConceptKilledPlayer KilledPlayerDelay WeaponIsSword 30PercentChance IsVictimDemoman  IsWeaponMelee DemomanNotKillSpeechMelee IsDemoman
+	ApplyContext "DemomanKillSpeechMelee:1:10"
+	applycontexttoworld
+	Response KilledPlayerSword2Demoman
+}
+
+// End Eyelander responses
+
+// Pain Train responses
+Response KilledPlayerClubDemoman
+{
+	scene "scenes/Player/Demoman/low/3578.vcd" 
+	scene "scenes/Player/Demoman/low/3566.vcd" 
+	scene "scenes/Player/Demoman/low/3567.vcd" 
+	scene "scenes/Player/Demoman/low/3568.vcd" 
+	scene "scenes/Player/Demoman/low/3569.vcd"
+	scene "scenes/Player/Demoman/low/3570.vcd" 
+	scene "scenes/Player/Demoman/low/3571.vcd" 
+	scene "scenes/Player/Demoman/low/3572.vcd" 
+	scene "scenes/Player/Demoman/low/3573.vcd" 
+	scene "scenes/Player/Demoman/low/3577.vcd" 
+	scene "scenes/Player/Demoman/low/3574.vcd"  
+	scene "scenes/Player/Demoman/low/3575.vcd"
+}
+
+Rule KilledPlayerClubDemoman
+{
+	criteria ConceptKilledPlayer KilledPlayerDelay WeaponIsPainTrain 30PercentChance  IsWeaponMelee DemomanNotKillSpeechMelee IsDemoman
+	ApplyContext "DemomanKillSpeechMelee:1:10"
+	applycontexttoworld
+	Response KilledPlayerClubDemoman
+}
+// End Pain Train responses
 
 Response KilledPlayerVeryManyDemoman
 {
