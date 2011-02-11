@@ -84,6 +84,14 @@
 	{
 		scene "scenes/player/heavy/low/taunt04.vcd"
 	}
+	response "HeavyTauntPlayerItem2"
+	{
+		scene "scenes/player/heavy/low/taunt04.vcd"
+	}
+	response "HeavyTauntPlayerItem3"
+	{
+		scene "scenes/player/heavy/low/taunt04.vcd"
+	}
 	response "HeavyTauntPlayerGloves"
 	{
 		scene "scenes/player/heavy/low/taunt05.vcd"
@@ -114,9 +122,21 @@
 	}
 	rule HeavyTauntPlayerItem1
 	{
-		criteria ConceptPlayerTaunt IsHeavy WeaponIsLunchbox
+		criteria ConceptPlayerTaunt IsHeavy WeaponIsSandvich
 		response HeavyTauntPlayerItem1
 	}
+	//Custom stuff
+	rule HeavyTauntPlayerItem2
+	{
+		criteria ConceptPlayerTaunt IsHeavy WeaponIsBenja
+		response HeavyTauntPlayerItem3
+	}
+	rule HeavyTauntPlayerItem3
+	{
+		criteria ConceptPlayerTaunt IsHeavy WeaponIsSteak
+		response HeavyTauntPlayerItem3
+	}
+	//End Custom
 	rule HeavyTauntHalloween
 	{
 		criteria ConceptPlayerTaunt IsHeavy IsHalloweenTaunt
@@ -247,8 +267,39 @@
 	}
 	Rule AteSandwichHeavy
 	{
-		criteria ConceptAteFood IsHeavy
+		criteria ConceptAteFood IsHeavy WeaponIsSandvich
 		Response AteSandwichHeavy
+	}
+	// Custom stuff
+	// These have been designed as separate responses so that I can add non-sandvich lines I wanted to.
+	// There are two examples of this in the AteChocoHeavy response.
+	// It's possible to just have one of the responses below, but you would not be able to give the bar/steak separate lines then.
+	// The WeaponIsFists allows this to happen, creating a distinction between the choco bar, sandvich and the steak.
+	Response AteSteakHeavy
+	{
+		scene "scenes/Player/Heavy/low/SandwichTaunt01.vcd"
+		scene "scenes/Player/Heavy/low/SandwichTaunt02.vcd" 
+		scene "scenes/Player/Heavy/low/SandwichTaunt14.vcd"
+		scene "scenes/Player/Heavy/low/SandwichTaunt17.vcd" 
+	}
+	Rule AteSteakHeavy
+	{
+		criteria ConceptAteFood IsHeavy WeaponIsFists
+		Response AteSteakHeavy
+	}
+	Response AteChocoHeavy
+	{
+		scene "scenes/Player/Heavy/low/SandwichTaunt01.vcd"
+		scene "scenes/Player/Heavy/low/SandwichTaunt02.vcd" 
+		scene "scenes/Player/Heavy/low/SandwichTaunt14.vcd"
+		scene "scenes/Player/Heavy/low/SandwichTaunt17.vcd"
+		scene "scenes/Player/Heavy/low/2066.vcd"
+		scene "scenes/Player/Heavy/low/2260.vcd" 
+	}
+	Rule AteChocoHeavy
+	{
+		criteria ConceptAteFood IsHeavy
+		Response AteChocoHeavy
 	}
 
 //============================================================================================================
