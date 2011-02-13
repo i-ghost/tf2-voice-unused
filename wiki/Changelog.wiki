@@ -1,4 +1,4 @@
-#_Patch history, per release._
+#summary Patch history, per release.
 
 This is a history of all public releases.
 
