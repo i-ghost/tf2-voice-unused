@@ -3,7 +3,7 @@
 This is a history of all public releases.
 
 ----
-= *0.1* =
+= 0.1 (02.11.2011) =
   + Added ubercharge responses for Demoman, Scout and Medic
   + All Swords now use Eyelander taunt.
   + Swords play voice lines (special version for Demoman victom)
