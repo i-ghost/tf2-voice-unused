@@ -3,7 +3,7 @@
 This is a history of all public releases.
 
 ----
-== 0.1 (02.11.2011) ==
+====0.1 {{{(02.11.2011)}}}====
   + Added ubercharge responses for Demoman, Scout and Medic
   + All Swords now use Eyelander taunt.
   + Swords play voice lines (special version for Demoman victom)
@@ -12,7 +12,7 @@ This is a history of all public releases.
   + Allowed for addition of separate responses for Steak/Dalokohs when eating
   + Added two voice lines to the Dalokohs as an example of above.
 
-===Undocumented in svn:===
+=====Undocumented in svn:=====
   + Added unused Ubercharge ready line for Medic.
 
 MD5 checksum: 162ddf081de10dd229734bba83cce24a
