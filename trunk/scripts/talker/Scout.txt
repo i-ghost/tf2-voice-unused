@@ -413,6 +413,25 @@ Rule KilledPlayerMeleeScoutFatScout
 	Response KilledPlayerMeleeScoutFatScout
 }
 
+// Custom stuff - melee dare
+// Look at enemy, then do battle cry voice command while holding a melee weapon.
+Response MeleeDareCombatScout
+{
+	scene "scenes/Player/Scout/low/2584.vcd"
+	scene "scenes/Player/Scout/low/2579.vcd" 
+	scene "scenes/Player/Scout/low/2580.vcd" 
+	scene "scenes/Player/Scout/low/2582.vcd" 
+	scene "scenes/Player/Scout/low/2583.vcd" 
+	scene "scenes/Player/Scout/low/2581.vcd" 
+}
+Rule MeleeDareCombatScout
+{
+	criteria ConceptPlayerBattleCry IsWeaponMelee IsScout IsCrosshairEnemy
+	ApplyContext "ScoutKillSpeech:1:10"
+	Response MeleeDareCombatScout
+}
+// End custom
+
 Response MedicFollowScout
 {
 	scene "scenes/Player/Scout/low/2574.vcd" predelay ".25"
@@ -519,6 +538,21 @@ Rule PlayerKilledCapperScout
 	ApplyContext "ScoutKillSpeech:1:10"
 	Response PlayerKilledCapperScout
 }
+
+// Custom stuff
+// The other 2 unimplemented dominations do not have respective vcds.
+// Will build them sometime later.
+Response PlayerKilledDominatingScout
+{
+	scene "scenes/Player/Scout/low/2551.vcd" predelay "2.5"
+}
+Rule PlayerKilledDominatingScout
+{
+	criteria ConceptKilledPlayer IsScout IsDominated  
+	ApplyContext "ScoutKillSpeech:1:10"
+	Response PlayerKilledDominatingScout
+}
+//End custom
 
 Response PlayerKilledDominatingDemomanScout
 {
