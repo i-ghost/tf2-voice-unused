@@ -21,6 +21,7 @@ Criterion "NotScoutGrabbedIntelligence" "ScoutGrabbedIntelligence" "!=1" "requir
 Criterion "ScoutIsNotInvuln" "ScoutInvuln" "!=1" "required"
 //Custom stuff
 Criterion "ScoutNotInvulnerableSpeech" "ScoutInvulnerableSpeech" "!=1" "required" weight 0
+Criterion "ScoutNotDoubleJumpSpeech" "ScoutDoubleJump" "!=1" "required" weight 0
 
 
 Response PlayerCloakedSpyDemomanScout
@@ -533,9 +534,27 @@ Response PlayerDoubleJumpScout
 }
 Rule PlayerDoubleJumpScout
 {
-	criteria ConceptFireWeapon IsScout IsDoubleJumping WeaponIsScattergunDouble 20PercentChance
+	criteria ConceptFireWeapon IsScout IsDoubleJumping WeaponIsScattergunDouble
 	Response PlayerDoubleJumpScout
 }
+
+// Custom Stuff
+// Double jump response
+Response DoubleJumpScout
+{
+	scene "scenes/Player/Scout/low/2624.vcd" 
+	scene "scenes/Player/Scout/low/2625.vcd" 
+	scene "scenes/Player/Scout/low/2627.vcd" 
+	scene "scenes/Player/Scout/low/2685.vcd" 
+	scene "scenes/Player/Scout/low/2689.vcd" 
+}
+Rule DoubleJumpScout
+{
+	criteria ConceptDoubleJump IsScout IsNotDoubleJumping WeaponIsNotScattergunDouble ScoutNotDoubleJumpSpeech 10PercentChance
+	ApplyContext "ScoutDoubleJumpSpeech:1:30"
+	Response DoubleJumpScout
+}
+// End custom
 
 Response PlayerKilledCapperScout
 {
