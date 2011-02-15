@@ -228,6 +228,8 @@ criterion "ConceptTired" "Concept" "TLK_TIRED" required
 criterion "ConceptBatBall" "Concept" "TLK_BAT_BALL" required
 criterion "IsDoubleJumping" "DoubleJumping" "1" required
 criterion "ConceptAchievementAward" "Concept" "TLK_ACHIEVEMENT_AWARD" required
+// Custom stuff
+criterion "IsNotDoubleJumping" "DoubleJumping" "0" required // Needed to stop Scout saying double jump lines when he lands.
 
 // spy / sniper pack
 criterion "ConceptJarateLaunch" "Concept" "TLK_JARATE_LAUNCH" required
@@ -387,6 +389,7 @@ criterion "WeaponIsBenja" "item_name" "The Dalokohs Bar" "required" weight 10
 criterion "WeaponIsSteak" "item_name" "The Buffalo Steak Sandvich" "required" weight 10 //Not actually used for the auto-eat response. Used for distinction in the taunts.
 criterion "WeaponIsPainTrain" "item_name" "The Pain Train" "required" weight 10
 criterion "WeaponIsFryingPan" "item_name" "The Frying Pan" "required" weight 10
+criterion "WeaponIsNotScattergunDouble" "item_name" "!=The Force-a-Nature" "required" weight 10
 
 
 criterion "IsCrossHairEnemy" "crosshair_enemy" "Yes" "required" 
