@@ -19,6 +19,7 @@ Criterion "IsHelpCapScout" "ScoutHelpCap" "1" "required" weight 0
 Criterion "NotSaidScoutHitBallSpeech" "ScoutHitBallSpeech" "!=1" "required"
 Criterion "NotScoutGrabbedIntelligence" "ScoutGrabbedIntelligence" "!=1" "required"
 Criterion "ScoutIsNotInvuln" "ScoutInvuln" "!=1" "required"
+//Custom stuff
 Criterion "ScoutNotInvulnerableSpeech" "ScoutInvulnerableSpeech" "!=1" "required" weight 0
 
 
@@ -427,9 +428,24 @@ Response MeleeDareCombatScout
 Rule MeleeDareCombatScout
 {
 	criteria ConceptPlayerBattleCry IsWeaponMelee IsScout IsCrosshairEnemy
-	ApplyContext "ScoutKillSpeech:1:10"
 	Response MeleeDareCombatScout
 }
+
+// Custom Assist kill response
+// As there is no actual concept for assist kills, this is the second best method.
+// Say thanks after you kill more than one person
+
+Response KilledPlayerAssistScout
+{
+	scene "scenes/Player/Scout/low/487.vcd"
+	scene "scenes/Player/Scout/low/488.vcd"
+}
+Rule KilledPlayerAssistScout
+{
+	criteria ConceptPlayerThanks IsManyRecentKills KilledPlayerDelay 50PercentChance IsScout
+	Response KilledPlayerAssistScout
+}
+
 // End custom
 
 Response MedicFollowScout
