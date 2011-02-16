@@ -268,6 +268,7 @@ Rule KilledPlayerManyDemoman
 	Response KilledPlayerManyDemoman
 }
 
+//Modified to play for the Bottle only
 Response KilledPlayerMeleeDemoman
 {
 	scene "scenes/Player/Demoman/low/998.vcd" 
@@ -285,11 +286,36 @@ Response KilledPlayerMeleeDemoman
 }
 Rule KilledPlayerMeleeDemoman
 {
-	criteria ConceptKilledPlayer KilledPlayerDelay WeaponIsBottle 30PercentChance  IsWeaponMelee DemomanNotKillSpeechMelee IsDemoman
+	criteria ConceptKilledPlayer KilledPlayerDelay WeaponIsBottle 30PercentChance  DemomanNotKillSpeechMelee IsDemoman
 	ApplyContext "DemomanKillSpeechMelee:1:10"
 	applycontexttoworld
 	Response KilledPlayerMeleeDemoman
 }
+//
+
+// Frying pan responses
+Response KilledPlayerPanDemoman
+{
+	scene "scenes/Player/Demoman/low/3566.vcd" 
+	scene "scenes/Player/Demoman/low/3567.vcd" 
+	scene "scenes/Player/Demoman/low/3568.vcd" 
+	scene "scenes/Player/Demoman/low/3569.vcd"
+	scene "scenes/Player/Demoman/low/3570.vcd" 
+	scene "scenes/Player/Demoman/low/3571.vcd" 
+	scene "scenes/Player/Demoman/low/3572.vcd" 
+	scene "scenes/Player/Demoman/low/3573.vcd" 
+	scene "scenes/Player/Demoman/low/3577.vcd" 
+	scene "scenes/Player/Demoman/low/3574.vcd"  
+	scene "scenes/Player/Demoman/low/3575.vcd"
+}
+Rule KilledPlayerPanDemoman
+{
+	criteria ConceptKilledPlayer KilledPlayerDelay WeaponIsFryingPan 30PercentChance  DemomanNotKillSpeechMelee IsDemoman
+	ApplyContext "DemomanKillSpeechMelee:1:10"
+	applycontexttoworld
+	Response KilledPlayerMeleeDemoman
+}
+// End Frying Pan responses
 
 // Eyelander responses
 Response KilledPlayerSwordDemoman
@@ -299,7 +325,7 @@ Response KilledPlayerSwordDemoman
 
 Rule KilledPlayerSwordDemoman
 {
-	criteria ConceptKilledPlayer KilledPlayerDelay WeaponIsSword 30PercentChance IsNotVictimDemoman  IsWeaponMelee DemomanNotKillSpeechMelee IsDemoman
+	criteria ConceptKilledPlayer KilledPlayerDelay WeaponIsSword 30PercentChance IsNotVictimDemoman  DemomanNotKillSpeechMelee IsDemoman
 	ApplyContext "DemomanKillSpeechMelee:1:10"
 	applycontexttoworld
 	Response KilledPlayerSwordDemoman
@@ -312,7 +338,7 @@ Response KilledPlayerSword2Demoman
 
 Rule KilledPlayerSword2Demoman
 {
-	criteria ConceptKilledPlayer KilledPlayerDelay WeaponIsSword 30PercentChance IsVictimDemoman  IsWeaponMelee DemomanNotKillSpeechMelee IsDemoman
+	criteria ConceptKilledPlayer KilledPlayerDelay WeaponIsSword 30PercentChance IsVictimDemoman  DemomanNotKillSpeechMelee IsDemoman
 	ApplyContext "DemomanKillSpeechMelee:1:10"
 	applycontexttoworld
 	Response KilledPlayerSword2Demoman
@@ -339,7 +365,7 @@ Response KilledPlayerClubDemoman
 
 Rule KilledPlayerClubDemoman
 {
-	criteria ConceptKilledPlayer KilledPlayerDelay WeaponIsPainTrain 30PercentChance  IsWeaponMelee DemomanNotKillSpeechMelee IsDemoman
+	criteria ConceptKilledPlayer KilledPlayerDelay WeaponIsPainTrain 30PercentChance  DemomanNotKillSpeechMelee IsDemoman
 	ApplyContext "DemomanKillSpeechMelee:1:10"
 	applycontexttoworld
 	Response KilledPlayerClubDemoman
