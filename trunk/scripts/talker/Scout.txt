@@ -21,8 +21,10 @@ Criterion "NotScoutGrabbedIntelligence" "ScoutGrabbedIntelligence" "!=1" "requir
 Criterion "ScoutIsNotInvuln" "ScoutInvuln" "!=1" "required"
 //Custom stuff
 Criterion "ScoutNotInvulnerableSpeech" "ScoutInvulnerableSpeech" "!=1" "required" weight 0
-Criterion "ScoutNotDoubleJumpSpeech" "ScoutDoubleJump" "!=1" "required" weight 0
+Criterion "ScoutNotAssistSpeech" "ScoutAssistSpeech" "!=1" "required" weight 0
+Criterion "ScoutNotDoubleJumpSpeech" "ScoutDoubleJumpSpeech" "!=1" "required" weight 0
 
+//TODO: Maybe add the assist lines for when player is being healed - auto fire, 10 percent chance, with very many recent kills.
 
 Response PlayerCloakedSpyDemomanScout
 {
@@ -415,40 +417,6 @@ Rule KilledPlayerMeleeScoutFatScout
 	Response KilledPlayerMeleeScoutFatScout
 }
 
-// Custom stuff - melee dare
-// Look at enemy, then do battle cry voice command while holding a melee weapon.
-Response MeleeDareCombatScout
-{
-	scene "scenes/Player/Scout/low/2584.vcd"
-	scene "scenes/Player/Scout/low/2579.vcd" 
-	scene "scenes/Player/Scout/low/2580.vcd" 
-	scene "scenes/Player/Scout/low/2582.vcd" 
-	scene "scenes/Player/Scout/low/2583.vcd" 
-	scene "scenes/Player/Scout/low/2581.vcd" 
-}
-Rule MeleeDareCombatScout
-{
-	criteria ConceptPlayerBattleCry IsWeaponMelee IsScout IsCrosshairEnemy
-	Response MeleeDareCombatScout
-}
-
-// Custom Assist kill response
-// As there is no actual concept for assist kills, this is the second best method.
-// Say thanks after you kill more than one person
-
-Response KilledPlayerAssistScout
-{
-	scene "scenes/Player/Scout/low/487.vcd"
-	scene "scenes/Player/Scout/low/488.vcd"
-}
-Rule KilledPlayerAssistScout
-{
-	criteria ConceptPlayerThanks IsManyRecentKills KilledPlayerDelay 50PercentChance IsScout
-	Response KilledPlayerAssistScout
-}
-
-// End custom
-
 Response MedicFollowScout
 {
 	scene "scenes/Player/Scout/low/2574.vcd" predelay ".25"
@@ -534,7 +502,7 @@ Response PlayerDoubleJumpScout
 }
 Rule PlayerDoubleJumpScout
 {
-	criteria ConceptFireWeapon IsScout IsDoubleJumping WeaponIsScattergunDouble
+	criteria ConceptFireWeapon IsScout IsDoubleJumping WeaponIsScattergunDouble 20PercentChance
 	Response PlayerDoubleJumpScout
 }
 
@@ -1105,6 +1073,23 @@ Rule PlayerThanksScout
 	Response PlayerThanksScout
 }
 
+// Custom Assist kill response
+// As there is no actual concept for assist kills, this is the second best method.
+// Say thanks after you kill more than one person.
+
+Response KilledPlayerAssistScout
+{
+	scene "scenes/Player/Scout/low/487.vcd"
+	scene "scenes/Player/Scout/low/488.vcd"
+}
+Rule KilledPlayerAssistScout
+{
+	criteria ConceptPlayerThanks IsScout IsARecentKill KilledPlayerDelay IsScout ScoutNotAssistSpeech
+	ApplyContext "ScoutAssistSpeech:1:20"
+	Response KilledPlayerAssistScout
+}
+// End custom
+
 Response PlayerYesScout
 {
 	scene "scenes/Player/Scout/low/516.vcd" 
@@ -1217,6 +1202,24 @@ Rule PlayerBattleCryScout
 	criteria ConceptPlayerBattleCry IsScout
 	Response PlayerBattleCryScout
 }
+
+// Custom stuff - melee dare
+// Look at enemy, then do battle cry voice command while holding a melee weapon.
+Response MeleeDareCombatScout
+{
+	scene "scenes/Player/Scout/low/2584.vcd"
+	scene "scenes/Player/Scout/low/2579.vcd" 
+	scene "scenes/Player/Scout/low/2580.vcd" 
+	scene "scenes/Player/Scout/low/2582.vcd" 
+	scene "scenes/Player/Scout/low/2583.vcd" 
+	scene "scenes/Player/Scout/low/2581.vcd" 
+}
+Rule MeleeDareCombatScout
+{
+	criteria ConceptPlayerBattleCry IsWeaponMelee IsScout IsCrosshairEnemy
+	Response MeleeDareCombatScout
+}
+//End custom
 
 Response PlayerCheersScout
 {

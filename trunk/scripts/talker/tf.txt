@@ -996,7 +996,7 @@
 	}
 	rule DemomanTauntSword
 	{
-		criteria ConceptPlayerTaunt IsDemoman WeaponIsSword
+		criteria ConceptPlayerTaunt IsDemoman WeaponIsSword WeaponIsNotAxe // Modified to exclude Skullcutter.
 		response DemomanTauntSword
 	}
 
