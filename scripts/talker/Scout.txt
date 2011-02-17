@@ -23,6 +23,7 @@ Criterion "ScoutIsNotInvuln" "ScoutInvuln" "!=1" "required"
 Criterion "ScoutNotInvulnerableSpeech" "ScoutInvulnerableSpeech" "!=1" "required" weight 0
 Criterion "ScoutNotAssistSpeech" "ScoutAssistSpeech" "!=1" "required" weight 0
 Criterion "ScoutNotDoubleJumpSpeech" "ScoutDoubleJumpSpeech" "!=1" "required" weight 0
+Criterion "ScoutNotAwardSpeech" "ScoutAwardSpeech" "!=1" "required" weight 0
 
 //TODO: Maybe add the assist lines for when player is being healed - auto fire, 10 percent chance, with very many recent kills.
 
@@ -120,6 +121,30 @@ Rule PlayerCloakedSpySpyScout
 //--------------------------------------------------------------------------------------------------------------
 // Auto Speech
 //--------------------------------------------------------------------------------------------------------------
+
+// Custom achievement stuff
+Response AwardScout
+{
+	scene "scenes/Player/Scout/low/2501.vcd" predelay "2.5"
+	scene "scenes/Player/Scout/low/2502.vcd" predelay "2.5"
+	scene "scenes/Player/Scout/low/2503.vcd" predelay "2.5"
+	scene "scenes/Player/Scout/low/2504.vcd" predelay "2.5"
+	scene "scenes/Player/Scout/low/2505.vcd" predelay "2.5"
+	scene "scenes/Player/Scout/low/2507.vcd" predelay "2.5"
+	scene "scenes/Player/Scout/low/2509.vcd" predelay "2.5"
+	scene "scenes/Player/Scout/low/2510.vcd" predelay "2.5"
+	scene "scenes/Player/Scout/low/2511.vcd" predelay "2.5"
+	scene "scenes/Player/Scout/low/2681.vcd" predelay "2.5" 
+	scene "scenes/Player/Scout/low/2682.vcd" predelay "2.5"
+}
+Rule AwardScout
+{
+	criteria ConceptAchievementAward IsScout ScoutNotAwardSpeech
+	applycontext "ScoutAwardSpeech:1:10"
+	Response AwardScout
+}
+//End custom achievement
+
 Response HealThanksScout
 {
 	scene "scenes/Player/Scout/low/510.vcd" 
