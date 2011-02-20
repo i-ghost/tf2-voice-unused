@@ -9,7 +9,9 @@ Criterion "DemomanNotKillSpeech" "DemomanKillSpeech" "!=1" "required" weight 0
 Criterion "DemomanNotKillSpeechMelee" "DemomanKillSpeechMelee" "!=1" "required" weight 0
 Criterion "DemomanNotSaidHealThanks" "DemomanSaidHealThanks" "!=1" "required"
 Criterion "IsHelpCapDemoman" "DemomanHelpCap" "1" "required" weight 0
+// Custom stuff
 Criterion "DemomanNotInvulnerableSpeech" "DemomanInvulnerableSpeech" "!=1" "required" weight 0
+Criterion "DemomanNotAssistSpeech" "DemomanAssistSpeech" "!=1" "required" weight 0
 
 
 Response PlayerCloakedSpyDemomanDemoman
@@ -859,6 +861,23 @@ Rule PlayerThanksDemoman
 	criteria ConceptPlayerThanks IsDemoman
 	Response PlayerThanksDemoman
 }
+
+// Custom Assist kill response
+// As there is no actual concept for assist kills, this is the second best method.
+// Say thanks after you kill more than one person.
+
+Response KilledPlayerAssistDemoman
+{
+	scene "scenes/Player/Demoman/low/1009.vcd"
+	scene "scenes/Player/Demoman/low/1010.vcd"
+}
+Rule KilledPlayerAssistDemoman
+{
+	criteria ConceptPlayerThanks IsDemoman IsARecentKill KilledPlayerDelay IsDemoman DemomanNotAssistSpeech
+	ApplyContext "DemomanAssistSpeech:1:20"
+	Response KilledPlayerAssistDemoman
+}
+// End custom
 
 Response PlayerYesDemoman
 {

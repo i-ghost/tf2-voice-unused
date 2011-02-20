@@ -968,6 +968,7 @@
 	{
 		scene "scenes/player/demoman/low/taunt09.vcd"
 	}
+	// Custom stuff
 	response "DemomanTauntCaber"
 	{
 		scene "scenes/player/demoman/low/taunt04_v1.vcd" 
@@ -1005,11 +1006,13 @@
 		criteria ConceptPlayerTaunt IsDemoman WeaponIsSword WeaponIsNotAxe // Modified to exclude Skullcutter.
 		response DemomanTauntSword
 	}
+	// Custom Stuff
 	rule DemomanTauntCaber
 	{
 		criteria ConceptPlayerTaunt IsDemoman WeaponIsCaber
 		response DemomanTauntCaber
 	}
+	// Rule for Caber taunt
 
 	Response PlayerExpressionIdleDemoman
 	{
