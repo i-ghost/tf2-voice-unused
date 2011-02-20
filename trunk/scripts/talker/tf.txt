@@ -968,6 +968,12 @@
 	{
 		scene "scenes/player/demoman/low/taunt09.vcd"
 	}
+	response "DemomanTauntCaber"
+	{
+		scene "scenes/player/demoman/low/taunt04_v1.vcd" 
+		scene "scenes/player/demoman/low/taunt04_v2.vcd" 
+	}
+	// Ullapool Caber taunt - from unused Bottle taunt.
 
 	rule DemomanTauntDefender
 	{
@@ -998,6 +1004,11 @@
 	{
 		criteria ConceptPlayerTaunt IsDemoman WeaponIsSword WeaponIsNotAxe // Modified to exclude Skullcutter.
 		response DemomanTauntSword
+	}
+	rule DemomanTauntCaber
+	{
+		criteria ConceptPlayerTaunt IsDemoman WeaponIsCaber
+		response DemomanTauntCaber
 	}
 
 	Response PlayerExpressionIdleDemoman

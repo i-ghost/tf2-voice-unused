@@ -216,7 +216,8 @@ Rule DefendOnThePointDemoman
 	applycontexttoworld
 	Response DefendOnThePointDemoman
 }
-
+// CLEANUP: This section was initially added for testing purposes.
+// It has served its purpose, and should be overhauled with relevant content only.
 // Invuln responses for Grenade Launcher
 Response InvulnerableSpeechDemoman2
 {
@@ -294,6 +295,7 @@ Rule KilledPlayerMeleeDemoman
 //
 
 // Frying pan responses
+// For now, these are the same as the Botttle responses as above, sans "bottle o' scrumpy" line.
 Response KilledPlayerPanDemoman
 {
 	scene "scenes/Player/Demoman/low/3566.vcd" 
@@ -318,6 +320,7 @@ Rule KilledPlayerPanDemoman
 // End Frying Pan responses
 
 // Eyelander responses
+// These apply to all tf_weapon_sword class weapons.
 Response KilledPlayerSwordDemoman
 {
 	scene "scenes/Player/Demoman/low/3565.vcd" 
@@ -331,6 +334,8 @@ Rule KilledPlayerSwordDemoman
 	Response KilledPlayerSwordDemoman
 }
 
+// The above rule is for non-Demoman victims only.
+
 Response KilledPlayerSword2Demoman
 {
 	scene "scenes/Player/Demoman/low/3564.vcd"
@@ -343,7 +348,7 @@ Rule KilledPlayerSword2Demoman
 	applycontexttoworld
 	Response KilledPlayerSword2Demoman
 }
-
+// The above rule is for Demoman victims only.
 // End Eyelander responses
 
 // Pain Train responses
@@ -371,6 +376,21 @@ Rule KilledPlayerClubDemoman
 	Response KilledPlayerClubDemoman
 }
 // End Pain Train responses
+
+// Caber responses
+Response KilledPlayerCaberDemoman
+{
+	scene "scenes/player/Demoman/low/1007.vcd"
+	scene "scenes/Player/Demoman/low/1008.vcd"
+	scene "scenes/Player/Demoman/low/997.vcd"
+}
+Rule KilledPlayerCaberDemoman
+{
+	criteria ConceptAttackerPain KilledPlayerDelay WeaponIsCaber CaberHealthContext  DemomanNotKillSpeechMelee IsDemoman
+	ApplyContext "DemomanKillSpeechMelee:1:10"
+	applycontexttoworld
+	Response KilledPlayerCaberDemoman
+}
 
 Response KilledPlayerVeryManyDemoman
 {

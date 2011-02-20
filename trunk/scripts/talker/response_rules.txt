@@ -391,6 +391,7 @@ criterion "WeaponIsPainTrain" "item_name" "The Pain Train" "required" weight 10
 criterion "WeaponIsFryingPan" "item_name" "Frying Pan" "required" weight 10
 criterion "WeaponIsNotScattergunDouble" "item_name" "!=The Force-a-Nature" "required" weight 10
 criterion "WeaponIsNotAxe" "item_name" "!=The Scotsman's Skullcutter" "required" weight 10 // Exclude the Skullcutter - has horrible clipping issues with the Eyelander taunt. Maybe give it a different taunt later.
+criterion "WeaponIsCaber" "playerweapon" "tf_weapon_stickbomb" "required" weight 10
 
 
 criterion "IsCrossHairEnemy" "crosshair_enemy" "Yes" "required" 
@@ -407,6 +408,8 @@ criterion "ConceptFireWeapon" "Concept" "TLK_FIREWEAPON" required
 criterion "ConceptFireMinigun" "Concept" "TLK_FIREMINIGUN" required
 criterion "ConceptWindMinigun" "Concept" "TLK_WINDMINIGUN" required
 criterion "LowHealthContext" "playerhealthfrac" "<0.25" required
+// Custom stuff
+criterion "CaberHealthContext" "playerhealthfrac" "<0.51" required
 criterion "SuperHighHealthContext" "playerhealthfrac" ">1.400" required
 criterion "GameRulesInWinState" "GameRound" "5" required
 criterion "PlayerLostPreviousRound" "LostRound" "1" required
@@ -421,6 +424,7 @@ criterion "ConceptFireMinigunTalk" "Concept" "TLK_MINIGUN_FIREWEAPON" "required"
 Criterion "NotDefendOnThePointSpeech" "worldDefendOnThePointSpeech" "!=1" "required" weight 0
 
 criterion "IsHalloweenTaunt" "IsHalloweenTaunt" "1" "required" weight 100
+criterion "IsTaunting" "IsHalloweenTaunt" "!=1" "required" weight 100
 
 
 criterion "ConceptRequestDuel" "Concept" "TLK_REQUEST_DUEL" required
