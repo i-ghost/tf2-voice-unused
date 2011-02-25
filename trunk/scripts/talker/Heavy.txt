@@ -16,7 +16,17 @@ Criterion "HeavyNotSaidCartMovingStoppedD" "SaidCartMovingStoppedD" "!=1" "requi
 Criterion "HeavyNotSaidCartMovingStoppedO" "SaidCartMovingStoppedO" "!=1" "required" weight 0
 Criterion "HeavyNotSaidHealThanks" "HeavySaidHealThanks" "!=1" "required"
 Criterion "IsHelpCapHeavy" "HeavyHelpCap" "1" "required" weight 0
+// Custom stuff
+Criterion "HeavyNotMedicSpeech" "HeavyMedicSpeech" "!=1" "required"
+Criterion "HeavyNotAwardSpeech" "HeavyAwardSpeech" "!=1" "required"
+Criterion "HeavyNotAssistSpeech" "HeavyAssistSpeech" "!=1" "required" weight 0
 
+// TODO: Move non-taunt Heavy related stuff from tf.txt into here. Damn you lazy VALVe.
+//		 Fix the above stuff. Damn you again lazy VALVe.
+//		 Add unused defense lines.
+//		 Add 'new weapon' related stuff.
+//		 Add unknown condition stuff.
+//		 Add unused melee swing stuff.
 
 Response PlayerCloakedSpyDemomanHeavy
 {
@@ -112,6 +122,35 @@ Rule PlayerCloakedSpySpyHeavy
 //--------------------------------------------------------------------------------------------------------------
 // Auto Speech
 //--------------------------------------------------------------------------------------------------------------
+// Custom achievement stuff
+Response AwardHeavy
+{
+	scene "scenes/Player/Heavy/low/1954.vcd" predelay "2.5"
+	scene "scenes/Player/Heavy/low/1955.vcd" predelay "2.5"
+	scene "scenes/Player/Heavy/low/1956.vcd" predelay "2.5"
+	scene "scenes/Player/Heavy/low/2057.vcd" predelay "2.5"
+	scene "scenes/Player/Heavy/low/2058.vcd" predelay "2.5"
+	scene "scenes/Player/Heavy/low/2059.vcd" predelay "2.5"
+	scene "scenes/Player/Heavy/low/2060.vcd" predelay "2.5"
+	scene "scenes/Player/Heavy/low/2061.vcd" predelay "2.5"
+	scene "scenes/Player/Heavy/low/2062.vcd" predelay "2.5"
+	scene "scenes/Player/Heavy/low/2063.vcd" predelay "2.5"
+	scene "scenes/Player/Heavy/low/2064.vcd" predelay "2.5"
+	scene "scenes/Player/Heavy/low/2065.vcd" predelay "2.5"
+	scene "scenes/Player/Heavy/low/2068.vcd" predelay "2.5"
+	scene "scenes/Player/Heavy/low/2069.vcd" predelay "2.5"
+	scene "scenes/Player/Heavy/low/2200.vcd" predelay "2.5"
+	scene "scenes/Player/Heavy/low/2259.vcd" predelay "2.5"
+	
+}
+Rule AwardHeavy
+{
+	criteria ConceptAchievementAward IsHeavy HeavyNotAwardSpeech
+	applycontext "HeavyAwardSpeech:1:10"
+	Response AwardHeavy
+}
+//End custom achievement
+
 Response HealThanksHeavy
 {
 	scene "scenes/Player/Heavy/low/344.vcd" 
@@ -357,6 +396,34 @@ Rule InvulnerableSpeechHeavy
 	Response InvulnerableSpeechHeavy
 }
 
+// Custom stuff
+Response KilledMedicHeavy
+{
+	scene "scenes/Player/Heavy/low/1982.vcd"
+	scene "scenes/Player/Heavy/low/1983.vcd"
+	scene "scenes/Player/Heavy/low/1993.vcd"
+	scene "scenes/Player/Heavy/low/1994.vcd"
+}
+Rule KilledMedicHeavy
+{
+	criteria ConceptKilledPlayer IsVictimMedic IsHeavy IsBeingHealed 50PercentChance KilledPlayerDelay HeavyNotMedicSpeech
+	ApplyContext "HeavyMedicSpeech:1:20"
+	Response KilledMedicHeavy
+}
+
+Response KilledPlayerAssistAutoHeavy
+{
+	scene "scenes/Player/Heavy/low/320.vcd" predelay "2.5"
+}
+Rule KilledPlayerAssistAutoHeavy
+{
+	criteria ConceptKilledPlayer IsHeavy IsBeingHealed IsManyRecentKills KilledPlayerDelay 10PercentChance HeavyNotAssistSpeech
+	ApplyContext "HeavyAssistSpeech:1:20"
+	Response KilledPlayerAssistAutoHeavy
+}
+
+// End custom
+
 Response KilledPlayerManyHeavy
 {
 	scene "scenes/Player/Heavy/low/310.vcd" 
@@ -385,6 +452,23 @@ Rule KilledPlayerMeleeHeavy
 	applycontexttoworld
 	Response KilledPlayerMeleeHeavy
 }
+
+// Custom stuff
+// Fist of Steel kill
+Response KilledPlayerMeleeMetalHeavy
+{
+	scene "scenes/Player/Heavy/low/1941.vcd" 
+	scene "scenes/Player/Heavy/low/272.vcd" 
+	scene "scenes/Player/Heavy/low/273.vcd" 
+}
+Rule KilledPlayerMeleeMetalHeavy
+{
+	criteria ConceptKilledPlayer KilledPlayerDelay 30PercentChance  WeaponIsMetalFists HeavyNotKillSpeechMelee IsHeavy
+	ApplyContext "HeavyKillSpeechMelee:1:10"
+	applycontexttoworld
+	Response KilledPlayerMeleeMetalHeavy
+}
+// End custom
 
 Response KilledPlayerVeryManyHeavy
 {
@@ -783,6 +867,22 @@ Rule PlayerThanksHeavy
 	Response PlayerThanksHeavy
 }
 
+// Custom Assist kill response
+// As there is no actual concept for assist kills, this is the second best method.
+// Say thanks after you kill more than one person.
+
+Response KilledPlayerAssistHeavy
+{
+	scene "scenes/Player/Heavy/low/320.vcd"
+}
+Rule KilledPlayerAssistHeavy
+{
+	criteria ConceptPlayerThanks IsHeavy IsARecentKill KilledPlayerDelay HeavyNotAssistSpeech
+	ApplyContext "HeavyAssistSpeech:1:20"
+	Response KilledPlayerAssistHeavy
+}
+// End custom
+
 Response PlayerYesHeavy
 {
 	scene "scenes/Player/Heavy/low/350.vcd" 
@@ -896,6 +996,31 @@ Rule PlayerBattleCryHeavy
 	criteria ConceptPlayerBattleCry IsHeavy
 	Response PlayerBattleCryHeavy
 }
+
+// Custom stuff - melee dare
+// Look at enemy, then do battle cry voice command while holding a melee weapon.
+Response MeleeDareCombatHeavy
+{
+	scene "scenes/Player/Heavy/low/1975.vcd"
+	scene "scenes/Player/Heavy/low/1976.vcd"
+	scene "scenes/Player/Heavy/low/1977.vcd"
+	scene "scenes/Player/Heavy/low/2087.vcd"
+	scene "scenes/Player/Heavy/low/2090.vcd"
+	scene "scenes/Player/Heavy/low/2091.vcd"
+	scene "scenes/Player/Heavy/low/2092.vcd"
+	scene "scenes/Player/Heavy/low/2093.vcd"
+	scene "scenes/Player/Heavy/low/2106.vcd"
+	scene "scenes/Player/Heavy/low/2107.vcd"
+	scene "scenes/Player/Heavy/low/2119.vcd"
+	scene "scenes/Player/Heavy/low/2205.vcd"
+	scene "scenes/Player/Heavy/low/2258.vcd"
+}
+Rule MeleeDareCombatHeavy
+{
+	criteria ConceptPlayerBattleCry IsWeaponMelee IsHeavy IsCrosshairEnemy
+	Response MeleeDareCombatHeavy
+}
+//End custom
 
 Response PlayerCheersHeavy
 {
