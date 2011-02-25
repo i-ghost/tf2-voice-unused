@@ -25,8 +25,6 @@ Criterion "ScoutNotAssistSpeech" "ScoutAssistSpeech" "!=1" "required" weight 0
 Criterion "ScoutNotDoubleJumpSpeech" "ScoutDoubleJumpSpeech" "!=1" "required" weight 0
 Criterion "ScoutNotAwardSpeech" "ScoutAwardSpeech" "!=1" "required" weight 0
 
-//TODO: Maybe add the assist lines for when player is being healed - auto fire, 10 percent chance, with very many recent kills.
-
 Response PlayerCloakedSpyDemomanScout
 {
 	scene "scenes/Player/Scout/low/386.vcd" 
@@ -396,7 +394,7 @@ Response KilledPlayerAssistAutoScout
 }
 Rule KilledPlayerAssistAutoScout
 {
-	criteria ConceptKilledPlayer IsScout IsBeingHealed IsManyRecentKills KilledPlayerDelay 10PercentChance IsScout ScoutNotAssistSpeech
+	criteria ConceptKilledPlayer IsScout IsBeingHealed IsManyRecentKills KilledPlayerDelay 10PercentChance ScoutNotAssistSpeech
 	ApplyContext "ScoutAssistSpeech:1:20"
 	Response KilledPlayerAssistAutoScout
 }
@@ -1123,7 +1121,7 @@ Response KilledPlayerAssistScout
 }
 Rule KilledPlayerAssistScout
 {
-	criteria ConceptPlayerThanks IsScout IsARecentKill KilledPlayerDelay IsScout ScoutNotAssistSpeech
+	criteria ConceptPlayerThanks IsScout IsARecentKill KilledPlayerDelay ScoutNotAssistSpeech
 	ApplyContext "ScoutAssistSpeech:1:20"
 	Response KilledPlayerAssistScout
 }
