@@ -38,8 +38,7 @@ This is a history of all public releases.
   * Added manual and automatic assist lines for Heavy
   * Added melee dare responses for Heavy
   * Added new criterion for Fists of Steel
-  * Added vocal line relating to steel fists for when you get a Fists of Steel kill, shares context
-with normal melee kills.
+  * Added vocal line relating to steel fists for when you get a Fists of Steel kill, shares context with normal melee kills.
 ----
 ====0.1 {{{(02.11.2011)}}}====
   * Added ubercharge responses for Demoman, Scout and Medic
