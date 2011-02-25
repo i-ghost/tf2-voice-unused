@@ -4,6 +4,43 @@
 This is a history of all public releases.
 
 ----
+====0.2 {{{(02.25.2011)}}}====
+  * Added 1 unused domination line for scout (need to build vcds for other 2)
+  * Added melee dare responses for Scout. Point at enemy with a melee weapon, do battle cry voice command to use.
+  * Added prototype assist kill response system for Scout (kill >1 players, say voice command "Thanks", 50 percent chance of occurring)
+  * Added double jump apex responses for Scout
+  * Added a Criterion in response_rules.txt to make it only fire when he's in the air, not when he's on the ground.
+  * Excluded Skullcutter from the eyelander taunt
+  * Fixed Frying Pan criterion to use correct name.
+  * Frying Pan now has its own kill response rule - no more "bottle o' scrumpy" line.
+  * Removed superfluous criterion in Demoman.txt melee kill rules
+
+  * Modified Scout kill assist rule to be less prone to spamming. Can only be fired 1 in 20 seconds (in time with recent kill ticker) after a kill. This may need further tweaking.
+  * Fixed the criterion WeaponIsScattergunDouble - somehow broken in previous revision.
+  * Moved rules around to more appropriate areas within Scout.txt
+  * Added achievement responses for Scout.
+  * Added criterion for the Ullapool Caber
+  * Added rule for a Caber explosion
+  * Added some documentation to Demoman.txt
+  * Added unused Bottle taunt to Caber
+  * Added two voice lines to new Caber taunt
+
+  * Added recompiled scenes.image to allow for taunt04_v1.vcd and taunt04_v2.vcd to work. Server admins: You will somehow need to force this file upon your clients for the new taunts to work. (You don't need to worry about the vcd files, just the scenes.image)
+  * Added assist lines for Demoman. Say thanks after a kill.
+
+  * Added a new criterion to response_rules.txt "IsBeingHealed"
+  * Added scout assist speech for when you get a kill while being healed. 10 percent chance, shares context with the manual assist speech (thanks after a kill). Has a delay of 2.5 seconds after the kill.
+  * Removed superfluous IsDemoman/IsScout criteria on assist rules.
+  * Added auto assist rule for Demoman, same as one in Scout.txt
+  * Added base Heavy.txt for diff purposes.
+  * Added responses for when you kill an enemy Medic whilst being healed by your own as a Heavy
+  * Added achievement responses for Heavy
+  * Added manual and automatic assist lines for Heavy
+  * Added melee dare responses for Heavy
+  * Added new criterion for Fists of Steel
+  * Added vocal line relating to steel fists for when you get a Fists of Steel kill, shares context
+with normal melee kills.
+----
 ====0.1 {{{(02.11.2011)}}}====
   * Added ubercharge responses for Demoman, Scout and Medic
   * All Swords now use Eyelander taunt.
