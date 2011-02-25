@@ -256,6 +256,18 @@ Rule InvulnerableSpeechDemoman
 }
 // End invuln responses for Sticky
 
+Response KilledPlayerAssistAutoDemoman
+{
+	scene "scenes/Player/Demoman/low/1009.vcd" predelay "2.5"
+	scene "scenes/Player/Demoman/low/1010.vcd" predelay "2.5"
+}
+Rule KilledPlayerAssistAutoDemoman
+{
+	criteria ConceptKilledPlayer IsDemoman IsBeingHealed IsManyRecentKills KilledPlayerDelay 10PercentChance DemomanNotAssistSpeech
+	ApplyContext "DemomanAssistSpeech:1:20"
+	Response KilledPlayerAssistAutoDemoman
+}
+
 Response KilledPlayerManyDemoman
 {
 	scene "scenes/Player/Demoman/low/1000.vcd" 
@@ -873,7 +885,7 @@ Response KilledPlayerAssistDemoman
 }
 Rule KilledPlayerAssistDemoman
 {
-	criteria ConceptPlayerThanks IsDemoman IsARecentKill KilledPlayerDelay IsDemoman DemomanNotAssistSpeech
+	criteria ConceptPlayerThanks IsDemoman IsARecentKill KilledPlayerDelay DemomanNotAssistSpeech
 	ApplyContext "DemomanAssistSpeech:1:20"
 	Response KilledPlayerAssistDemoman
 }
