@@ -388,14 +388,16 @@ criterion "WeaponIsHolyMackerel" "item_name" "The Holy Mackerel" "required" weig
 criterion "WeaponIsBenja" "item_name" "The Dalokohs Bar" "required" weight 10
 criterion "WeaponIsSteak" "item_name" "The Buffalo Steak Sandvich" "required" weight 10 // Not actually used for the auto-eat response. Used for distinction in the taunts.
 criterion "WeaponIsPainTrain" "item_name" "The Pain Train" "required" weight 10
+criterion "WeaponIsNotPainTrain" "item_name" "!=The Pain Train" "required" weight 10
 criterion "WeaponIsFryingPan" "item_name" "Frying Pan" "required" weight 10
 criterion "WeaponIsNotScattergunDouble" "item_name" "!=The Force-a-Nature" "required" weight 10
 criterion "WeaponIsNotAxe" "item_name" "!=The Scotsman's Skullcutter" "required" weight 10 // Exclude the Skullcutter - has horrible clipping issues with the Eyelander taunt. Maybe give it a different taunt later.
 criterion "WeaponIsCaber" "playerweapon" "tf_weapon_stickbomb" "required" weight 10
 criterion "WeaponIsMetalFists" "item_name" "Fists of Steel" "required" weight 10
 
-//Custom healed concept
+//Custom healed concept and critical hit
 criterion "IsBeingHealed" "beinghealed" "1" "required"
+criterion "IsCritical" "damagecritical" "1" "required"
 
 criterion "IsCrossHairEnemy" "crosshair_enemy" "Yes" "required" 
 criterion "IsNotCrossHairEnemy" "crosshair_enemy" "!=Yes" "required" 
@@ -412,7 +414,7 @@ criterion "ConceptFireMinigun" "Concept" "TLK_FIREMINIGUN" required
 criterion "ConceptWindMinigun" "Concept" "TLK_WINDMINIGUN" required
 criterion "LowHealthContext" "playerhealthfrac" "<0.25" required
 // Custom stuff
-criterion "CaberHealthContext" "playerhealthfrac" "<0.51" required
+criterion "CaberHealthContext" "playerhealthfrac" ">0.429" required
 criterion "SuperHighHealthContext" "playerhealthfrac" ">1.400" required
 criterion "GameRulesInWinState" "GameRound" "5" required
 criterion "PlayerLostPreviousRound" "LostRound" "1" required
@@ -427,6 +429,7 @@ criterion "ConceptFireMinigunTalk" "Concept" "TLK_MINIGUN_FIREWEAPON" "required"
 Criterion "NotDefendOnThePointSpeech" "worldDefendOnThePointSpeech" "!=1" "required" weight 0
 
 criterion "IsHalloweenTaunt" "IsHalloweenTaunt" "1" "required" weight 100
+// Custom criterion - not sure if it will be used.
 criterion "IsTaunting" "IsHalloweenTaunt" "!=1" "required" weight 100
 
 
