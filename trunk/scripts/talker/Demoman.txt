@@ -283,33 +283,9 @@ Rule KilledPlayerManyDemoman
 	Response KilledPlayerManyDemoman
 }
 
-//Modified to play for the Bottle only
-Response KilledPlayerMeleeDemoman
-{
-	scene "scenes/Player/Demoman/low/998.vcd" 
-	scene "scenes/Player/Demoman/low/3566.vcd" 
-	scene "scenes/Player/Demoman/low/3567.vcd" 
-	scene "scenes/Player/Demoman/low/3568.vcd" 
-	scene "scenes/Player/Demoman/low/3569.vcd"
-	scene "scenes/Player/Demoman/low/3570.vcd" 
-	scene "scenes/Player/Demoman/low/3571.vcd" 
-	scene "scenes/Player/Demoman/low/3572.vcd" 
-	scene "scenes/Player/Demoman/low/3573.vcd" 
-	scene "scenes/Player/Demoman/low/3577.vcd" 
-	scene "scenes/Player/Demoman/low/3574.vcd"  
-	scene "scenes/Player/Demoman/low/3575.vcd"
-}
-Rule KilledPlayerMeleeDemoman
-{
-	criteria ConceptKilledPlayer KilledPlayerDelay WeaponIsBottle 30PercentChance  DemomanNotKillSpeechMelee IsDemoman
-	ApplyContext "DemomanKillSpeechMelee:1:10"
-	applycontexttoworld
-	Response KilledPlayerMeleeDemoman
-}
-//
-
+// Custom stuff
 // Frying pan responses
-// For now, these are the same as the Botttle responses as above, sans "bottle o' scrumpy" line.
+// These are our base responses for non-sword melee weapons.
 Response KilledPlayerPanDemoman
 {
 	scene "scenes/Player/Demoman/low/3566.vcd" 
@@ -329,9 +305,25 @@ Rule KilledPlayerPanDemoman
 	criteria ConceptKilledPlayer KilledPlayerDelay WeaponIsFryingPan 30PercentChance  DemomanNotKillSpeechMelee IsDemoman
 	ApplyContext "DemomanKillSpeechMelee:1:10"
 	applycontexttoworld
-	Response KilledPlayerMeleeDemoman
+	Response KilledPlayerPanDemoman
 }
 // End Frying Pan responses
+
+// Modified to play for the Bottle only
+// Modified to include Frying Pan repsonses above, saves having duplicate entries.
+Response KilledPlayerMeleeDemoman
+{
+	scene "scenes/Player/Demoman/low/998.vcd" 
+}
+Rule KilledPlayerMeleeDemoman
+{
+	criteria ConceptKilledPlayer KilledPlayerDelay WeaponIsBottle 30PercentChance  DemomanNotKillSpeechMelee IsDemoman
+	ApplyContext "DemomanKillSpeechMelee:1:10"
+	applycontexttoworld
+	Response KilledPlayerPanDemoman
+	Response KilledPlayerMeleeDemoman
+}
+//
 
 // Eyelander responses
 // These apply to all tf_weapon_sword class weapons.
@@ -366,20 +358,10 @@ Rule KilledPlayerSword2Demoman
 // End Eyelander responses
 
 // Pain Train responses
+// Shares responses with Frying Pan, saves having duplicate entries.
 Response KilledPlayerClubDemoman
 {
 	scene "scenes/Player/Demoman/low/3578.vcd" 
-	scene "scenes/Player/Demoman/low/3566.vcd" 
-	scene "scenes/Player/Demoman/low/3567.vcd" 
-	scene "scenes/Player/Demoman/low/3568.vcd" 
-	scene "scenes/Player/Demoman/low/3569.vcd"
-	scene "scenes/Player/Demoman/low/3570.vcd" 
-	scene "scenes/Player/Demoman/low/3571.vcd" 
-	scene "scenes/Player/Demoman/low/3572.vcd" 
-	scene "scenes/Player/Demoman/low/3573.vcd" 
-	scene "scenes/Player/Demoman/low/3577.vcd" 
-	scene "scenes/Player/Demoman/low/3574.vcd"  
-	scene "scenes/Player/Demoman/low/3575.vcd"
 }
 
 Rule KilledPlayerClubDemoman
@@ -388,6 +370,7 @@ Rule KilledPlayerClubDemoman
 	ApplyContext "DemomanKillSpeechMelee:1:10"
 	applycontexttoworld
 	Response KilledPlayerClubDemoman
+	Response KilledPlayerPanDemoman
 }
 // End Pain Train responses
 
@@ -400,7 +383,7 @@ Response KilledPlayerCaberDemoman
 }
 Rule KilledPlayerCaberDemoman
 {
-	criteria ConceptAttackerPain KilledPlayerDelay WeaponIsCaber CaberHealthContext  DemomanNotKillSpeechMelee IsDemoman
+	criteria ConceptAttackerPain KilledPlayerDelay WeaponIsCaber IsCritical CaberHealthContext  DemomanNotKillSpeechMelee IsDemoman
 	ApplyContext "DemomanKillSpeechMelee:1:10"
 	applycontexttoworld
 	Response KilledPlayerCaberDemoman

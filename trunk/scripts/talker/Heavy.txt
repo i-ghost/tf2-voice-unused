@@ -458,8 +458,6 @@ Rule KilledPlayerMeleeHeavy
 Response KilledPlayerMeleeMetalHeavy
 {
 	scene "scenes/Player/Heavy/low/1941.vcd" 
-	scene "scenes/Player/Heavy/low/272.vcd" 
-	scene "scenes/Player/Heavy/low/273.vcd" 
 }
 Rule KilledPlayerMeleeMetalHeavy
 {
@@ -467,6 +465,7 @@ Rule KilledPlayerMeleeMetalHeavy
 	ApplyContext "HeavyKillSpeechMelee:1:10"
 	applycontexttoworld
 	Response KilledPlayerMeleeMetalHeavy
+	Response KilledPlayerMeleeHeavy
 }
 // End custom
 

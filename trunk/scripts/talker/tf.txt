@@ -993,7 +993,7 @@
 	}
 	rule DemomanTauntPlayerMelee
 	{
-		criteria ConceptPlayerTaunt IsDemoman WeaponIsBottle
+		criteria ConceptPlayerTaunt IsDemoman WeaponIsBottle WeaponIsNotPainTrain // Exclude the Pain Train
 		response DemomanTauntMelee
 	}
 	rule DemomanTauntHalloween
