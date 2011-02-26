@@ -9,7 +9,9 @@ Criterion "SoldierNotKillSpeech" "SoldierKillSpeech" "!=1" "required" weight 0
 Criterion "SoldierNotKillSpeechMelee" "SoldierKillSpeechMelee" "!=1" "required" weight 0
 Criterion "SoldierNotSaidHealThanks" "SoldierSaidHealThanks" "!=1" "required"
 Criterion "IsHelpCapSoldier" "SoldierHelpCap" "1" "required" weight 0
-
+// Custom criterion
+Criterion "SoldierNotAssistSpeech" "SoldierAssistSpeech" "!=1" "required" weight 0
+Criterion "SoldierNotInvulnerableSpeech" "SoldierInvulnerableSpeech" "!=1" "required" weight 0
 
 Response PlayerCloakedSpyDemomanSoldier
 {
@@ -234,6 +236,99 @@ Rule KilledPlayerManySoldier
 	applycontexttoworld
 	Response KilledPlayerManySoldier
 }
+
+// Custom stuff
+// Custom crocket response
+// Not working yet
+//Response KilledPlayerCrocketSoldier
+//{
+//	scene "scenes/Player/Soldier/low/1179.vcd" 
+//	scene "scenes/Player/Soldier/low/1180.vcd" 
+//}
+//Rule KilledPlayerCrocketSoldier
+//{
+//	criteria ConceptKilledPlayer 50PercentChance IsCritical IsWeaponPrimary KilledPlayerDelay SoldierNotKillSpeech IsSoldier
+//	ApplyContext "SoldierKillSpeech:1:10"
+//	applycontexttoworld
+//	Response KilledPlayerCrocketSoldier
+//}
+
+Response KilledDemomanSoldier
+{
+	scene "scenes/Player/Soldier/low/3486.vcd" 
+	scene "scenes/Player/Soldier/low/3487.vcd" 
+	scene "scenes/Player/Soldier/low/3488.vcd" 
+	scene "scenes/Player/Soldier/low/3489.vcd" 
+	scene "scenes/Player/Soldier/low/3490.vcd" 
+	scene "scenes/Player/Soldier/low/3491.vcd" 
+}
+Rule KilledDemomanSoldier
+{
+	criterion ConceptKilledPlayer KilledPlayerDelay IsVictimDemoman 30PercentChance SoldierNotKillSpeech IsSoldier
+	ApplyContext "SoldierKillSpeech:1:10"
+	applycontexttoworld
+	Response KilledDemomanSoldier
+}
+
+Response KilledPlayerAssistAutoSoldier
+{
+	scene "scenes/Player/Soldier/low/1186.vcd" predelay "2.5"
+}
+Rule KilledPlayerAssistAutoSoldier
+{
+	criteria ConceptKilledPlayer IsSoldier IsBeingHealed IsManyRecentKills KilledPlayerDelay 20PercentChance SoldierNotAssistSpeech
+	ApplyContext "SoldierAssistSpeech:1:20"
+	Response KilledPlayerAssistAutoSoldier
+}
+
+// A custom rule for when you're on a pocket Soldier killing spree.
+Response SpreeMedicSoldier
+{
+	scene "scenes/Player/Soldier/low/3492.vcd"
+	scene "scenes/Player/Soldier/low/3493.vcd"
+	scene "scenes/Player/Soldier/low/3494.vcd"
+}
+Rule SpreeMedicSoldier
+{
+	criteria ConceptKilledPlayer KilledPlayerDelay IsSoldier IsBeingHealed SoldierNotKillSpeech IsVeryManyRecentKills IsWeaponPrimary
+	ApplyContext "SoldierKillSpeech:1:20"
+	applycontexttoworld
+	Response SpreeMedicSoldier
+}
+
+// Custom Medic follow - because Soldier needs it more than most classes.
+Response MedicFollowSoldier
+{
+	scene "scenes/Player/Soldier/low/3495.vcd" predelay ".25"
+	scene "scenes/Player/Soldier/low/3496.vcd" predelay ".25"
+	scene "scenes/Player/Soldier/low/3497.vcd" predelay ".25"
+	scene "scenes/Player/Soldier/low/3499.vcd" predelay ".25"
+}
+Rule MedicFollowSoldier
+{
+	criteria ConceptPlayerMedic IsOnMedic IsSoldier IsNotCrossHairEnemy
+	ApplyContext "ScoutKillSpeech:1:10"
+	Response MedicFollowSoldier
+}
+
+// Invulnerable lines
+Response InvulnerableSpeechSoldier
+{
+	scene "scenes/Player/Soldier/low/1191.vcd"
+	scene "scenes/Player/Soldier/low/1194.vcd"
+	scene "scenes/Player/Soldier/low/1200.vcd"
+	scene "scenes/Player/Soldier/low/1204.vcd"
+	scene "scenes/Player/Soldier/low/1192.vcd"
+	scene "scenes/Player/Soldier/low/1189.vcd"
+}
+Rule InvulnerableSpeechSoldier
+{
+	criterion ConceptFireWeapon IsSoldier IsInvulnerable SoldierNotInvulnerableSpeech
+	ApplyContext "SoldierInvulnerableSpeech:1:30"
+	Response InvulnerableSpeechSoldier
+}
+
+// End custom stuff
 
 Response KilledPlayerMeleeSoldier
 {
@@ -609,6 +704,7 @@ Response PlayerGoSoldier
 {
 	scene "scenes/Player/Soldier/low/1092.vcd" 
 	scene "scenes/Player/Soldier/low/1093.vcd" 
+	scene "scenes/Player/Soldier/low/1094.vcd" // Restored
 }
 Rule PlayerGoSoldier
 {
@@ -737,6 +833,22 @@ Rule PlayerThanksSoldier
 	Response PlayerThanksSoldier
 }
 
+// Custom Assist kill response
+// As there is no actual concept for assist kills, this is the second best method.
+// Say thanks after you kill more than one person.
+
+Response KilledPlayerAssistSoldier
+{
+	scene "scenes/Player/Soldier/low/1186.vcd"
+}
+Rule KilledPlayerAssistSoldier
+{
+	criteria ConceptPlayerThanks IsSoldier IsARecentKill KilledPlayerDelay SoldierNotAssistSpeech
+	ApplyContext "SoldierAssistSpeech:1:20"
+	Response KilledPlayerAssistSoldier
+}
+// End custom
+
 Response PlayerYesSoldier
 {
 	scene "scenes/Player/Soldier/low/1350.vcd" 
@@ -848,6 +960,23 @@ Rule PlayerBattleCrySoldier
 	criteria ConceptPlayerBattleCry IsSoldier
 	Response PlayerBattleCrySoldier
 }
+
+// Custom stuff - melee dare
+// Look at enemy, then do battle cry voice command while holding a melee weapon.
+Response MeleeDareCombatSoldier
+{
+	scene "scenes/Player/Soldier/low/1196.vcd"
+	scene "scenes/Player/Soldier/low/1210.vcd"
+	scene "scenes/Player/Soldier/low/1205.vcd"
+	scene "scenes/Player/Soldier/low/1208.vcd"
+	scene "scenes/Player/Soldier/low/1203.vcd"
+}
+Rule MeleeDareCombatSoldier
+{
+	criteria ConceptPlayerBattleCry IsWeaponMelee IsSoldier IsCrosshairEnemy
+	Response MeleeDareCombatSoldier
+}
+//End custom
 
 Response PlayerCheersSoldier
 {

@@ -263,7 +263,7 @@ Response KilledPlayerAssistAutoDemoman
 }
 Rule KilledPlayerAssistAutoDemoman
 {
-	criteria ConceptKilledPlayer IsDemoman IsBeingHealed IsManyRecentKills KilledPlayerDelay 10PercentChance DemomanNotAssistSpeech
+	criteria ConceptKilledPlayer IsDemoman IsBeingHealed IsManyRecentKills KilledPlayerDelay 20PercentChance DemomanNotAssistSpeech
 	ApplyContext "DemomanAssistSpeech:1:20"
 	Response KilledPlayerAssistAutoDemoman
 }

@@ -417,7 +417,7 @@ Response KilledPlayerAssistAutoHeavy
 }
 Rule KilledPlayerAssistAutoHeavy
 {
-	criteria ConceptKilledPlayer IsHeavy IsBeingHealed IsManyRecentKills KilledPlayerDelay 10PercentChance HeavyNotAssistSpeech
+	criteria ConceptKilledPlayer IsHeavy IsBeingHealed IsManyRecentKills KilledPlayerDelay 20PercentChance HeavyNotAssistSpeech
 	ApplyContext "HeavyAssistSpeech:1:20"
 	Response KilledPlayerAssistAutoHeavy
 }
