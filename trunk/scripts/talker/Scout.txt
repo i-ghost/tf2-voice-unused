@@ -394,7 +394,7 @@ Response KilledPlayerAssistAutoScout
 }
 Rule KilledPlayerAssistAutoScout
 {
-	criteria ConceptKilledPlayer IsScout IsBeingHealed IsManyRecentKills KilledPlayerDelay 10PercentChance ScoutNotAssistSpeech
+	criteria ConceptKilledPlayer IsScout IsBeingHealed IsManyRecentKills KilledPlayerDelay 20PercentChance ScoutNotAssistSpeech
 	ApplyContext "ScoutAssistSpeech:1:20"
 	Response KilledPlayerAssistAutoScout
 }
