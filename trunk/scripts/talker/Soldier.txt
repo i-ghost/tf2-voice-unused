@@ -330,9 +330,13 @@ Rule InvulnerableSpeechSoldier
 
 // End custom stuff
 
+// Added the unused Direct Hit screams here, as they can't be added to the taunt.
 Response KilledPlayerMeleeSoldier
 {
 	scene "scenes/Player/Soldier/low/1185.vcd" 
+	scene "scenes/Player/Soldier/low/3403.vcd" 
+	scene "scenes/Player/Soldier/low/3405.vcd" 
+	scene "scenes/Player/Soldier/low/3406.vcd" 
 }
 Rule KilledPlayerMeleeSoldier
 {
