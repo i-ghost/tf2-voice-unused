@@ -394,6 +394,9 @@ criterion "WeaponIsNotScattergunDouble" "item_name" "!=The Force-a-Nature" "requ
 criterion "WeaponIsNotAxe" "item_name" "!=The Scotsman's Skullcutter" "required" weight 10 // Exclude the Skullcutter - has horrible clipping issues with the Eyelander taunt. Maybe give it a different taunt later.
 criterion "WeaponIsCaber" "playerweapon" "tf_weapon_stickbomb" "required" weight 10
 criterion "WeaponIsMetalFists" "item_name" "Fists of Steel" "required" weight 10
+criterion "WeaponIsNotVanillaPrimary" "loadout_slot_primary" "" "required" weight 10
+criterion "WeaponIsNotVanillaSecondary" "loadout_slot_secondary" "" "required" weight 10
+criterion "WeaponIsNotVanillaMelee" "loadout_slot_melee" "" "required" weight 10
 
 //Custom healed concept and critical hit
 criterion "IsBeingHealed" "beinghealed" "1" "required"

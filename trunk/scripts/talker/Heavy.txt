@@ -23,8 +23,8 @@ Criterion "HeavyNotAssistSpeech" "HeavyAssistSpeech" "!=1" "required" weight 0
 
 // TODO: Move non-taunt Heavy related stuff from tf.txt into here. Damn you lazy VALVe. DONE
 //		 Fix the above stuff. Damn you again lazy VALVe. DONE
-//		 Add unused defense lines.
-//		 Add 'new weapon' related stuff.
+//		 Add unused defense lines. DONE
+//		 Add 'new weapon' related stuff. DONE
 //		 Add unknown condition stuff.
 //		 Add unused melee swing stuff.
 
@@ -508,6 +508,22 @@ Rule KilledPlayerMeleeMetalHeavy
 	applycontexttoworld
 	Response KilledPlayerMeleeMetalHeavy
 	Response KilledPlayerMeleeHeavy
+}
+
+// Iron Curtain/Brass Beast kill
+Response KilledPlayerShinyHeavy
+{
+	scene "scenes/player/heavy/low/2210.vcd" predelay ".25"
+	scene "scenes/player/heavy/low/2198.vcd" predelay ".25"
+	scene "scenes/player/heavy/low/2204.vcd" predelay ".25"
+	scene "scenes/player/heavy/low/2199.vcd" predelay ".25"
+}
+Rule KilledPlayerShinyHeavy
+{
+	criterion ConceptKilledPlayer KilledPlayerDelay 20PercentChance IsManyRecentKills IsWeaponPrimary WeaponIsNotVanillaPrimary HeavyNotKillSpeech IsHeavy
+	ApplyContext "HeavyKillSpeech:1:60"
+	applycontexttoworld
+	Response KilledPlayerShinyHeavy
 }
 // End custom
 
@@ -1079,6 +1095,20 @@ Rule MeleeDareCombatHeavy
 {
 	criteria ConceptPlayerBattleCry IsWeaponMelee IsHeavy IsCrosshairEnemy
 	Response MeleeDareCombatHeavy
+}
+
+Response PlayerShinyCryHeavy
+{
+	scene "scenes/Player/Heavy/low/1944.vcd"
+	scene "scenes/Player/Heavy/low/1940.vcd"
+	scene "scenes/Player/Heavy/low/1942.vcd"
+	scene "scenes/Player/Heavy/low/1943.vcd"
+	scene "scenes/player/heavy/low/2199.vcd"
+}
+Rule PlayerShinyCryHeavy
+{
+	criteria ConceptPlayerBattleCry 30PercentChance IsWeaponPrimary IsHeavy WeaponIsNotVanillaPrimary
+	Response PlayerShinyCryHeavy
 }
 //End custom
 
