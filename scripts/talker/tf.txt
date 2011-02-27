@@ -152,6 +152,7 @@
 		Response PlayerExpressionIdleHeavy
 	}
 	
+// Minigun vocal stuff has been moved to Heavy.txt !
 
 	Response PlayerExpressionFiringMinigunHeavy
 	{
@@ -161,39 +162,6 @@
 	{
 		criteria ConceptPlayerExpression IsHeavy IsFiringMinigun
 		Response PlayerExpressionFiringMinigunHeavy
-	}
-	
-	Response HeavyTimeFiringMinigunShort
-	{
-		scene "scenes/player/heavy/low/attackminigun_vocal02.vcd"
-		scene "scenes/player/heavy/low/attackminigun_vocal03.vcd"
-	}
-	Rule HeavyTimeFiringMinigunShort
-	{
-		criteria ConceptFireMinigunTalk IsHeavy WeaponIsMinigun TimeFiringMinigunShort 30PercentChance
-		Response HeavyTimeFiringMinigunShort
-	}
-	
-	Response HeavyTimeFiringMinigunLong
-	{
-		scene "scenes/player/heavy/low/specialcompleted11.vcd"
-		scene "scenes/player/heavy/low/laughShort03.vcd"
-	}
-	Rule HeavyTimeFiringMinigunLong
-	{
-		criteria ConceptFireMinigunTalk IsHeavy WeaponIsMinigun TimeFiringMinigunLong 50PercentChance
-		Response HeavyTimeFiringMinigunLong
-	}
-	
-	Response HeavyTimeFiringMinigunReallyLong
-	{
-		scene "scenes/player/heavy/low/attackMinigun_vocal05.vcd"
-		scene "scenes/player/heavy/low/specialcompleted07.vcd"
-	}
-	Rule HeavyTimeFiringMinigunReallyLong
-	{
-		criteria ConceptFireMinigunTalk IsHeavy WeaponIsMinigun TimeFiringMinigunReallyLong 50PercentChance
-		Response HeavyTimeFiringMinigunReallyLong
 	}
 	
 	Response PlayerExpressionIdleHurtHeavy

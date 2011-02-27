@@ -21,8 +21,8 @@ Criterion "HeavyNotMedicSpeech" "HeavyMedicSpeech" "!=1" "required"
 Criterion "HeavyNotAwardSpeech" "HeavyAwardSpeech" "!=1" "required"
 Criterion "HeavyNotAssistSpeech" "HeavyAssistSpeech" "!=1" "required" weight 0
 
-// TODO: Move non-taunt Heavy related stuff from tf.txt into here. Damn you lazy VALVe.
-//		 Fix the above stuff. Damn you again lazy VALVe.
+// TODO: Move non-taunt Heavy related stuff from tf.txt into here. Damn you lazy VALVe. DONE
+//		 Fix the above stuff. Damn you again lazy VALVe. DONE
 //		 Add unused defense lines.
 //		 Add 'new weapon' related stuff.
 //		 Add unknown condition stuff.
@@ -368,6 +368,48 @@ Rule CartMovingStoppedOffenseHeavy
 //--------------------------------------------------------------------------------------------------------------
 // Auto Speech Combat
 //--------------------------------------------------------------------------------------------------------------
+
+// Minigun responses imported from tf.txt
+
+Response HeavyTimeFiringMinigunShort
+{
+	scene "scenes/player/heavy/low/attackminigun_vocal02.vcd"
+	scene "scenes/player/heavy/low/attackminigun_vocal03.vcd"
+}
+Rule HeavyTimeFiringMinigunShort
+{
+	criteria ConceptFireMinigunTalk IsHeavy WeaponIsMinigun TimeFiringMinigunShort 30PercentChance
+	Response HeavyTimeFiringMinigunShort
+}
+
+Response HeavyTimeFiringMinigunLong
+{
+	//scene "scenes/player/heavy/low/specialcompleted11.vcd" This is a remnant from the beta files.
+	//scene "scenes/player/heavy/low/laughShort03.vcd" This is a remnant from the beta files.
+	scene "scenes/player/heavy/low/1279.vcd"
+	scene "scenes/player/heavy/low/1273.vcd"
+}
+Rule HeavyTimeFiringMinigunLong
+{
+	criteria ConceptFireMinigunTalk IsHeavy WeaponIsMinigun TimeFiringMinigunLong 50PercentChance
+	Response HeavyTimeFiringMinigunLong
+}
+
+Response HeavyTimeFiringMinigunReallyLong
+{
+	scene "scenes/player/heavy/low/attackMinigun_vocal05.vcd"
+	//scene "scenes/player/heavy/low/specialcompleted07.vcd" This is a remnant from the beta files.
+	scene "scenes/player/heavy/low/318.vcd"
+	// Was that so hard VALVe?
+}
+Rule HeavyTimeFiringMinigunReallyLong
+{
+	criteria ConceptFireMinigunTalk IsHeavy WeaponIsMinigun TimeFiringMinigunReallyLong 50PercentChance
+	Response HeavyTimeFiringMinigunReallyLong
+}
+
+// End minigun responses imported from tf.txt
+
 Response DefendOnThePointHeavy
 {
 	scene "scenes/Player/Heavy/low/322.vcd" 
@@ -805,6 +847,25 @@ Rule PlayerHelpCapture2Heavy
 	criteria ConceptPlayerHelp IsHeavy IsOnCappableControlPoint IsHelpCapHeavy
 	Response PlayerHelpCapture2Heavy
 }
+
+// Custom stuff
+// Response for when the Heavy is fighting on a cappable point
+Response PlayerGetOnPointHeavy
+{
+	scene "scenes/Player/Heavy/low/1947.vcd" 
+	scene "scenes/Player/Heavy/low/2195.vcd" 
+	scene "scenes/Player/Heavy/low/2196.vcd" 
+	scene "scenes/Player/Heavy/low/2197.vcd" 
+}
+
+Rule PlayerGetOnPointHeavy
+{
+	criterion ConceptFireWeapon IsHeavy IsOnCappableControlPoint NotDefendOnThePointSpeech
+	ApplyContext "DefendOnThePointSpeech:1:15"
+	applycontexttoworld
+	Response PlayerGetOnPointHeavy
+}
+// End custom
 
 Response PlayerHelpDefendHeavy
 {
