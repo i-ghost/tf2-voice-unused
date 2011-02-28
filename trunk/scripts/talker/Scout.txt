@@ -613,7 +613,6 @@ Rule DrinkNotReady
 // We then changed the PostTired response for the cola for teh lulz.
 //
 // This is a tricky workaround, but necessary as we cannot 'layer' vcds (i.e.  play one vcd on top of the other)
-//
 
 // These are the reesponses we play when firing under the effects.
 Response PlayerCritColaVocalScout
