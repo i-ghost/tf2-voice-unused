@@ -395,16 +395,15 @@ criterion "WeaponIsNotAxe" "item_name" "!=The Scotsman's Skullcutter" "required"
 criterion "WeaponIsCaber" "playerweapon" "tf_weapon_stickbomb" "required" weight 10
 criterion "WeaponIsMetalFists" "item_name" "Fists of Steel" "required" weight 10
 // BUG: These loadout criterions are read in from the Steam Cloud
-// As such, if the server loses connection to Steam, the responses bug out a bit
+// As such, if the server loses connection to Steam, the responses bug out a bit.
 criterion "WeaponIsNotVanillaPrimary" "loadout_slot_primary" "" "required" weight 10
 criterion "WeaponIsNotVanillaSecondary" "loadout_slot_secondary" "" "required" weight 10
 criterion "WeaponIsNotVanillaMelee" "loadout_slot_melee" "" "required" weight 10
 criterion "LoadoutIsDrink" "loadout_slot_secondary" "!=Crit-a-Cola" "required" weight 10
 criterion "LoadoutIsCritDrink" "loadout_slot_secondary" "Crit-a-Cola" "required" weight 10
 
-//Custom healed concept and critical hit
+//Custom healed concept
 criterion "IsBeingHealed" "beinghealed" "1" "required"
-criterion "IsCritical" "damagecritical" "1" "required"
 
 criterion "IsCrossHairEnemy" "crosshair_enemy" "Yes" "required" 
 criterion "IsNotCrossHairEnemy" "crosshair_enemy" "!=Yes" "required" 

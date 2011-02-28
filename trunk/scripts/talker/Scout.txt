@@ -407,7 +407,7 @@ Response KilledPlayerPyroScout
 }
 Rule KilledPlayerPyroScout
 {
-	criteria ConceptKilledPlayer IsScout 30PercentChance IsVictimPyro IsWeaponPrimary ScoutNotKillSpeech
+	criteria ConceptKilledPlayer KilledPlayerDelay IsScout 30PercentChance IsVictimPyro IsWeaponPrimary ScoutNotKillSpeech
 	ApplyContext "ScoutKillSpeech:1:10"
 	Response KilledPlayerPyroScout
 }
@@ -418,7 +418,7 @@ Response KilledPlayerScoutScout
 }
 Rule KilledPlayerScoutScout
 {
-	criteria ConceptKilledPlayer IsScout 30PercentChance IsVictimScout IsWeaponPrimary ScoutNotKillSpeech
+	criteria ConceptKilledPlayer KilledPlayerDelay IsScout 30PercentChance IsVictimScout IsWeaponPrimary ScoutNotKillSpeech
 	ApplyContext "ScoutKillSpeech:1:10"
 	Response KilledPlayerScoutScout
 }
@@ -624,7 +624,7 @@ Response PlayerCritColaVocalScout
 }
 Rule PlayerCritColaVocalScout
 {
-	criteria ConceptFireWeapon IsScout LoadoutIsCritDrink ScoutIsNotCrit // The crit context is read in here via this criterion, which is set at the top od the file
+	criteria ConceptFireWeapon IsScout LoadoutIsCritDrink ScoutIsNotCrit // The crit context is read in here via this criterion, which is set at the top of the file
 	Response PlayerCritColaVocalScout
 }
 
