@@ -22,6 +22,7 @@ Criterion "HeavyNotAwardSpeech" "HeavyAwardSpeech" "!=1" "required"
 Criterion "HeavyNotAssistSpeech" "HeavyAssistSpeech" "!=1" "required" weight 0
 Criterion "IsHeavyFistsSwung" "HeavyFistsSwung" "1" "required" weight 0
 Criterion "IsNotHeavyFistsSwung" "HeavyFistsSwung" "!=1" "required" weight 0
+Criterion "NotGunTauntHeavy" "GunTauntHeavy" "!=1" "required" weight 0
 
 // TODO: Move non-taunt Heavy related stuff from tf.txt into here. Damn you lazy VALVe. DONE
 //		 Fix the above stuff. Damn you again lazy VALVe. DONE
@@ -468,6 +469,7 @@ Rule KilledPlayerAssistAutoHeavy
 
 // End custom
 
+// Modified to include a new line
 Response KilledPlayerManyHeavy
 {
 	scene "scenes/Player/Heavy/low/310.vcd" 
@@ -475,6 +477,7 @@ Response KilledPlayerManyHeavy
 	scene "scenes/Player/Heavy/low/1279.vcd" 
 	scene "scenes/Player/Heavy/low/326.vcd" 
 	scene "scenes/Player/Heavy/low/327.vcd" 
+	scene "scenes/player/heavy/low/335.vcd"
 }
 Rule KilledPlayerManyHeavy
 {
@@ -569,6 +572,7 @@ Rule HeavySwingFists
 
 // End custom
 
+// Modified to include a new line
 Response KilledPlayerVeryManyHeavy
 {
 	scene "scenes/Player/Heavy/low/318.vcd" 
@@ -576,6 +580,7 @@ Response KilledPlayerVeryManyHeavy
 	scene "scenes/Player/Heavy/low/323.vcd" 
 	scene "scenes/Player/Heavy/low/338.vcd" 
 	scene "scenes/Player/Heavy/low/340.vcd" 
+	scene "scenes/player/heavy/low/333.vcd"
 }
 Rule KilledPlayerVeryManyHeavy
 {
@@ -1190,6 +1195,20 @@ Rule PlayerTauntCryHeavy
 {
 	criteria ConceptPlayerBattleCry 75PercentChance IsHeavy IsOnEngineer IsCrosshairEnemy
 	Response PlayerTauntCryHeavy
+}
+
+// Custom response for taunt against non-Heavies
+Response PlayerTauntGunHeavy
+{
+	scene "scenes/player/heavy/low/329.vcd"
+	scene "scenes/player/heavy/low/333.vcd"
+	scene "scenes/player/heavy/low/335.vcd"
+}
+Rule PlayerTauntGunHeavy
+{
+	criterion ConceptPlayerBattleCry 75PercentChance IsHeavy IsNotOnHeavy IsCrosshairEnemy NotGunTauntHeavy
+	ApplyContext "GunTauntHeavy:1:10"
+	Response PlayerTauntGunHeavy
 }
 //End custom
 
