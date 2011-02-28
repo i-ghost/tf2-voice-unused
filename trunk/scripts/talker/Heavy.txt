@@ -677,6 +677,31 @@ Rule PlayerKilledObjectHeavy
 	Response PlayerKilledObjectHeavy
 }
 
+// Custom stuff
+Response PlayerKilledSentryHeavy
+{
+	scene "scenes/player/heavy/low/332.vcd"
+}
+Rule PlayerKilledSentryHeavy
+{
+	criteria ConceptKilledObject IsHeavy IsSentryGun 50PercentChance
+	ApplyContext "HeavyKillSpeechObject:1:30"
+	applycontexttoworld
+	Response PlayerKilledSentryHeavy
+}
+
+Response PlayerKilledDispenserHeavy
+{
+	scene "scenes/player/heavy/low/337.vcd"
+}
+Rule PlayerKilledDispenserHeavy
+{
+	criteria ConceptKilledObject IsHeavy IsSentryGun 50PercentChance
+	ApplyContext "HeavyKillSpeechObject:1:30"
+	applycontexttoworld
+	Response PlayerKilledDispenserHeavy
+}
+// End custom
 
 //--------------------------------------------------------------------------------------------------------------
 // Auto Speech Pain
