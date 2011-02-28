@@ -20,13 +20,15 @@ Criterion "IsHelpCapHeavy" "HeavyHelpCap" "1" "required" weight 0
 Criterion "HeavyNotMedicSpeech" "HeavyMedicSpeech" "!=1" "required"
 Criterion "HeavyNotAwardSpeech" "HeavyAwardSpeech" "!=1" "required"
 Criterion "HeavyNotAssistSpeech" "HeavyAssistSpeech" "!=1" "required" weight 0
+Criterion "IsHeavyFistsSwung" "HeavyFistsSwung" "1" "required" weight 0
+Criterion "IsNotHeavyFistsSwung" "HeavyFistsSwung" "!=1" "required" weight 0
 
 // TODO: Move non-taunt Heavy related stuff from tf.txt into here. Damn you lazy VALVe. DONE
 //		 Fix the above stuff. Damn you again lazy VALVe. DONE
 //		 Add unused defense lines. DONE
 //		 Add 'new weapon' related stuff. DONE
 //		 Add unknown condition stuff.
-//		 Add unused melee swing stuff.
+//		 Add unused melee swing stuff. DONE
 
 Response PlayerCloakedSpyDemomanHeavy
 {
@@ -540,6 +542,31 @@ Rule KilledPlayerTauntHeavy
 	Response KilledPlayerTauntHeavy
 }
 
+// Swinging fists start
+Response HeavySwingFistsStart
+{
+	scene "scenes/player/heavy/low/1980.vcd"
+}
+Rule HeavySwingFistsStart
+{
+	criteria ConceptFireWeapon IsWeaponMelee 75PercentChance IsHeavy IsNotHeavyFistsSwung
+	ApplyContext "HeavyFistsSwung:1:10"
+	Response HeavySwingFistsStart
+}
+
+Response HeavySwingFists
+{
+	scene "scenes/player/heavy/low/2272.vcd"
+	scene "scenes/player/heavy/low/2273.vcd"
+	scene "scenes/player/heavy/low/1978.vcd"
+	scene "scenes/player/heavy/low/1979.vcd"
+}
+Rule HeavySwingFists
+{
+	criteria ConceptFireWeapon IsWeaponMelee IsHeavyFistsSwung IsHeavy
+	Response HeavySwingFists
+}
+
 // End custom
 
 Response KilledPlayerVeryManyHeavy
@@ -847,6 +874,7 @@ Response PlayerHeadLeftHeavy
 	scene "scenes/Player/Heavy/low/237.vcd" 
 	scene "scenes/Player/Heavy/low/238.vcd" 
 	scene "scenes/Player/Heavy/low/239.vcd" 
+	scene "scenes/Player/Heavy/low/2276.vcd" 
 }
 Rule PlayerHeadLeftHeavy
 {
@@ -859,6 +887,7 @@ Response PlayerHeadRightHeavy
 	scene "scenes/Player/Heavy/low/240.vcd" 
 	scene "scenes/Player/Heavy/low/241.vcd" 
 	scene "scenes/Player/Heavy/low/242.vcd" 
+	scene "scenes/Player/Heavy/low/2275.vcd" 
 }
 Rule PlayerHeadRightHeavy
 {
