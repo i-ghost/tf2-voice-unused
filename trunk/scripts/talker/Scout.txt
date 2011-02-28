@@ -24,6 +24,8 @@ Criterion "ScoutNotInvulnerableSpeech" "ScoutInvulnerableSpeech" "!=1" "required
 Criterion "ScoutNotAssistSpeech" "ScoutAssistSpeech" "!=1" "required" weight 0
 Criterion "ScoutNotDoubleJumpSpeech" "ScoutDoubleJumpSpeech" "!=1" "required" weight 0
 Criterion "ScoutNotAwardSpeech" "ScoutAwardSpeech" "!=1" "required" weight 0
+Criterion "ScoutNotDrinkReadySpeech" "ScoutDrinkReadySpeech" "!=1" "required" weight 0
+Criterion "ScoutIsNotCrit" "ScoutIsCrit" "1" "required" weight 0
 
 Response PlayerCloakedSpyDemomanScout
 {
@@ -398,6 +400,28 @@ Rule KilledPlayerAssistAutoScout
 	ApplyContext "ScoutAssistSpeech:1:20"
 	Response KilledPlayerAssistAutoScout
 }
+
+Response KilledPlayerPyroScout
+{
+	scene "scenes/player/Scout/low/2688.vcd"
+}
+Rule KilledPlayerPyroScout
+{
+	criteria ConceptKilledPlayer IsScout 30PercentChance IsVictimPyro IsWeaponPrimary ScoutNotKillSpeech
+	ApplyContext "ScoutKillSpeech:1:10"
+	Response KilledPlayerPyroScout
+}
+
+Response KilledPlayerScoutScout
+{
+	scene "scenes/player/Scout/low/2687.vcd"
+}
+Rule KilledPlayerScoutScout
+{
+	criteria ConceptKilledPlayer IsScout 30PercentChance IsVictimScout IsWeaponPrimary ScoutNotKillSpeech
+	ApplyContext "ScoutKillSpeech:1:10"
+	Response KilledPlayerScoutScout
+}
 // End custom stuff
 
 
@@ -511,7 +535,7 @@ Response PlayerBeingShotInvincibleScout
 }
 Rule PlayerBeingShotInvincibleScout
 {
-	criteria ConceptDodgeShot IsScout
+	criteria ConceptDodgeShot IsScout LoadoutIsDrink // Exclude Crit-a-Cola
 	Response PlayerBeingShotInvincibleScout
 }
 
@@ -525,7 +549,7 @@ Response PlayerDodgingScout
 }
 Rule PlayerDodgingScout
 {
-	criteria ConceptDodging IsScout ScoutIsNotInvuln
+	criteria ConceptDodging IsScout ScoutIsNotInvuln LoadoutIsDrink // Exclude Crit-a-Cola
 	ApplyContext "ScoutInvuln:1:20"
 	Response PlayerDodgingScout
 }
@@ -559,6 +583,69 @@ Rule DoubleJumpScout
 	ApplyContext "ScoutDoubleJumpSpeech:1:30"
 	Response DoubleJumpScout
 }
+
+// Invincible not ready
+Response DrinkNotReady
+{
+	scene "scenes/player/Scout/low/2732.vcd"
+	scene "scenes/player/Scout/low/2733.vcd"
+	scene "scenes/player/Scout/low/2734.vcd"
+	scene "scenes/player/Scout/low/2774.vcd"
+	scene "scenes/player/Scout/low/2775.vcd"
+	scene "scenes/player/Scout/low/2776.vcd"
+}
+Rule DrinkNotReady
+{
+	criteria ConceptPain IsScout WeaponIsLunchboxDrink BonkHealthContext ScoutNotDrinkReadySpeech LoadoutIsDrink // Exclude Crit-a-Cola
+	ApplyContext "ScoutDrinkReadySpeech:1:5"
+	Response DrinkNotReady
+}
+
+// Crit-a-Cola lines
+//
+// Explanation:
+//
+// When the player drinks the cola, a context called ScoutIsCrit is set to 1 for 3-ish seconds in tf.txt (saves having the rule duped here)
+// This is then picked up by the Rule PlayerCritColaVocalScout, which checks if the player has fired their weapon.
+// If they have fired, then the rule checks the ScoutIsNotCrit, which has just been set to 1 during the drinking
+// of the cola. Therefore, if the player fires during this period, they will say the response.
+//
+// We then changed the PostTired response for the cola for teh lulz.
+//
+// This is a tricky workaround, but necessary as we cannot 'layer' vcds (i.e.  play one vcd on top of the other)
+//
+
+// These are the reesponses we play when firing under the effects.
+Response PlayerCritColaVocalScout
+{
+	scene "scenes/player/Scout/low/507.vcd"
+	scene "scenes/player/Scout/low/2510.vcd"
+	scene "scenes/player/Scout/low/396.vcd"
+}
+Rule PlayerCritColaVocalScout
+{
+	criteria ConceptFireWeapon IsScout LoadoutIsCritDrink ScoutIsNotCrit // The crit context is read in here via this criterion, which is set at the top od the file
+	Response PlayerCritColaVocalScout
+}
+
+// Here we alter what he says after the effects finish.
+// Note this is 50PercentChance, so he has 50% chance of just doing the normal tired breathing.
+Response PostCritScout
+{
+	scene "scenes/player/Scout/low/2734.vcd"
+	scene "scenes/player/Scout/low/2774.vcd"
+	scene "scenes/player/Scout/low/2775.vcd"
+	scene "scenes/player/Scout/low/2776.vcd"
+}
+
+Rule PostCritScout
+{
+	criteria ConceptTired IsScout 50PercentChance LoadoutIsCritDrink
+	Response PostCritScout
+}
+
+
+
 // End custom
 
 Response PlayerKilledCapperScout
@@ -591,6 +678,18 @@ Rule PlayerKilledDominatingScout
 	criteria ConceptKilledPlayer IsScout IsDominated  
 	ApplyContext "ScoutKillSpeech:1:10"
 	Response PlayerKilledDominatingScout
+}
+
+Response PlayerKilledDominatingBatScout
+{
+	scene "scenes/player/scout/low/2648.vcd" predelay "2.5"
+	scene "scenes/player/scout/low/2643.vcd" predelay "2.5"
+}
+Rule PlayerKilledDominatingBatScout
+{
+	criteria ConceptKilledPlayer IsScout IsDominated IsWeaponMelee
+	ApplyContext "ScoutKillSpeech:1:10"
+	Response PlayerKilledDominatingBatScout
 }
 //End custom
 
@@ -1250,6 +1349,8 @@ Response MeleeDareCombatScout
 	scene "scenes/Player/Scout/low/2582.vcd" 
 	scene "scenes/Player/Scout/low/2583.vcd" 
 	scene "scenes/Player/Scout/low/2581.vcd" 
+	scene "scenes/Player/Scout/low/2642.vcd" 
+	scene "scenes/Player/Scout/low/500.vcd" 
 }
 Rule MeleeDareCombatScout
 {

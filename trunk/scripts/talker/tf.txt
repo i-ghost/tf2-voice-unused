@@ -627,6 +627,7 @@
 	rule ScoutTauntPlayerItem1
 	{
 		criteria ConceptPlayerTaunt IsScout WeaponIsLunchboxDrink
+		ApplyContext "ScoutIsCrit:1:3" // The crit context is set here. You can't fire while using BONK! so we can share the rule/response.
 		response ScoutTauntPlayerItem1
 	}
 	rule ScoutTauntPlayerPrimary

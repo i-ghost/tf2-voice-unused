@@ -525,6 +525,21 @@ Rule KilledPlayerShinyHeavy
 	applycontexttoworld
 	Response KilledPlayerShinyHeavy
 }
+
+// Custom kill response against an Engineer.
+Response KilledPlayerTauntHeavy
+{
+	scene "scenes/player/heavy/low/332.vcd"
+	scene "scenes/player/heavy/low/337.vcd"
+}
+Rule KilledPlayerTauntHeavy
+{
+	criteria ConceptKilledPlayer KilledPlayerDelay 30PercentChance IsHeavy IsVictimEngineer IsCrosshairEnemy HeavyNotKillSpeech
+	ApplyContext "HeavyKillSpeech:1:10"
+	applycontexttoworld
+	Response KilledPlayerTauntHeavy
+}
+
 // End custom
 
 Response KilledPlayerVeryManyHeavy
@@ -1109,6 +1124,18 @@ Rule PlayerShinyCryHeavy
 {
 	criteria ConceptPlayerBattleCry 30PercentChance IsWeaponPrimary IsHeavy WeaponIsNotVanillaPrimary
 	Response PlayerShinyCryHeavy
+}
+
+// Custom response battle cry against an Engineer.
+Response PlayerTauntCryHeavy
+{
+	scene "scenes/player/heavy/low/332.vcd"
+	scene "scenes/player/heavy/low/337.vcd"
+}
+Rule PlayerTauntCryHeavy
+{
+	criteria ConceptPlayerBattleCry 75PercentChance IsHeavy IsOnEngineer IsCrosshairEnemy
+	Response PlayerTauntCryHeavy
 }
 //End custom
 
