@@ -267,6 +267,9 @@ criterion "IsOnPyro" "crosshair_on" "Pyro" "required"
 criterion "IsOnSpy" "crosshair_on" "Spy" "required"
 criterion "IsOnEngineer" "crosshair_on" "Engineer" "required"
 
+// Custom not on Heavy
+criterion "IsNotOnHeavy" "crosshair_on" "!=Heavy" "required"
+
 criterion "IsDominated" "domination" "dominated" "required" 
 criterion "IsRevenge" "domination" "revenge" "required" 
 criterion "IsHeadShot" "customdeath" "headshot" "required" 
