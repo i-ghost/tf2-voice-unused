@@ -237,22 +237,6 @@ Rule KilledPlayerManySoldier
 	Response KilledPlayerManySoldier
 }
 
-// Custom stuff
-// Custom crocket response
-// Not working yet
-//Response KilledPlayerCrocketSoldier
-//{
-//	scene "scenes/Player/Soldier/low/1179.vcd" 
-//	scene "scenes/Player/Soldier/low/1180.vcd" 
-//}
-//Rule KilledPlayerCrocketSoldier
-//{
-//	criteria ConceptKilledPlayer 50PercentChance IsCritical IsWeaponPrimary KilledPlayerDelay SoldierNotKillSpeech IsSoldier
-//	ApplyContext "SoldierKillSpeech:1:10"
-//	applycontexttoworld
-//	Response KilledPlayerCrocketSoldier
-//}
-
 Response KilledDemomanSoldier
 {
 	scene "scenes/Player/Soldier/low/3486.vcd" 
