@@ -394,9 +394,13 @@ criterion "WeaponIsNotScattergunDouble" "item_name" "!=The Force-a-Nature" "requ
 criterion "WeaponIsNotAxe" "item_name" "!=The Scotsman's Skullcutter" "required" weight 10 // Exclude the Skullcutter - has horrible clipping issues with the Eyelander taunt. Maybe give it a different taunt later.
 criterion "WeaponIsCaber" "playerweapon" "tf_weapon_stickbomb" "required" weight 10
 criterion "WeaponIsMetalFists" "item_name" "Fists of Steel" "required" weight 10
+// BUG: These loadout criterions are read in from the Steam Cloud
+// As such, if the server loses connection to Steam, the responses bug out a bit
 criterion "WeaponIsNotVanillaPrimary" "loadout_slot_primary" "" "required" weight 10
 criterion "WeaponIsNotVanillaSecondary" "loadout_slot_secondary" "" "required" weight 10
 criterion "WeaponIsNotVanillaMelee" "loadout_slot_melee" "" "required" weight 10
+criterion "LoadoutIsDrink" "loadout_slot_secondary" "!=Crit-a-Cola" "required" weight 10
+criterion "LoadoutIsCritDrink" "loadout_slot_secondary" "Crit-a-Cola" "required" weight 10
 
 //Custom healed concept and critical hit
 criterion "IsBeingHealed" "beinghealed" "1" "required"
@@ -418,6 +422,8 @@ criterion "ConceptWindMinigun" "Concept" "TLK_WINDMINIGUN" required
 criterion "LowHealthContext" "playerhealthfrac" "<0.25" required
 // Custom stuff
 criterion "CaberHealthContext" "playerhealthfrac" ">0.429" required
+criterion "BonkHealthContext" "playerhealthfrac" "<0.641" required
+// End custom
 criterion "SuperHighHealthContext" "playerhealthfrac" ">1.400" required
 criterion "GameRulesInWinState" "GameRound" "5" required
 criterion "PlayerLostPreviousRound" "LostRound" "1" required
