@@ -402,8 +402,9 @@ criterion "WeaponIsNotVanillaMelee" "loadout_slot_melee" "" "required" weight 10
 criterion "LoadoutIsDrink" "loadout_slot_secondary" "!=Crit-a-Cola" "required" weight 10
 criterion "LoadoutIsCritDrink" "loadout_slot_secondary" "Crit-a-Cola" "required" weight 10
 
-//Custom healed concept
+//Custom healed concept and critical hit
 criterion "IsBeingHealed" "beinghealed" "1" "required"
+criterion "IsCritical" "damagecritical" "1" "required"
 
 criterion "IsCrossHairEnemy" "crosshair_enemy" "Yes" "required" 
 criterion "IsNotCrossHairEnemy" "crosshair_enemy" "!=Yes" "required" 
