@@ -69,12 +69,14 @@
 		scene "scenes/player/heavy/low/taunt01.vcd"
 		scene "scenes/player/heavy/low/taunt01_v2.vcd"
 		scene "scenes/player/heavy/low/taunt01_v3.vcd"
+		scene "scenes/player/heavy/low/taunt01_v4.vcd"
 	}
 	response "HeavyTauntSecondary"
 	{
 		scene "scenes/player/heavy/low/taunt02.vcd"
 		scene "scenes/player/heavy/low/taunt02_v1.vcd"
 		scene "scenes/player/heavy/low/taunt02_v2.vcd"
+		scene "scenes/player/heavy/low/taunt02_v4.vcd"
 	}
 	response "HeavyTauntMelee"
 	{
@@ -125,7 +127,8 @@
 		criteria ConceptPlayerTaunt IsHeavy WeaponIsSandvich
 		response HeavyTauntPlayerItem1
 	}
-	//Custom stuff
+	// Custom stuff
+	// This is to let you taunt with the items.
 	rule HeavyTauntPlayerItem2
 	{
 		criteria ConceptPlayerTaunt IsHeavy WeaponIsBenja
@@ -181,7 +184,7 @@
 	
 	Response HeavyFireMinigun
 	{
-		//scene "scenes/player/heavy/low/attackMinigun01.vcd" *bug*
+		//scene "scenes/player/heavy/low/attackMinigun01.vcd" *bug* -- Bug? More like redundant...
 		scene "scenes/player/heavy/low/attackMinigun02.vcd"
 	}
 	Rule HeavyFireMinigun
@@ -242,7 +245,7 @@
 	// These have been designed as separate responses so that I can add non-sandvich lines I wanted to.
 	// There are two examples of this in the AteChocoHeavy response.
 	// It's possible to just have one of the responses below, but you would not be able to give the bar/steak separate lines then.
-	// The WeaponIsFists allows this to happen, creating a distinction between the choco bar, sandvich and the steak.
+	// The IsWeaponMelee allows this to happen, creating a distinction between the choco bar, sandvich and the steak.
 	Response AteSteakHeavy
 	{
 		scene "scenes/Player/Heavy/low/SandwichTaunt01.vcd"
@@ -252,7 +255,7 @@
 	}
 	Rule AteSteakHeavy
 	{
-		criteria ConceptAteFood IsHeavy WeaponIsFists
+		criteria ConceptAteFood IsHeavy IsWeaponMelee
 		Response AteSteakHeavy
 	}
 	Response AteChocoHeavy

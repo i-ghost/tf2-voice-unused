@@ -1,0 +1,109 @@
+// Choreo version 1
+actor "heavy"
+{
+  channel "audio"
+  {
+    event sequence "taunt01_v4"
+    {
+      time 0.000000 5.133333
+      param "taunt01"
+      playoverscript
+      fixedlength
+    }
+    event speak "Heavy.Taunts06"
+    {
+      time 0.568182 3.093352
+      param "Heavy.Taunts06"
+      fixedlength
+      cctype "cc_master"
+      cctoken ""
+    }
+  }
+  channel "emotion"
+  {
+    event expression "upperSuprise1"
+    {
+      time 0.076230 3.459730
+      param "player\heavy\emotion\emotion"
+      param2 "upperSuprise1"
+      event_ramp
+      {
+        0.1939 0.8512
+        3.2475 0.7769
+      }
+    }
+    event expression "upperHappy2"
+    {
+      time 3.827621 4.523616
+      param "player\heavy\emotion\emotion"
+      param2 "upperHappy2"
+      event_ramp
+      {
+        0.2273 0.5702
+        0.5399 0.5702
+      }
+    }
+    event expression "happy1"
+    {
+      time 3.823959 5.117878
+      param "player\heavy\emotion\emotion"
+      param2 "happy1"
+      event_ramp
+      {
+        0.2545 1.0000
+        0.6533 1.0000
+      }
+    }
+    event expression "mad"
+    {
+      time 1.423333 3.266667
+      param "player\heavy\emotion\emotion"
+      param2 "mad"
+      event_ramp
+      {
+        0.2848 0.6529 "curve_easein_to_curve_easeout"
+        1.0636 0.6694 "curve_easein_to_curve_easeout"
+      }
+    }
+    event expression "upperAngry2"
+    {
+      time -0.028601 3.636555
+      param "player\heavy\emotion\emotion"
+      param2 "upperAngry2"
+      event_ramp
+      {
+        0.1879 0.9669
+        0.3212 0.6446
+        0.5545 0.5868
+        0.6514 0.5868
+        0.7999 0.8017
+        0.9515 0.4050
+        1.1303 0.3471
+        1.2576 0.3306
+        1.3697 0.9669
+        1.5364 0.6529
+        1.7727 0.6116
+        1.9742 0.3058
+        2.1136 0.7521
+        2.3105 0.6033
+        2.7529 0.7521
+        2.9954 0.3967
+        3.1772 0.9917
+        3.2802 0.6942
+        3.6408 0.0000
+      }
+    }
+  }
+}
+
+scalesettings
+{
+  "SceneRampTool" "100"
+  "GestureTool" "100"
+  "RampTool" "66"
+  "ExpressionTool" "100"
+  "CChoreoView" "88"
+}
+fps 60
+snap off
+ignorePhonemes off
