@@ -180,3 +180,16 @@
 		"wave"  "vo/sword_hit10.wav"
 	}
 }
+
+// Custom stuff below this line
+
+"Heavy.Thanks04"
+{
+	"channel"		"CHAN_VOICE"
+	"volume"		"0.820"
+	"pitch"			"PITCH_NORM"
+
+	"soundlevel"	"SNDLVL_95dB"
+
+	"wave"			"vo/heavy_Thanks04.wav"
+}
