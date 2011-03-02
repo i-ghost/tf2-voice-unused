@@ -4,6 +4,83 @@
 This is a history of all public releases.
 
 ----
+====0.3 {{{03.02.2011}}}====
+  * Removed superfluous/duplicate responses in Demoman.txt and Heavy.txt (Fists of Steel kill response now shares with base melee kill response, Bottle shares with Frying Pan, Pain Train with Frying Pan. Note: the responses work exactly the same as before, this is just cleaning up the code)
+  * Fixed Frying Pan using the Bottle's response group
+  * Scout now responds when invulnerable regardless of weapon fired
+  * Added WeaponIsNotPainTrain criterion
+  * Excluded Pain Train from Bottle taunt using above criterion
+  * Modified Caber response to only fire on a kill (not 100% tied to a kill, but whatever)
+  * Discovered 'damagecritical' context, applied to IsCritical criterion. Possibly related to critical hits, but seems to be related to any critical amount of damage
+
+  * Added voice line to Equalizer taunt
+  * Added voice line to Ubersawy taunt
+  * Added voice line to Kritzkrieg taunt
+  * Rebuilt scenes.image to allow for the above.
+
+  * Added base Soldier.txt for diff purposes
+
+  * Modified auto assist responses to 20PercentChance (was 10PercentChance)
+  * Added Medic follow lines to Soldier
+  * Added responses for when you are on a killing spree as a pocket Soldier (i.e. you're being healed by a Medic and you're on a killing spree)
+  * Added ubercharge response lines for Soldier
+  * Added melee dare lines for Soldier
+  * Added manual and automatic assist line for Soldier
+  * Added hat over heart lines for when you kill a Demoman as a Soldier
+
+  * Added unused Direct Hit taunt vocals to melee kill response for Soldier.
+
+  * Moved vocal Minigun firing responses into Heavy.txt
+  * Fixed vocal Minigun firing responses to actually work
+  * Added unused 'fight on point' lines to a new response rule for Heavy (PlayerGetOnPointHeavy); fire a weapon while on a cappable control point to hear.
+
+  * Added 3 new criterion for detecting if player is not using vanilla weapons.
+  * Added 'new weapon' lines for Heavy (4 lines for killing an enemy with a new Minigun, 4 lines for doing a 'Battle Cry' voice command while holding a new Minigun)
+
+  * Added lines for killing an Engineer as a Heavy
+  * Added same lines for doing a 'Battle Cry' on an enemy Engineer
+  * Added BONK! not ready (invincible not ready) lines for Scout, (< or = 80 health, getting shot at while holding BONK!)
+  * Added 2 more lines to Scout's melee dare response group
+  * Added Bat domination lines for the Scout
+  * Added a response for killing a Scout as a Scout
+  * Added a response for killing a Pyro as a Scout
+  * Added a criterion LoadoutIsDrink
+  * Excluded Crit-a-Cola from playing any BONK! related lines.
+  * Added lines for firing while under the effects of Crit-a-Cola
+  * Added PostTired vocals for Crit-a-Cola
+  * ~ Discovered a hard limit of rules/responses per file. Any higher than this will cause the game to crash.
+
+  * - Removed critical hit criterion IsCritical as it is not related to actual critical hits
+  * - Removed in-progress response from Soldier.txt based on above criterion
+  * Fixed a typo in Scout.txt
+
+  * Updated the Pyro and Scout kill responses for Scout
+
+  * Undo a previous change that removed IsCritical criterion, as it is used for Caber explosion rule detection.
+  * Added Sentry and Dispenser destroyed lines for Heavy
+
+  * Added unused melee lines for Heavy, spoken in sequence
+  * Added unused left/right melee lines to left/right voice command as there is no way to differentiate between the two in-game
+
+  * Added criterion IsNotOnHeavy
+  * Added 3 'unknown condition' lines to the battle cry when facing anybody but a Heavy.
+  * Added 2 of those lines to KilledPlayerManyHeavy and KilledPlayerVeryManyHeavy, 1 each
+
+  * Added the unused PlayerTaunts for Heavy
+  * Added the final unused vocal line to the primary and secondary taunt for Heavy
+  * Rebuilt scenes.image to accommodate the the vcd changes
+  * Updated the Buffalo Steak Sandvich response to check for weapon mode instead of weapon class
+
+  * Added base game_sounds_vo_handmade.txt for diff purposes
+
+  * -> Moved game_sounds_vo_handmade.txt to correct directory
+
+  * Added unused singing line to Payload offense response group
+  * Added unused singing line to Payload defence response group
+  * Added ?? ???????? (dasvidania) back to Heavy's "Thanks" voice command, was missing since beta
+  * Updated game_sounds_vo_handmade.txt.txt to allow for this
+  * Rebuilt scenes.image to accommodate new vcd (Thanks04.vcd)
+----
 ====0.2 {{{(02.25.2011)}}}====
   * Added 1 unused domination line for scout (need to build vcds for other 2)
   * Added melee dare responses for Scout. Point at enemy with a melee weapon, do battle cry voice command to use.
