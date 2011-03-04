@@ -393,8 +393,10 @@ criterion "WeaponIsSteak" "item_name" "The Buffalo Steak Sandvich" "required" we
 criterion "WeaponIsPainTrain" "item_name" "The Pain Train" "required" weight 10
 criterion "WeaponIsNotPainTrain" "item_name" "!=The Pain Train" "required" weight 10
 criterion "WeaponIsFryingPan" "item_name" "Frying Pan" "required" weight 10
+criterion "WeaponIsNotFryingPan" "item_name" "!=Frying Pan" "required" weight 10
 criterion "WeaponIsNotScattergunDouble" "item_name" "!=The Force-a-Nature" "required" weight 10
 criterion "WeaponIsNotAxe" "item_name" "!=The Scotsman's Skullcutter" "required" weight 10 // Exclude the Skullcutter - has horrible clipping issues with the Eyelander taunt. Maybe give it a different taunt later.
+criterion "WeaponClassIsNotAxe" "playerweapon" "!=tf_weapon_sword" "required" weight 10
 criterion "WeaponIsCaber" "playerweapon" "tf_weapon_stickbomb" "required" weight 10
 criterion "WeaponIsMetalFists" "item_name" "Fists of Steel" "required" weight 10
 // BUG: These loadout criterions are read in from the Steam Cloud
