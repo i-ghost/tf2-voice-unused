@@ -8,7 +8,12 @@ Criterion "EngineerNotKillSpeech" "EngineerKillSpeech" "!=1" "required" weight 0
 Criterion "EngineerNotKillSpeechMelee" "EngineerKillSpeechMelee" "!=1" "required" weight 0
 Criterion "EngineerNotSaidHealThanks" "EngineerSaidHealThanks" "!=1" "required"
 Criterion "IsHelpCapEngineer" "EngineerHelpCap" "1" "required" weight 0
-
+// Custom stuff
+Criterion "IsTauntsEngineer" "TauntsEngineer" "1" "required" weight 0
+Criterion "EngineerNotAssistSpeech" "EngineerAssistSpeech" "!=1" "required" weight 0
+Criterion "IsEngyFistSwung" "EngyFistSwung" "1" "required" weight 0
+Criterion "IsNotEngyFistSwung" "EngyFistSwung" "!=1" "required" weight 0
+Criterion "EngineerNotInvulnerableSpeech" "EngineerInvulnerableSpeech" "!=1" "required" weight 0
 
 Response PlayerCloakedSpyDemomanEngineer
 {
@@ -229,6 +234,7 @@ Rule PlayerTeleporterThanksEngineer
 Response DefendOnThePointEngineer
 {
 	scene "scenes/Player/Engineer/low/1344.vcd" 
+	scene "scenes/Player/Engineer/low/161.vcd" 
 }
 Rule DefendOnThePointEngineer
 {
@@ -237,6 +243,20 @@ Rule DefendOnThePointEngineer
 	applycontexttoworld
 	Response DefendOnThePointEngineer
 }
+
+// Custom stuff
+Response KilledPlayerAssistAutoEngineer
+{
+	scene "scenes/Player/Demoman/low/159.vcd" predelay "2.5"
+	scene "scenes/Player/Demoman/low/160.vcd" predelay "2.5"
+}
+Rule KilledPlayerAssistAutoEngineer
+{
+	criteria ConceptKilledPlayer IsEngineer IsBeingHealed IsARecentKill KilledPlayerDelay 20PercentChance EngineerNotAssistSpeech
+	ApplyContext "EngineerAssistSpeech:1:20"
+	Response KilledPlayerAssistAutoEngineer
+}
+// End custom
 
 Response EngineerGoldenWrench
 {
@@ -319,6 +339,66 @@ Rule KilledPlayerMeleeEngineerEngineer
 	applycontexttoworld
 	Response KilledPlayerMeleeEngineerEngineer
 }
+
+// Custom stuff
+Response EngySwingFistStart
+{
+	scene "scenes/player/Engineer/low/3589.vcd"
+	scene "scenes/player/Engineer/low/3590.vcd"
+	scene "scenes/player/Engineer/low/3591.vcd"
+}
+Rule EngySwingFistStart
+{
+	criteria ConceptFireWeapon WeaponIsRobotArm 50PercentChance IsEngineer IsNotEngyFistSwung
+	ApplyContext "EngyFistSwung:1:7"
+	Response EngySwingFistStart
+}
+
+Response EngySwingFist
+{
+	scene "scenes/player/Engineer/low/3592.vcd"
+	scene "scenes/player/Engineer/low/3594.vcd"
+	scene "scenes/player/Engineer/low/3703.vcd"
+}
+Rule EngySwingFist
+{
+	criteria ConceptKilledPlayer KilledPlayerDelay EngineerNotKillSpeechMelee WeaponIsRobotArm IsEngyFistSwung IsEngineer WeaponIsNotMiniSentrygun
+	Response EngySwingFist
+}
+
+// Rule for when your mini sentry is killed and you are holding your Frontier Justice
+// Let's hope you have some crits ready, because this line is very fitting.
+
+Response EngyCritsReady
+{
+	scene "scenes/player/Engineer/low/167.vcd"
+}
+
+Rule EngyCritsReady
+{
+	criteria ConceptLostObject IsSentryGun IsEngineer WeaponIsFrontierJustice EngineerNotKillSpeech
+	ApplyContext "EngineerKillSpeech:1:10"
+	Response EngyCritsReady
+}
+
+// Invulnerable responses
+Response InvulnerableSpeechEngineer
+{
+	scene "scenes/Player/Engineer/low/176.vcd"  
+	scene "scenes/Player/Engineer/low/177.vcd" 
+	scene "scenes/Player/Engineer/low/1018.vcd" 
+	scene "scenes/Player/Engineer/low/3619.vcd" 
+}
+
+Rule InvulnerableSpeechEngineer
+{
+	criteria ConceptFireWeapon IsEngineer IsInvulnerable EngineerNotInvulnerableSpeech
+	ApplyContext "EngineerInvulnerableSpeech:1:30"
+	Response InvulnerableSpeechEngineer
+	Response EngyCritsReady
+}
+
+// End custom
 
 Response KilledPlayerVeryManyEngineer
 {
@@ -540,6 +620,7 @@ Rule PlayerKilledDominatingSpyEngineer
 
 Response PlayerKilledForRevengeEngineer
 {
+	scene "scenes/Player/Engineer/low/3579.vcd" predelay "2.5"
 	scene "scenes/Player/Engineer/low/1329.vcd" predelay "2.5"
 	scene "scenes/Player/Engineer/low/40.vcd" predelay "2.5"
 	scene "scenes/Player/Engineer/low/39.vcd" predelay "2.5"
@@ -576,7 +657,7 @@ Response CarrySentryEngineer
 }
 Rule CarrySentryEngineer
 {
-	criteria ConceptEngineerCarryingBuilding IsEngineer 20PercentChance
+	criteria ConceptEngineerCarryingBuilding IsEngineer 20PercentChance LoadoutIsNotRobotArm
 	Response CarrySentryEngineer
 }
 
@@ -589,7 +670,7 @@ Response DeploySentryEngineer
 }
 Rule DeploySentryEngineer
 {
-	criteria ConceptEngineerDeployBuilding IsEngineer
+	criteria ConceptEngineerDeployBuilding IsEngineer LoadoutIsNotRobotArm
 	Response DeploySentryEngineer
 }
 
@@ -601,7 +682,7 @@ Response PickupSentryEngineer
 }
 Rule PickupSentryEngineer
 {
-	criteria ConceptEngineerPickupBuilding IsEngineer
+	criteria ConceptEngineerPickupBuilding IsEngineer LoadoutIsNotRobotArm
 	Response PickupSentryEngineer
 }
 
@@ -612,7 +693,7 @@ Response PlayerBuildingDispenserEngineer
 }
 Rule PlayerBuildingDispenserEngineer
 {
-	criteria ConceptPlayerBuildingObject IsDispenser IsEngineer
+	criteria ConceptPlayerBuildingObject IsDispenser IsEngineer LoadoutIsNotRobotArm
 	Response PlayerBuildingDispenserEngineer
 }
 
@@ -623,7 +704,7 @@ Response PlayerBuildingSentryEngineer
 }
 Rule PlayerBuildingSentryEngineer
 {
-	criteria ConceptPlayerBuildingObject IsSentryGun IsEngineer
+	criteria ConceptPlayerBuildingObject IsSentryGun IsEngineer LoadoutIsNotRobotArm
 	Response PlayerBuildingSentryEngineer
 }
 
@@ -634,9 +715,58 @@ Response PlayerBuildingTeleporterEngineer
 }
 Rule PlayerBuildingTeleporterEngineer
 {
-	criteria ConceptPlayerBuildingObject IsTeleporter IsEngineer
+	criteria ConceptPlayerBuildingObject IsTeleporter IsEngineer LoadoutIsNotRobotArm
 	Response PlayerBuildingTeleporterEngineer
 }
+
+// Custom stuff
+// Gunslinger Engineers will now build quietly
+Response PlayerTauntsEngineer
+{
+	scene "scenes/Player/Engineer/low/1332.vcd" 
+	scene "scenes/Player/Engineer/low/1333.vcd" 
+	scene "scenes/Player/Engineer/low/105.vcd" 
+	scene "scenes/Player/Engineer/low/106.vcd" 
+	scene "scenes/Player/Engineer/low/1337.vcd" 
+	scene "scenes/Player/Engineer/low/1338.vcd" 
+}
+Rule CarrySentryEngineerSilent
+{
+	criteria ConceptEngineerCarryingBuilding IsEngineer 20PercentChance
+	Response PlayerTauntsEngineer
+}
+
+Rule DeploySentryEngineerSilent
+{
+	criteria ConceptEngineerDeployBuilding IsEngineer
+	Response PlayerTauntsEngineer
+}
+
+Rule PickupSentryEngineerSilent
+{
+	criteria ConceptEngineerPickupBuilding IsEngineer
+	Response PlayerTauntsEngineer
+}
+
+Rule PlayerBuildingDispenserEngineerSilent
+{
+	criteria ConceptPlayerBuildingObject IsDispenser IsEngineer
+	Response PlayerTauntsEngineer
+}
+
+Rule PlayerBuildingSentryEngineer
+{
+	criteria ConceptPlayerBuildingObject IsSentryGun IsEngineer
+	Response PlayerTauntsEngineer
+}
+
+Rule PlayerBuildingTeleporterEngineerSilent
+{
+	criteria ConceptPlayerBuildingObject IsTeleporter IsEngineer
+	Response PlayerTauntsEngineer
+}
+// End custom
+
 
 Response PlayerDispenserSappedEngineer
 {
@@ -906,6 +1036,23 @@ Rule PlayerThanksEngineer
 	Response PlayerThanksEngineer
 }
 
+// Custom Assist kill response
+// As there is no actual concept for assist kills, this is the second best method.
+// Say thanks after you kill more than one person.
+
+Response KilledPlayerAssistEngineer
+{
+	scene "scenes/Player/Engineer/low/159.vcd"
+	scene "scenes/Player/Engineer/low/160.vcd"
+}
+Rule KilledPlayerAssistEngineer
+{
+	criteria ConceptPlayerThanks IsEngineer IsARecentKill KilledPlayerDelay EngineerNotAssistSpeech
+	ApplyContext "EngineerAssistSpeech:1:20"
+	Response KilledPlayerAssistEngineer
+}
+// End custom
+
 Response PlayerYesEngineer
 {
 	scene "scenes/Player/Engineer/low/187.vcd" 
@@ -1019,6 +1166,33 @@ Rule PlayerBattleCryEngineer
 	Response PlayerBattleCryEngineer
 }
 
+// Custom stuff - melee dare
+// Look at enemy, then do battle cry voice command while holding a melee weapon.
+Response MeleeDareCombatEngineer
+{
+	scene "scenes/Player/Engineer/low/163.vcd"
+	scene "scenes/Player/Engineer/low/166.vcd"
+	scene "scenes/Player/Engineer/low/172.vcd"
+	scene "scenes/Player/Engineer/low/169.vcd"
+	scene "scenes/Player/Engineer/low/174.vcd"
+	scene "scenes/Player/Engineer/low/178.vcd"
+	scene "scenes/Player/Engineer/low/150.vcd"
+	scene "scenes/Player/Engineer/low/3619.vcd" 
+	scene "scenes/Player/Engineer/low/3620.vcd" 
+	scene "scenes/Player/Engineer/low/3695.vcd" 
+}
+Rule MeleeDareCombatEngineer
+{
+	criteria ConceptPlayerBattleCry IsWeaponMelee IsEngineer IsCrosshairEnemy
+	Response MeleeDareCombatEngineer
+}
+Rule MeleeDareCombatEngineerSlinger
+{
+	criteria ConceptPlayerBattleCry WeaponIsRobotArm IsEngineer IsCrosshairEnemy
+	Response MeleeDareCombatEngineer
+}
+//End custom
+
 Response PlayerCheersEngineer
 {
 	scene "scenes/Player/Engineer/low/40.vcd" 
@@ -1121,21 +1295,14 @@ Response PlayerPositiveEngineer
 Rule PlayerPositiveEngineer
 {
 	criteria ConceptPlayerPositive IsEngineer
+	ApplyContext "TauntsEngineer:1:10"
 	Response PlayerPositiveEngineer
 }
 
-Response PlayerTauntsEngineer
-{
-	scene "scenes/Player/Engineer/low/1332.vcd" 
-	scene "scenes/Player/Engineer/low/1333.vcd" 
-	scene "scenes/Player/Engineer/low/105.vcd" 
-	scene "scenes/Player/Engineer/low/106.vcd" 
-	scene "scenes/Player/Engineer/low/1337.vcd" 
-	scene "scenes/Player/Engineer/low/1338.vcd" 
-}
+// The rsponse group had to be moved up to allow for the silent Gunsilger building to work.
 Rule PlayerTauntsEngineer
 {
-	criteria ConceptPlayerTaunts IsEngineer
+	criteria ConceptPlayerPositive IsEngineer IsTauntsEngineer
 	Response PlayerTauntsEngineer
 }
 
