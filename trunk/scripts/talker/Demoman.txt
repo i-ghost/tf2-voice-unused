@@ -12,6 +12,8 @@ Criterion "IsHelpCapDemoman" "DemomanHelpCap" "1" "required" weight 0
 // Custom stuff
 Criterion "DemomanNotInvulnerableSpeech" "DemomanInvulnerableSpeech" "!=1" "required" weight 0
 Criterion "DemomanNotAssistSpeech" "DemomanAssistSpeech" "!=1" "required" weight 0
+Criterion "IsTauntsDemoman" "TauntsDemoman" "1" "required" weight 0
+Criterion "IsDrunk" "NotSober" "1" "required" weight 0
 
 
 Response PlayerCloakedSpyDemomanDemoman
@@ -223,10 +225,9 @@ Rule DefendOnThePointDemoman
 // Invuln responses for Grenade Launcher
 Response InvulnerableSpeechDemoman2
 {
-	scene "scenes/Player/Demoman/low/1027.vcd" 
-	scene "scenes/Player/Demoman/low/1028.vcd" 
-	scene "scenes/Player/Demoman/low/1017.vcd" 
-	scene "scenes/Player/Demoman/low/1015.vcd" 
+	scene "scenes/Player/Demoman/low/1019.vcd" 
+	scene "scenes/Player/Demoman/low/1012.vcd" 
+	scene "scenes/Player/Demoman/low/1029.vcd" 
 }
 
 
@@ -241,10 +242,8 @@ Rule InvulnerableSpeechDemoman2
 // Invulnerable responses for Sticky launcher
 Response InvulnerableSpeechDemoman
 {
-	scene "scenes/Player/Demoman/low/1021.vcd"
-	scene "scenes/Player/Demoman/low/1022.vcd" 
-	scene "scenes/Player/Demoman/low/1019.vcd" 
 	scene "scenes/Player/Demoman/low/1023.vcd"  
+	scene "scenes/Player/Demoman/low/1022.vcd" 
 	scene "scenes/Player/Demoman/low/1018.vcd" 
 }
 
@@ -284,20 +283,32 @@ Rule KilledPlayerManyDemoman
 }
 
 // Custom stuff
+// Responses against killing a Soldier
+Response KilledSoldierDemoman
+{
+	scene "scenes/Player/Demoman/low/3568.vcd" 
+	scene "scenes/Player/Demoman/low/3574.vcd" 
+	scene "scenes/Player/Demoman/low/3577.vcd" 
+}
+Rule KilledSoldierDemoman
+{
+	criterion ConceptKilledPlayer KilledPlayerDelay IsVictimSoldier 30PercentChance DemomanNotKillSpeech IsDemoman WeaponClassIsNotAxe
+	ApplyContext "DemomanKillSpeech:1:10"
+	applycontexttoworld
+	Response KilledSoldierDemoman
+}
+
 // Frying pan responses
 // These are our base responses for non-sword melee weapons.
 Response KilledPlayerPanDemoman
 {
 	scene "scenes/Player/Demoman/low/3566.vcd" 
 	scene "scenes/Player/Demoman/low/3567.vcd" 
-	scene "scenes/Player/Demoman/low/3568.vcd" 
 	scene "scenes/Player/Demoman/low/3569.vcd"
 	scene "scenes/Player/Demoman/low/3570.vcd" 
 	scene "scenes/Player/Demoman/low/3571.vcd" 
 	scene "scenes/Player/Demoman/low/3572.vcd" 
-	scene "scenes/Player/Demoman/low/3573.vcd" 
-	scene "scenes/Player/Demoman/low/3577.vcd" 
-	scene "scenes/Player/Demoman/low/3574.vcd"  
+	scene "scenes/Player/Demoman/low/3573.vcd"  
 	scene "scenes/Player/Demoman/low/3575.vcd"
 }
 Rule KilledPlayerPanDemoman
@@ -308,6 +319,15 @@ Rule KilledPlayerPanDemoman
 	Response KilledPlayerPanDemoman
 }
 // End Frying Pan responses
+
+// Custom rules for when Demoman drinks from Scrumpy
+// to trigger one of the above drunk lines
+Rule DrunkDemoman
+{
+	criteria ConceptFireWeapon IsDrunk IsDemoman IsWeaponMelee WeaponIsNotFryingPan // Fire if he's holding the Bottle and if the drunk context is set
+	Response KilledPlayerPanDemoman
+}
+// End custom drunk rules
 
 // Modified to play for the Bottle only
 // Modified to include Frying Pan repsonses above, saves having duplicate entries.
@@ -986,6 +1006,22 @@ Rule PlayerBattleCryDemoman
 	Response PlayerBattleCryDemoman
 }
 
+// Custom stuff - melee dare
+// Look at enemy, then do battle cry voice command while holding a melee weapon.
+Response MeleeDareCombatDemoman
+{
+	scene "scenes/Player/Demoman/low/1028.vcd"
+	scene "scenes/Player/Demoman/low/1017.vcd"
+	scene "scenes/Player/Demoman/low/1015.vcd"
+}
+Rule MeleeDareCombatDemoman
+{
+	criteria ConceptPlayerBattleCry IsWeaponMelee IsDemoman IsCrosshairEnemy
+	Response MeleeDareCombatDemoman
+}
+//End custom
+
+
 Response PlayerCheersDemoman
 {
 	scene "scenes/Player/Demoman/low/881.vcd" 
@@ -1087,6 +1123,7 @@ Response PlayerPositiveDemoman
 Rule PlayerPositiveDemoman
 {
 	criteria ConceptPlayerPositive IsDemoman
+	ApplyContext "TauntsDemoman:1:10"
 	Response PlayerPositiveDemoman
 }
 
@@ -1098,7 +1135,7 @@ Response PlayerTauntsDemoman
 }
 Rule PlayerTauntsDemoman
 {
-	criteria ConceptPlayerTaunts IsDemoman
+	criteria ConceptPlayerPositive IsDemoman IsTauntsDemoman
 	Response PlayerTauntsDemoman
 }
 

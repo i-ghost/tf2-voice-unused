@@ -966,6 +966,7 @@
 	rule DemomanTauntPlayerMelee
 	{
 		criteria ConceptPlayerTaunt IsDemoman WeaponIsBottle WeaponIsNotPainTrain // Exclude the Pain Train
+		ApplyContext "NotSober:1:10" // Apply the drunk context here
 		response DemomanTauntMelee
 	}
 	rule DemomanTauntHalloween
