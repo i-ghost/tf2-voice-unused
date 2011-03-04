@@ -26,6 +26,7 @@ Criterion "ScoutNotDoubleJumpSpeech" "ScoutDoubleJumpSpeech" "!=1" "required" we
 Criterion "ScoutNotAwardSpeech" "ScoutAwardSpeech" "!=1" "required" weight 0
 Criterion "ScoutNotDrinkReadySpeech" "ScoutDrinkReadySpeech" "!=1" "required" weight 0
 Criterion "ScoutIsNotCrit" "ScoutIsCrit" "1" "required" weight 0
+Criterion "IsTauntsScout" "TauntsScout" "1" "required" weight 0
 
 Response PlayerCloakedSpyDemomanScout
 {
@@ -1457,6 +1458,7 @@ Response PlayerPositiveScout
 Rule PlayerPositiveScout
 {
 	criteria ConceptPlayerPositive IsScout
+	ApplyContext "TauntsScout:1:10"
 	Response PlayerPositiveScout
 }
 
@@ -1471,7 +1473,7 @@ Response PlayerTauntsScout
 }
 Rule PlayerTauntsScout
 {
-	criteria ConceptPlayerTaunts IsScout
+	criteria ConceptPlayerPositive IsScout IsTauntsScout
 	Response PlayerTauntsScout
 }
 
