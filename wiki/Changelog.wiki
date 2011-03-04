@@ -4,6 +4,28 @@
 This is a history of all public releases.
 
 ----
+====0.4 {{{04.02.2011}}}====
+  * Modified the invulnerability responses to be more appropriate for Demoman
+  * Added melee dare lines for Demoman
+  * Attached the unused PlayerTaunts responses to the positive voice menu option for Demoman
+  * Added kill responses for Demoman against Soldier (intentionally does not play if kill was with a sword [WeaponClassIsNotAxe], we'll assume he is sober when wielding a sword)
+  * Added drunk line responses for when you swing your bottle after taking a drink from it (excluded the Frying Pan from this using a new WeaponIsNotFryingPan criterion)
+
+  * Attached the unused PlayerTaunts responses to the positive voice menu option for Medic, Scout and Soldier
+
+  * Added base Engineer.txt for diff purposes
+
+  * Added automatic and manual assist lines for Engineer
+  * Added melee dare lines for Engineer
+  * Added a response for when you are holding your Frontier Justice and your mini sentry is killed for Engineer
+  * Added Gunslinger punch and combo lines for Engineer
+  * Added invulnerable responses for Engineer
+  * Added unused revenge line for Engineer
+  * Gunslinger now builds, moves and re-deploys much quieter than before (plays PlayerTaunts)
+  * Attached the unused PlayerTaunts responses to the positive voice menu option for Engineer
+  * Added a few criterion in response_rules.txt to make all this happen
+  * Added unused DefendOnThePoint line (well it's used, but inconsistently)
+----
 ====0.3 {{{03.02.2011}}}====
   * Removed superfluous/duplicate responses in Demoman.txt and Heavy.txt (Fists of Steel kill response now shares with base melee kill response, Bottle shares with Frying Pan, Pain Train with Frying Pan. Note: the responses work exactly the same as before, this is just cleaning up the code)
   * Fixed Frying Pan using the Bottle's response group
