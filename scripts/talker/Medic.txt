@@ -10,6 +10,7 @@ Criterion "MedicNotKillSpeech" "MedicKillSpeech" "!=1" "required" weight 0
 Criterion "MedicNotKillSpeechMelee" "MedicKillSpeechMelee" "!=1" "required" weight 0
 Criterion "MedicNotSaidHealThanks" "MedicSaidHealThanks" "!=1" "required"
 Criterion "IsHelpCapMedic" "MedicHelpCap" "1" "required" weight 0
+Criterion "IsTauntsMedic" "TauntsMedic" "1" "required" weight 0
 
 
 Response MedicChargeReady
@@ -841,6 +842,7 @@ Response PlayerPositiveMedic
 Rule PlayerPositiveMedic
 {
 	criteria ConceptPlayerPositive IsMedic
+	ApplyContext "TauntsMedic:1:10"
 	Response PlayerPositiveMedic
 }
 
@@ -854,7 +856,7 @@ Response PlayerTauntsMedic
 }
 Rule PlayerTauntsMedic
 {
-	criteria ConceptPlayerTaunts IsMedic
+	criteria ConceptPlayerPositive IsMedic IsTauntsMedic
 	Response PlayerTauntsMedic
 }
 
