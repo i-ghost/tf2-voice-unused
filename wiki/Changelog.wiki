@@ -4,6 +4,17 @@
 This is a history of all public releases.
 
 ----
+====0.5 {{{05.02.2011}}}===
+  * Added base Pyro.txt for diff purposes
+
+  * Added criterion IsNotDominating
+  * Used above criterion to make domination and revenge lines uninterruptible by pain/fire for Demoman, Engineer, Heavy, Pyro, Medic, Scout and Soldier
+  * Updated EngyCritsReady to check for a recent kill
+  * Added unused Pyro lines (only 4 :( )
+  * Recycled Pyro lines for invulnerable response and melee dares
+  * Attached the unused PlayerTaunts responses to the positive voice menu option for Pyro
+  * Added automatic and manual assist response for Pyro
+----
 ====0.4 {{{04.02.2011}}}====
   * Modified the invulnerability responses to be more appropriate for Demoman
   * Added melee dare lines for Demoman
