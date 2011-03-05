@@ -253,6 +253,7 @@ criterion "IsDisguised" "disguised" "1" required
 criterion "IsWeaponPrimary" "weaponmode" "primary" required
 criterion "IsWeaponSecondary" "weaponmode" "secondary" required
 criterion "IsWeaponMelee" "weaponmode" "melee" required
+criterion "IsNotWeaponMelee" "weaponmode" "!=melee" required
 criterion "IsWeaponBuilding" "weaponmode" "building" required
 criterion "IsWeaponPda" "weaponmode" "pda" required
 
