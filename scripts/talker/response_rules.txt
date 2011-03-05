@@ -411,6 +411,7 @@ criterion "LoadoutIsNotRobotArm" "loadout_slot_melee" "!=The Gunslinger" "requir
 //Custom healed concept and critical hit
 criterion "IsBeingHealed" "beinghealed" "1" "required"
 criterion "IsCritical" "damagecritical" "1" "required"
+criterion "IsNotDominating" "IsDominating" "!=1" "required" weight 0
 
 criterion "IsCrossHairEnemy" "crosshair_enemy" "Yes" "required" 
 criterion "IsNotCrossHairEnemy" "crosshair_enemy" "!=Yes" "required" 

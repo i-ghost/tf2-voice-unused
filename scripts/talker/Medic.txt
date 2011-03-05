@@ -335,6 +335,7 @@ Rule PlayerKilledDominatingMedic
 {
 	criteria ConceptKilledPlayer IsMedic IsDominated
 	ApplyContext "MedicKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingMedic
 }
 
@@ -349,6 +350,7 @@ Rule PlayerKilledForRevengeMedic
 {
 	criteria ConceptKilledPlayer IsMedic IsRevenge
 	ApplyContext "MedicKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledForRevengeMedic
 }
 
@@ -378,7 +380,7 @@ Response PlayerAttackerPainMedic
 }
 Rule PlayerAttackerPainMedic
 {
-	criteria ConceptAttackerPain IsMedic
+	criteria ConceptAttackerPain IsMedic IsNotDominating
 	Response PlayerAttackerPainMedic
 }
 
@@ -390,7 +392,7 @@ Response PlayerOnFireMedic
 }
 Rule PlayerOnFireMedic
 {
-	criteria ConceptFire IsMedic MedicIsNotStillonFire
+	criteria ConceptFire IsMedic MedicIsNotStillonFire IsNotDominating
 	ApplyContext "MedicOnFire:1:7"
 	Response PlayerOnFireMedic
 }
@@ -402,7 +404,7 @@ Response PlayerOnFireRareMedic
 }
 Rule PlayerOnFireRareMedic
 {
-	criteria ConceptFire IsMedic 10PercentChance MedicIsNotStillonFire
+	criteria ConceptFire IsMedic 10PercentChance MedicIsNotStillonFire IsNotDominating
 	ApplyContext "MedicOnFire:1:7"
 	Response PlayerOnFireRareMedic
 }
@@ -420,7 +422,7 @@ Response PlayerPainMedic
 }
 Rule PlayerPainMedic
 {
-	criteria ConceptPain IsMedic
+	criteria ConceptPain IsMedic IsNotDominating
 	Response PlayerPainMedic
 }
 
@@ -430,7 +432,7 @@ Response PlayerStillOnFireMedic
 }
 Rule PlayerStillOnFireMedic
 {
-	criteria ConceptFire IsMedic  MedicIsStillonFire
+	criteria ConceptFire IsMedic  MedicIsStillonFire IsNotDominating
 	ApplyContext "MedicOnFire:1:7"
 	Response PlayerStillOnFireMedic
 }

@@ -689,6 +689,7 @@ Rule PlayerKilledDominatingBatScout
 {
 	criteria ConceptKilledPlayer IsScout IsDominated IsWeaponMelee
 	ApplyContext "ScoutKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingBatScout
 }
 //End custom
@@ -707,6 +708,7 @@ Rule PlayerKilledDominatingDemomanScout
 {
 	criteria ConceptKilledPlayer IsScout IsDominated  IsVictimDemoman
 	ApplyContext "ScoutKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingDemomanScout
 }
 
@@ -724,6 +726,7 @@ Rule PlayerKilledDominatingEngineerScout
 {
 	criteria ConceptKilledPlayer IsScout IsDominated  IsVictimEngineer
 	ApplyContext "ScoutKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingEngineerScout
 }
 
@@ -749,6 +752,7 @@ Rule PlayerKilledDominatingHeavyScout
 {
 	criteria ConceptKilledPlayer IsScout IsDominated  IsVictimHeavy
 	ApplyContext "ScoutKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingHeavyScout
 }
 
@@ -768,6 +772,7 @@ Rule PlayerKilledDominatingMedicScout
 {
 	criteria ConceptKilledPlayer IsScout IsDominated  IsVictimMedic
 	ApplyContext "ScoutKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingMedicScout
 }
 
@@ -785,6 +790,7 @@ Rule PlayerKilledDominatingPyroScout
 {
 	criteria ConceptKilledPlayer IsScout IsDominated  IsVictimPyro
 	ApplyContext "ScoutKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingPyroScout
 }
 
@@ -805,6 +811,7 @@ Rule PlayerKilledDominatingScoutScout
 {
 	criteria ConceptKilledPlayer IsScout IsDominated  IsVictimScout
 	ApplyContext "ScoutKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingScoutScout
 }
 
@@ -821,6 +828,7 @@ Rule PlayerKilledDominatingSniperScout
 {
 	criteria ConceptKilledPlayer IsScout IsDominated  IsVictimSniper
 	ApplyContext "ScoutKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingSniperScout
 }
 
@@ -837,6 +845,7 @@ Rule PlayerKilledDominatingSoldierScout
 {
 	criteria ConceptKilledPlayer IsScout IsDominated  IsVictimSoldier
 	ApplyContext "ScoutKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingSoldierScout
 }
 
@@ -853,6 +862,7 @@ Rule PlayerKilledDominatingSpyScout
 {
 	criteria ConceptKilledPlayer IsScout IsDominated  IsVictimSpy
 	ApplyContext "ScoutKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingSpyScout
 }
 
@@ -878,6 +888,7 @@ Rule PlayerKilledForRevengeScout
 {
 	criteria ConceptKilledPlayer IsScout IsRevenge
 	ApplyContext "ScoutKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledForRevengeScout
 }
 
@@ -961,7 +972,7 @@ Response PlayerAttackerPainScout
 }
 Rule PlayerAttackerPainScout
 {
-	criteria ConceptAttackerPain IsScout
+	criteria ConceptAttackerPain IsScout IsNotDominating
 	Response PlayerAttackerPainScout
 }
 
@@ -971,7 +982,7 @@ Response PlayerOnFireScout
 }
 Rule PlayerOnFireScout
 {
-	criteria ConceptFire IsScout ScoutIsNotStillonFire
+	criteria ConceptFire IsScout ScoutIsNotStillonFire IsNotDominating
 	ApplyContext "ScoutOnFire:1:7"
 	Response PlayerOnFireScout
 }
@@ -982,7 +993,7 @@ Response PlayerOnFireRareScout
 }
 Rule PlayerOnFireRareScout
 {
-	criteria ConceptFire IsScout 10PercentChance ScoutIsNotStillonFire
+	criteria ConceptFire IsScout 10PercentChance ScoutIsNotStillonFire IsNotDominating
 	ApplyContext "ScoutOnFire:1:7"
 	Response PlayerOnFireRareScout
 }
@@ -1000,7 +1011,7 @@ Response PlayerPainScout
 }
 Rule PlayerPainScout
 {
-	criteria ConceptPain IsScout
+	criteria ConceptPain IsScout IsNotDominating
 	Response PlayerPainScout
 }
 
@@ -1010,7 +1021,7 @@ Response PlayerStillOnFireScout
 }
 Rule PlayerStillOnFireScout
 {
-	criteria ConceptFire IsScout  ScoutIsStillonFire
+	criteria ConceptFire IsScout  ScoutIsStillonFire IsNotDominating
 	ApplyContext "ScoutOnFire:1:7"
 	Response PlayerStillOnFireScout
 }

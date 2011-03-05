@@ -465,6 +465,7 @@ Rule PlayerKilledDominatingDemoman
 {
 	criteria ConceptKilledPlayer IsDemoman IsDominated
 	ApplyContext "DemomanKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingDemoman
 }
 
@@ -479,6 +480,7 @@ Rule PlayerKilledDominatingDemomanDemoman
 {
 	criteria ConceptKilledPlayer IsDemoman IsDominated  IsVictimDemoman
 	ApplyContext "DemomanKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingDemomanDemoman
 }
 
@@ -495,6 +497,7 @@ Rule PlayerKilledDominatingEngineerDemoman
 {
 	criteria ConceptKilledPlayer IsDemoman IsDominated  IsVictimEngineer
 	ApplyContext "DemomanKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingEngineerDemoman
 }
 
@@ -510,6 +513,7 @@ Rule PlayerKilledDominatingHeavyDemoman
 {
 	criteria ConceptKilledPlayer IsDemoman IsDominated  IsVictimHeavy
 	ApplyContext "DemomanKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingHeavyDemoman
 }
 
@@ -524,6 +528,7 @@ Rule PlayerKilledDominatingMedicDemoman
 {
 	criteria ConceptKilledPlayer IsDemoman IsDominated  IsVictimMedic
 	ApplyContext "DemomanKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingMedicDemoman
 }
 
@@ -538,6 +543,7 @@ Rule PlayerKilledDominatingPyroDemoman
 {
 	criteria ConceptKilledPlayer IsDemoman IsDominated  IsVictimPyro
 	ApplyContext "DemomanKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingPyroDemoman
 }
 
@@ -556,6 +562,7 @@ Rule PlayerKilledDominatingScoutDemoman
 {
 	criteria ConceptKilledPlayer IsDemoman IsDominated  IsVictimScout
 	ApplyContext "DemomanKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingScoutDemoman
 }
 
@@ -570,6 +577,7 @@ Rule PlayerKilledDominatingSniperDemoman
 {
 	criteria ConceptKilledPlayer IsDemoman IsDominated  IsVictimSniper
 	ApplyContext "DemomanKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingSniperDemoman
 }
 
@@ -585,6 +593,7 @@ Rule PlayerKilledDominatingSoldierDemoman
 {
 	criteria ConceptKilledPlayer IsDemoman IsDominated  IsVictimSoldier
 	ApplyContext "DemomanKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingSoldierDemoman
 }
 
@@ -598,6 +607,7 @@ Rule PlayerKilledDominatingSpyDemoman
 {
 	criteria ConceptKilledPlayer IsDemoman IsDominated  IsVictimSpy
 	ApplyContext "DemomanKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingSpyDemoman
 }
 
@@ -612,6 +622,7 @@ Rule PlayerKilledForRevengeDemoman
 {
 	criteria ConceptKilledPlayer IsDemoman IsRevenge
 	ApplyContext "DemomanKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledForRevengeDemoman
 }
 
@@ -641,7 +652,7 @@ Response PlayerAttackerPainDemoman
 }
 Rule PlayerAttackerPainDemoman
 {
-	criteria ConceptAttackerPain IsDemoman
+	criteria ConceptAttackerPain IsDemoman IsNotDominating
 	Response PlayerAttackerPainDemoman
 }
 
@@ -652,7 +663,7 @@ Response PlayerOnFireDemoman
 }
 Rule PlayerOnFireDemoman
 {
-	criteria ConceptFire IsDemoman DemomanIsNotStillonFire
+	criteria ConceptFire IsDemoman DemomanIsNotStillonFire IsNotDominating
 	ApplyContext "DemomanOnFire:1:7"
 	Response PlayerOnFireDemoman
 }
@@ -663,7 +674,7 @@ Response PlayerOnFireRareDemoman
 }
 Rule PlayerOnFireRareDemoman
 {
-	criteria ConceptFire IsDemoman 10PercentChance DemomanIsNotStillonFire
+	criteria ConceptFire IsDemoman 10PercentChance DemomanIsNotStillonFire IsNotDominating
 	ApplyContext "DemomanOnFire:1:7"
 	Response PlayerOnFireRareDemoman
 }
@@ -680,7 +691,7 @@ Response PlayerPainDemoman
 }
 Rule PlayerPainDemoman
 {
-	criteria ConceptPain IsDemoman
+	criteria ConceptPain IsDemoman IsNotDominating
 	Response PlayerPainDemoman
 }
 
@@ -690,7 +701,7 @@ Response PlayerStillOnFireDemoman
 }
 Rule PlayerStillOnFireDemoman
 {
-	criteria ConceptFire IsDemoman  DemomanIsStillonFire
+	criteria ConceptFire IsDemoman  DemomanIsStillonFire IsNotDominating
 	ApplyContext "DemomanOnFire:1:7"
 	Response PlayerStillOnFireDemoman
 }

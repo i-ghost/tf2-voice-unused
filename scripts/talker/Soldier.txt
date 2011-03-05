@@ -373,6 +373,7 @@ Rule PlayerKilledDominatingSoldier
 {
 	criteria ConceptKilledPlayer IsSoldier IsDominated
 	ApplyContext "SoldierKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingSoldier
 }
 
@@ -389,6 +390,7 @@ Rule PlayerKilledDominatingDemomanSoldier
 {
 	criteria ConceptKilledPlayer IsSoldier IsDominated  IsVictimDemoman
 	ApplyContext "SoldierKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingDemomanSoldier
 }
 
@@ -405,6 +407,7 @@ Rule PlayerKilledDominatingEngineerSoldier
 {
 	criteria ConceptKilledPlayer IsSoldier IsDominated  IsVictimEngineer
 	ApplyContext "SoldierKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingEngineerSoldier
 }
 
@@ -422,6 +425,7 @@ Rule PlayerKilledDominatingHeavySoldier
 {
 	criteria ConceptKilledPlayer IsSoldier IsDominated  IsVictimHeavy
 	ApplyContext "SoldierKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingHeavySoldier
 }
 
@@ -439,6 +443,7 @@ Rule PlayerKilledDominatingMedicSoldier
 {
 	criteria ConceptKilledPlayer IsSoldier IsDominated  IsVictimMedic
 	ApplyContext "SoldierKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingMedicSoldier
 }
 
@@ -458,6 +463,7 @@ Rule PlayerKilledDominatingPyroSoldier
 {
 	criteria ConceptKilledPlayer IsSoldier IsDominated  IsVictimPyro
 	ApplyContext "SoldierKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingPyroSoldier
 }
 
@@ -479,6 +485,7 @@ Rule PlayerKilledDominatingScoutSoldier
 {
 	criteria ConceptKilledPlayer IsSoldier IsDominated  IsVictimScout
 	ApplyContext "SoldierKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingScoutSoldier
 }
 
@@ -503,6 +510,7 @@ Rule PlayerKilledDominatingSniperSoldier
 {
 	criteria ConceptKilledPlayer IsSoldier IsDominated  IsVictimSniper
 	ApplyContext "SoldierKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingSniperSoldier
 }
 
@@ -519,6 +527,7 @@ Rule PlayerKilledDominatingSoldierSoldier
 {
 	criteria ConceptKilledPlayer IsSoldier IsDominated  IsVictimSoldier
 	ApplyContext "SoldierKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingSoldierSoldier
 }
 
@@ -537,6 +546,7 @@ Rule PlayerKilledDominatingSpySoldier
 {
 	criteria ConceptKilledPlayer IsSoldier IsDominated  IsVictimSpy
 	ApplyContext "SoldierKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingSpySoldier
 }
 
@@ -550,6 +560,7 @@ Rule PlayerKilledForRevengeSoldier
 {
 	criteria ConceptKilledPlayer IsSoldier IsRevenge
 	ApplyContext "SoldierKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledForRevengeSoldier
 }
 
@@ -584,7 +595,7 @@ Response PlayerAttackerPainSoldier
 }
 Rule PlayerAttackerPainSoldier
 {
-	criteria ConceptAttackerPain IsSoldier
+	criteria ConceptAttackerPain IsSoldier IsNotDominating
 	Response PlayerAttackerPainSoldier
 }
 
@@ -594,7 +605,7 @@ Response PlayerOnFireSoldier
 }
 Rule PlayerOnFireSoldier
 {
-	criteria ConceptFire IsSoldier SoldierIsNotStillonFire
+	criteria ConceptFire IsSoldier SoldierIsNotStillonFire IsNotDominating
 	ApplyContext "SoldierOnFire:1:7"
 	Response PlayerOnFireSoldier
 }
@@ -606,7 +617,7 @@ Response PlayerOnFireRareSoldier
 }
 Rule PlayerOnFireRareSoldier
 {
-	criteria ConceptFire IsSoldier 10PercentChance SoldierIsNotStillonFire
+	criteria ConceptFire IsSoldier 10PercentChance SoldierIsNotStillonFire IsNotDominating
 	ApplyContext "SoldierOnFire:1:7"
 	Response PlayerOnFireRareSoldier
 }
@@ -624,7 +635,7 @@ Response PlayerPainSoldier
 }
 Rule PlayerPainSoldier
 {
-	criteria ConceptPain IsSoldier
+	criteria ConceptPain IsSoldier IsNotDominating
 	Response PlayerPainSoldier
 }
 
@@ -634,7 +645,7 @@ Response PlayerStillOnFireSoldier
 }
 Rule PlayerStillOnFireSoldier
 {
-	criteria ConceptFire IsSoldier  SoldierIsStillonFire
+	criteria ConceptFire IsSoldier  SoldierIsStillonFire IsNotDominating
 	ApplyContext "SoldierOnFire:1:7"
 	Response PlayerStillOnFireSoldier
 }

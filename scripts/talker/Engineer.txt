@@ -376,7 +376,7 @@ Response EngyCritsReady
 
 Rule EngyCritsReady
 {
-	criteria ConceptLostObject IsSentryGun IsEngineer WeaponIsFrontierJustice EngineerNotKillSpeech
+	criteria ConceptLostObject IsSentryGun IsEngineer IsARecentKill WeaponIsFrontierJustice EngineerNotKillSpeech
 	ApplyContext "EngineerKillSpeech:1:10"
 	Response EngyCritsReady
 }
@@ -453,6 +453,7 @@ Rule PlayerKilledDominatingDemomanEngineer
 {
 	criteria ConceptKilledPlayer IsEngineer IsDominated  IsVictimDemoman
 	ApplyContext "EngineerKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingDemomanEngineer
 }
 
@@ -472,6 +473,7 @@ Rule PlayerKilledDominatingEngineerEngineer
 {
 	criteria ConceptKilledPlayer IsEngineer IsDominated  IsVictimEngineer
 	ApplyContext "EngineerKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingEngineerEngineer
 }
 
@@ -497,6 +499,7 @@ Rule PlayerKilledDominatingHeavyEngineer
 {
 	criteria ConceptKilledPlayer IsEngineer IsDominated  IsVictimHeavy
 	ApplyContext "EngineerKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingHeavyEngineer
 }
 
@@ -515,6 +518,7 @@ Rule PlayerKilledDominatingMedicEngineer
 {
 	criteria ConceptKilledPlayer IsEngineer IsDominated  IsVictimMedic
 	ApplyContext "EngineerKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingMedicEngineer
 }
 
@@ -534,6 +538,7 @@ Rule PlayerKilledDominatingPyroEngineer
 {
 	criteria ConceptKilledPlayer IsEngineer IsDominated  IsVictimPyro
 	ApplyContext "EngineerKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingPyroEngineer
 }
 
@@ -556,6 +561,7 @@ Rule PlayerKilledDominatingScoutEngineer
 {
 	criteria ConceptKilledPlayer IsEngineer IsDominated  IsVictimScout
 	ApplyContext "EngineerKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingScoutEngineer
 }
 
@@ -574,6 +580,7 @@ Rule PlayerKilledDominatingSniperEngineer
 {
 	criteria ConceptKilledPlayer IsEngineer IsDominated  IsVictimSniper
 	ApplyContext "EngineerKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingSniperEngineer
 }
 
@@ -592,6 +599,7 @@ Rule PlayerKilledDominatingSoldierEngineer
 {
 	criteria ConceptKilledPlayer IsEngineer IsDominated  IsVictimSoldier
 	ApplyContext "EngineerKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingSoldierEngineer
 }
 
@@ -615,6 +623,7 @@ Rule PlayerKilledDominatingSpyEngineer
 {
 	criteria ConceptKilledPlayer IsEngineer IsDominated  IsVictimSpy
 	ApplyContext "EngineerKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingSpyEngineer
 }
 
@@ -643,6 +652,7 @@ Rule PlayerKilledForRevengeEngineer
 {
 	criteria ConceptKilledPlayer IsEngineer IsRevenge
 	ApplyContext "EngineerKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledForRevengeEngineer
 }
 
@@ -815,7 +825,7 @@ Response PlayerAttackerPainEngineer
 }
 Rule PlayerAttackerPainEngineer
 {
-	criteria ConceptAttackerPain IsEngineer
+	criteria ConceptAttackerPain IsEngineer IsNotDominating
 	Response PlayerAttackerPainEngineer
 }
 
@@ -827,7 +837,7 @@ Response PlayerOnFireEngineer
 }
 Rule PlayerOnFireEngineer
 {
-	criteria ConceptFire IsEngineer EngineerIsNotStillonFire
+	criteria ConceptFire IsEngineer EngineerIsNotStillonFire IsNotDominating
 	ApplyContext "EngineerOnFire:1:7"
 	Response PlayerOnFireEngineer
 }
@@ -845,7 +855,7 @@ Response PlayerPainEngineer
 }
 Rule PlayerPainEngineer
 {
-	criteria ConceptPain IsEngineer
+	criteria ConceptPain IsEngineer IsNotDominating
 	Response PlayerPainEngineer
 }
 
@@ -855,7 +865,7 @@ Response PlayerStillOnFireEngineer
 }
 Rule PlayerStillOnFireEngineer
 {
-	criteria ConceptFire IsEngineer  EngineerIsStillonFire
+	criteria ConceptFire IsEngineer  EngineerIsStillonFire IsNotDominating
 	ApplyContext "EngineerOnFire:1:7"
 	Response PlayerStillOnFireEngineer
 }
