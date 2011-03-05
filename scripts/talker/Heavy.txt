@@ -1206,7 +1206,7 @@ Response PlayerTauntGunHeavy
 }
 Rule PlayerTauntGunHeavy
 {
-	criterion ConceptPlayerBattleCry 75PercentChance IsHeavy IsNotOnHeavy IsCrosshairEnemy NotGunTauntHeavy
+	criterion ConceptPlayerBattleCry 75PercentChance IsHeavy IsNotOnHeavy IsCrosshairEnemy NotGunTauntHeavy IsNotWeaponMelee
 	ApplyContext "GunTauntHeavy:1:10"
 	Response PlayerTauntGunHeavy
 }
