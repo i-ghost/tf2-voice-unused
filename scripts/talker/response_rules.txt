@@ -424,7 +424,8 @@ criterion "WeaponIsSentrygun" "customdeath" "sentrygun" "required"
 criterion "WeaponIsNotSentrygun" "customdeath" "" "required"
 criterion "WeaponIsNotSentry" "customdeath" "none" "required"
 
-
+// Custom criterion to check if not scoped in, we do not want the lines to mix
+criterion "Unzoomed" "sniperzoomed" "!=1" "required"
 criterion "DeployedContext" "sniperzoomed" "1" "required"
 criterion "ConceptFireWeapon" "Concept" "TLK_FIREWEAPON" required
 criterion "ConceptFireMinigun" "Concept" "TLK_FIREMINIGUN" required
