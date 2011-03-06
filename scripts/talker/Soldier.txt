@@ -334,6 +334,7 @@ Rule KilledPlayerMeleeSoldier
 Response KilledPlayerVeryManySoldier
 {
 	scene "scenes/Player/Soldier/low/1206.vcd" 
+	scene "scenes/Player/Soldier/low/1188.vcd" 
 }
 Rule KilledPlayerVeryManySoldier
 {
