@@ -548,7 +548,7 @@ Response HeavySwingFistsStart
 }
 Rule HeavySwingFistsStart
 {
-	criteria ConceptFireWeapon IsWeaponMelee 75PercentChance IsHeavy IsNotHeavyFistsSwung
+	criteria ConceptFireWeapon IsWeaponMelee 50PercentChance IsHeavy IsNotHeavyFistsSwung
 	ApplyContext "HeavyFistsSwung:1:10"
 	Response HeavySwingFistsStart
 }
