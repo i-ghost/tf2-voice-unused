@@ -579,6 +579,53 @@ Rule PlayerKilledCapperSniper
 	Response PlayerKilledCapperSniper
 }
 
+// Custom stuff
+Response KilledPlayerSMGSniper
+{
+	scene "scenes/Player/Sniper/low/2461.vcd" 
+}
+Rule KilledPlayerSMGSniper
+{
+	criterion ConceptKilledPlayer KilledPlayerDelay 30PercentChance IsSniper WeaponIsSMG SniperNotKillSpeech
+	ApplyContext "SniperKillSpeech:1:10"
+	Response KilledPlayerSMGSniper
+}
+
+Response KilledPlayerDominatingSniper
+{
+	scene "scenes/Player/Sniper/low/2292.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2293.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2294.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2356.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2357.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2358.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2360.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2362.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2363.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2364.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2365.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2366.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2367.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2385.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2397.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2417.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2434.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2458.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2459.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2460.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2462.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2463.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2464.vcd" predelay "2.5"
+	
+}
+Rule KilledPlayerDominatingSniper
+{
+	criterion ConceptKilledPlayer IsSniper DeployedContext 75PercentChance IsDominated
+	ApplyContext "SniperKillSpeech:1:10"
+	Response KilledPlayerDominatingSniper
+}
+// End custom
+
 Response PlayerKilledDominatingDemomanSniper
 {
 	scene "scenes/Player/Sniper/low/3080.vcd" predelay "2.5"
@@ -734,10 +781,138 @@ Response PlayerKilledForRevengeSniper
 }
 Rule PlayerKilledForRevengeSniper
 {
-	criteria ConceptKilledPlayer IsSniper IsRevenge
+	criteria ConceptKilledPlayer IsSniper IsRevenge 30PercentChance
 	ApplyContext "SniperKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledForRevengeSniper
 }
+
+// Custom stuff
+// Directed revenge lines
+Response PlayerKilledForRevengeSniperSniper
+{
+	scene "scenes/Player/Sniper/low/2466.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2468.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2469.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2473.vcd" predelay "2.5"
+}
+Rule PlayerKilledForRevengeSniperSniper
+{
+	criterion ConceptKilledPlayer IsSniper IsRevenge IsVictimSniper
+	ApplyContext "SniperKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
+	Response PlayerKilledForRevengeSniperSniper
+}
+
+Response PlayerKilledForRevengeSpySniper
+{
+	scene "scenes/Player/Sniper/low/2381.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2383.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2384.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2391.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2325.vcd" predelay "2.5"
+}
+Rule PlayerKilledForRevengeSpySniper
+{
+	criterion ConceptKilledPlayer IsSniper IsRevenge IsVictimSpy
+	ApplyContext "SniperKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
+	Response PlayerKilledForRevengeSpySniper
+}
+
+Response PlayerKilledForRevengeScoutSniper
+{
+	scene "scenes/Player/Sniper/low/2296.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2394.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2475.vcd" predelay "2.5"
+}
+Rule PlayerKilledForRevengeScoutSniper
+{
+	criterion ConceptKilledPlayer IsSniper IsRevenge IsVictimScout
+	ApplyContext "SniperKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
+	Response PlayerKilledForRevengeScoutSniper
+}
+
+Response PlayerKilledForRevengeDemomanSniper
+{
+	scene "scenes/Player/Sniper/low/2295.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2386.vcd" predelay "2.5"
+}
+Rule PlayerKilledForRevengeDemomanSniper
+{
+	criterion ConceptKilledPlayer IsSniper IsRevenge IsVictimDemoman
+	ApplyContext "SniperKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
+	Response PlayerKilledForRevengeDemomanSniper
+}
+
+Response PlayerKilledForRevengeEngineerSniper
+{
+	scene "scenes/Player/Sniper/low/2393.vcd" predelay "2.5"
+}
+Rule PlayerKilledForRevengeEngineerSniper
+{
+	criterion ConceptKilledPlayer IsSniper IsRevenge IsVictimEngineer
+	ApplyContext "SniperKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
+	Response PlayerKilledForRevengeEngineerSniper
+}
+
+Response PlayerKilledForRevengeSoldierSniper
+{
+	scene "scenes/Player/Sniper/low/2390.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2472.vcd" predelay "2.5"
+}
+Rule PlayerKilledForRevengeSoldierSniper
+{
+	criterion ConceptKilledPlayer IsSniper IsRevenge IsVictimSoldier
+	ApplyContext "SniperKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
+	Response PlayerKilledForRevengeSoldierSniper
+}
+
+Response PlayerKilledForRevengeMedicSniper
+{
+	scene "scenes/Player/Sniper/low/2474.vcd" predelay "2.5"
+}
+Rule PlayerKilledForRevengeMedicSniper
+{
+	criterion ConceptKilledPlayer IsSniper IsRevenge IsVictimMedic
+	ApplyContext "SniperKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
+	Response PlayerKilledForRevengeMedicSniper
+}
+
+Response PlayerKilledForRevengePyroSniper
+{
+	scene "scenes/Player/Sniper/low/2392.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2395.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2467.vcd" predelay "2.5"
+}
+Rule PlayerKilledForRevengePyroSniper
+{
+	criterion ConceptKilledPlayer IsSniper IsRevenge IsVictimPyro
+	ApplyContext "SniperKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
+	Response PlayerKilledForRevengePyroSniper
+}
+
+Response PlayerKilledForRevengeHeavySniper
+{
+	scene "scenes/Player/Sniper/low/2465.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2471.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2465.vcd" predelay "2.5"
+}
+Rule PlayerKilledForRevengeHeavySniper
+{
+	criterion ConceptKilledPlayer IsSniper IsRevenge IsVictimHeavy
+	ApplyContext "SniperKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
+	Response PlayerKilledForRevengeHeavySniper
+}
+
+// End directed revenge lines
 
 Response SniperHeadShotKill
 {
@@ -766,7 +941,7 @@ Response PlayerAttackerPainSniper
 }
 Rule PlayerAttackerPainSniper
 {
-	criteria ConceptAttackerPain IsSniper
+	criteria ConceptAttackerPain IsSniper IsNotDominating
 	Response PlayerAttackerPainSniper
 }
 
@@ -778,7 +953,7 @@ Response PlayerOnFireSniper
 }
 Rule PlayerOnFireSniper
 {
-	criteria ConceptFire IsSniper SniperIsNotStillonFire
+	criteria ConceptFire IsSniper SniperIsNotStillonFire IsNotDominating
 	ApplyContext "SniperOnFire:1:7"
 	Response PlayerOnFireSniper
 }
@@ -792,7 +967,7 @@ Response PlayerPainSniper
 }
 Rule PlayerPainSniper
 {
-	criteria ConceptPain IsSniper
+	criteria ConceptPain IsSniper IsNotDominating
 	Response PlayerPainSniper
 }
 
@@ -802,7 +977,7 @@ Response PlayerStillOnFireSniper
 }
 Rule PlayerStillOnFireSniper
 {
-	criteria ConceptFire IsSniper  SniperIsStillonFire
+	criteria ConceptFire IsSniper  SniperIsStillonFire IsNotDominating
 	ApplyContext "SniperOnFire:1:7"
 	Response PlayerStillOnFireSniper
 }

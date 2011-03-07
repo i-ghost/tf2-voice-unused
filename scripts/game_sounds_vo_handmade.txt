@@ -1026,3 +1026,448 @@
  "soundlevel"  "SNDLVL_95dB"
  "wave"  "vo/sniper_CartStoppedOffenseSoft05.wav"
 }
+
+// Sniper unused domination lines.
+
+"sniper.Domination01"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Domination01.wav"
+}
+
+"sniper.Domination02"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Domination02.wav"
+}
+
+"sniper.Domination03"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Domination03.wav"
+}
+
+"sniper.Domination04"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Domination04.wav"
+}
+
+"sniper.Domination05"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Domination05.wav"
+}
+
+"sniper.Domination06"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Domination06.wav"
+}
+
+"sniper.Domination07"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Domination07.wav"
+}
+
+"sniper.Domination08"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Domination08.wav"
+}
+
+"sniper.Domination09"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Domination09.wav"
+}
+
+"sniper.Domination10"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Domination10.wav"
+}
+
+"sniper.Domination11"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Domination11.wav"
+}
+
+"sniper.Domination12"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Domination12.wav"
+}
+
+"sniper.Domination13"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Domination13.wav"
+}
+
+"sniper.Domination14"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Domination14.wav"
+}
+
+"sniper.Domination15"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Domination15.wav"
+}
+
+"sniper.Domination16"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Domination16.wav"
+}
+
+"sniper.Domination17"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Domination17.wav"
+}
+
+"sniper.Domination18"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Domination18.wav"
+}
+
+"sniper.Domination19"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Domination19.wav"
+}
+
+"sniper.Domination20"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Domination20.wav"
+}
+
+"sniper.Domination21"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Domination21.wav"
+}
+
+"sniper.Domination22"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Domination22.wav"
+}
+
+"sniper.Domination23"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Domination23.wav"
+}
+
+"sniper.Domination24"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Domination24.wav"
+}
+
+// Sniper unused revenge lines.
+
+"sniper.Revenge01"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Revenge01.wav"
+}
+
+"sniper.Revenge02"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Revenge02.wav"
+}
+
+"sniper.Revenge03"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Revenge03.wav"
+}
+
+"sniper.Revenge04"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Revenge04.wav"
+}
+
+"sniper.Revenge05"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Revenge05.wav"
+}
+
+"sniper.Revenge06"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Revenge06.wav"
+}
+
+"sniper.Revenge07"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Revenge07.wav"
+}
+
+"sniper.Revenge08"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Revenge08.wav"
+}
+
+"sniper.Revenge09"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Revenge09.wav"
+}
+
+"sniper.Revenge10"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Revenge10.wav"
+}
+
+"sniper.Revenge11"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Revenge11.wav"
+}
+
+"sniper.Revenge12"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Revenge12.wav"
+}
+
+"sniper.Revenge13"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Revenge13.wav"
+}
+
+"sniper.Revenge14"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Revenge14.wav"
+}
+
+"sniper.Revenge15"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Revenge15.wav"
+}
+
+"sniper.Revenge16"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Revenge16.wav"
+}
+
+"sniper.Revenge17"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Revenge17.wav"
+}
+
+"sniper.Revenge18"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Revenge18.wav"
+}
+
+"sniper.Revenge19"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Revenge19.wav"
+}
+
+"sniper.Revenge20"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Revenge20.wav"
+}
+
+"sniper.Revenge21"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Revenge21.wav"
+}
+
+"sniper.Revenge22"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Revenge22.wav"
+}
+
+"sniper.Revenge23"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Revenge23.wav"
+}
+
+"sniper.Revenge24"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Revenge24.wav"
+}
+
+"sniper.Revenge25"
+{
+ "channel"  "CHAN_VOICE"
+ "volume"  "0.820"
+ "pitch"  "PITCH_NORM"
+ "soundlevel"  "SNDLVL_95dB"
+ "wave"  "vo/sniper_Revenge25.wav"
+}
