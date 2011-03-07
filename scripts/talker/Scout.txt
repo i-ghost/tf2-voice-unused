@@ -645,6 +645,7 @@ Rule PostCritScout
 	Response PostCritScout
 }
 
+// Milk toss
 Response MilkLaunchScout
 {
 	scene "scenes/player/Scout/low/504.vcd"
