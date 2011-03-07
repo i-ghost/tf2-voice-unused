@@ -223,7 +223,7 @@ Response PlayerTeleporterThanksEngineer
 }
 Rule PlayerTeleporterThanksEngineer
 {
-	criteria ConceptTeleported IsNotEngineer IsEngineer 30PercentChance
+	criteria ConceptTeleported IsEngineer 30PercentChance
 	Response PlayerTeleporterThanksEngineer
 }
 
@@ -247,8 +247,8 @@ Rule DefendOnThePointEngineer
 // Custom stuff
 Response KilledPlayerAssistAutoEngineer
 {
-	scene "scenes/Player/Demoman/low/159.vcd" predelay "2.5"
-	scene "scenes/Player/Demoman/low/160.vcd" predelay "2.5"
+	scene "scenes/Player/Engineer/low/159.vcd" predelay "2.5"
+	scene "scenes/Player/Engineer/low/160.vcd" predelay "2.5"
 }
 Rule KilledPlayerAssistAutoEngineer
 {

@@ -15,6 +15,8 @@ Criterion "SniperNotSaidCartMovingForwardD" "SaidCartMovingForwardD" "!=1" "requ
 Criterion "SniperNotSaidCartMovingForwardO" "SaidCartMovingForwardO" "!=1" "required" weight 0
 Criterion "SniperNotSaidCartMovingStoppedD" "SaidCartMovingStoppedD" "!=1" "required" weight 0
 Criterion "SniperNotSaidCartMovingStoppedO" "SaidCartMovingStoppedO" "!=1" "required" weight 0
+Criterion "SniperNotAwardSpeech" "SniperAwardSpeech" "!=1" "required" weight 0
+Criterion "SniperNotAssistSpeech" "SniperAssistSpeech" "!=1" "required" weight 0
 
 
 Response PlayerCloakedSpyDemomanSniper
@@ -154,6 +156,33 @@ Rule HealThanksSniper
 	ApplyContext "SniperSaidHealThanks:1:20"
 	Response HealThanksSniper
 }
+
+// Custom achievement stuff
+Response AwardSniper
+{
+	scene "scenes/Player/Sniper/low/2298.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2299.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2339.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2340.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2341.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2343.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2344.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2346.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2347.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2350.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2351.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2423.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2436.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/2453.vcd" predelay "2.5"
+}
+Rule AwardSniper
+{
+	criteria ConceptAchievementAward IsSniper SniperNotAwardSpeech
+	ApplyContext "SniperAwardSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
+	Response AwardSniper
+}
+//End custom achievement
 
 Response PlayerRoundStartSniper
 {
@@ -580,6 +609,19 @@ Rule PlayerKilledCapperSniper
 }
 
 // Custom stuff
+Response KilledPlayerAssistAutoSniper
+{
+	scene "scenes/Player/Sniper/low/1734.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/1735.vcd" predelay "2.5"
+}
+Rule KilledPlayerAssistAutoSniper
+{
+	criteria ConceptKilledPlayer IsSniper IsBeingHealed IsARecentKill KilledPlayerDelay 20PercentChance SniperNotAssistSpeech
+	ApplyContext "SniperAssistSpeech:1:20"
+	Response KilledPlayerAssistAutoSniper
+}
+// End custom
+
 Response KilledPlayerSMGSniper
 {
 	scene "scenes/Player/Sniper/low/2461.vcd" 
@@ -1179,6 +1221,23 @@ Rule PlayerThanksSniper
 	Response PlayerThanksSniper
 }
 
+// Custom Assist kill response
+// As there is no actual concept for assist kills, this is the second best method.
+// Say thanks after you kill more than one person.
+
+Response KilledPlayerAssistSniper
+{
+	scene "scenes/Player/Sniper/low/1734.vcd"
+	scene "scenes/Player/Sniper/low/1735.vcd"
+}
+Rule KilledPlayerAssistSniper
+{
+	criteria ConceptPlayerThanks IsSniper IsARecentKill KilledPlayerDelay SniperNotAssistSpeech
+	ApplyContext "SniperAssistSpeech:1:20"
+	Response KilledPlayerAssistSniper
+}
+// End custom
+
 Response PlayerYesSniper
 {
 	scene "scenes/Player/Sniper/low/1767.vcd" 
@@ -1291,6 +1350,27 @@ Rule PlayerBattleCrySniper
 	criteria ConceptPlayerBattleCry IsSniper
 	Response PlayerBattleCrySniper
 }
+
+// Custom stuff - melee dare
+// Look at enemy, then do battle cry voice command while holding a melee weapon.
+Response MeleeDareCombatSniper
+{
+	scene "scenes/Player/Sniper/low/2319.vcd"
+	scene "scenes/Player/Sniper/low/2320.vcd"
+	scene "scenes/Player/Sniper/low/2321.vcd"
+	scene "scenes/Player/Sniper/low/2369.vcd"
+	scene "scenes/Player/Sniper/low/2372.vcd"
+	scene "scenes/Player/Sniper/low/2373.vcd"
+	scene "scenes/Player/Sniper/low/2374.vcd"
+	scene "scenes/Player/Sniper/low/2388.vcd"
+	scene "scenes/Player/Sniper/low/2389.vcd"
+}
+Rule MeleeDareCombatSniper
+{
+	criteria ConceptPlayerBattleCry IsWeaponMelee IsSniper IsCrosshairEnemy
+	Response MeleeDareCombatSniper
+}
+//End custom
 
 Response PlayerCheersSniper
 {
