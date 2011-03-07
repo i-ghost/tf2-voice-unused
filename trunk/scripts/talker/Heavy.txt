@@ -143,7 +143,8 @@ Response AwardHeavy
 Rule AwardHeavy
 {
 	criteria ConceptAchievementAward IsHeavy HeavyNotAwardSpeech
-	applycontext "HeavyAwardSpeech:1:10"
+	ApplyContext "HeavyAwardSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response AwardHeavy
 }
 //End custom achievement

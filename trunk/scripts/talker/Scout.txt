@@ -141,7 +141,8 @@ Response AwardScout
 Rule AwardScout
 {
 	criteria ConceptAchievementAward IsScout ScoutNotAwardSpeech
-	applycontext "ScoutAwardSpeech:1:10"
+	ApplyContext "ScoutAwardSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response AwardScout
 }
 //End custom achievement
@@ -644,7 +645,17 @@ Rule PostCritScout
 	Response PostCritScout
 }
 
-
+Response MilkLaunchScout
+{
+	scene "scenes/player/Scout/low/504.vcd"
+	scene "scenes/player/Scout/low/2705.vcd"
+	scene "scenes/player/Scout/low/2604.vcd"
+}
+Rule MilkLaunchScout
+{
+	criteria ConceptJarateLaunch IsScout
+	Response MilkLaunchScout
+}
 
 // End custom
 

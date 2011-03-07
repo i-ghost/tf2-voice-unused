@@ -449,8 +449,6 @@ criterion "ConceptFireMinigunTalk" "Concept" "TLK_MINIGUN_FIREWEAPON" "required"
 Criterion "NotDefendOnThePointSpeech" "worldDefendOnThePointSpeech" "!=1" "required" weight 0
 
 criterion "IsHalloweenTaunt" "IsHalloweenTaunt" "1" "required" weight 100
-// Custom criterion - not sure if it will be used.
-criterion "IsTaunting" "IsHalloweenTaunt" "!=1" "required" weight 100
 
 
 criterion "ConceptRequestDuel" "Concept" "TLK_REQUEST_DUEL" required

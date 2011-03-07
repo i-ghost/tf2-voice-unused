@@ -971,6 +971,7 @@ Response MeleeDareCombatSoldier
 	scene "scenes/Player/Soldier/low/1205.vcd"
 	scene "scenes/Player/Soldier/low/1208.vcd"
 	scene "scenes/Player/Soldier/low/1203.vcd"
+	scene "scenes/Player/Soldier/low/1190.vcd" 
 }
 Rule MeleeDareCombatSoldier
 {
