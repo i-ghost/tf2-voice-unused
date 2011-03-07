@@ -638,6 +638,7 @@ Rule PlayerKilledDominatingDemomanSniper
 {
 	criteria ConceptKilledPlayer IsSniper IsDominated  IsVictimDemoman
 	ApplyContext "SniperKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingDemomanSniper
 }
 
@@ -654,6 +655,7 @@ Rule PlayerKilledDominatingEngineerSniper
 {
 	criteria ConceptKilledPlayer IsSniper IsDominated  IsVictimEngineer
 	ApplyContext "SniperKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingEngineerSniper
 }
 
@@ -671,6 +673,7 @@ Rule PlayerKilledDominatingHeavySniper
 {
 	criteria ConceptKilledPlayer IsSniper IsDominated  IsVictimHeavy
 	ApplyContext "SniperKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingHeavySniper
 }
 
@@ -686,6 +689,7 @@ Rule PlayerKilledDominatingMedicSniper
 {
 	criteria ConceptKilledPlayer IsSniper IsDominated  IsVictimMedic
 	ApplyContext "SniperKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingMedicSniper
 }
 
@@ -701,6 +705,7 @@ Rule PlayerKilledDominatingPyroSniper
 {
 	criteria ConceptKilledPlayer IsSniper IsDominated  IsVictimPyro
 	ApplyContext "SniperKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingPyroSniper
 }
 
@@ -716,6 +721,7 @@ Rule PlayerKilledDominatingScoutSniper
 {
 	criteria ConceptKilledPlayer IsSniper IsDominated  IsVictimScout
 	ApplyContext "SniperKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingScoutSniper
 }
 
@@ -735,6 +741,7 @@ Rule PlayerKilledDominatingSniperSniper
 {
 	criteria ConceptKilledPlayer IsSniper IsDominated  IsVictimSniper
 	ApplyContext "SniperKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingSniperSniper
 }
 
@@ -751,6 +758,7 @@ Rule PlayerKilledDominatingSoldierSniper
 {
 	criteria ConceptKilledPlayer IsSniper IsDominated  IsVictimSoldier
 	ApplyContext "SniperKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingSoldierSniper
 }
 
@@ -768,6 +776,7 @@ Rule PlayerKilledDominatingSpySniper
 {
 	criteria ConceptKilledPlayer IsSniper IsDominated  IsVictimSpy
 	ApplyContext "SniperKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingSpySniper
 }
 
