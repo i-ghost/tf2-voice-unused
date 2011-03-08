@@ -4,7 +4,62 @@
 This is a history of all public releases.
 
 ----
-====0.5 {{{05.02.2011}}}===
+====0.6 {{{06.02.2011}}}====
+  * Updated Heavy's 'all of you are babies' etc response to only play if you are not using a melee weapon, so it doesn't mix with his melee dares. Use 'Battle Cry' voice command on anybody but a Heavy whilst holding a non-melee weapon to hear.
+
+  * Added base Sniper.txt for diff purposes
+
+  * Added a criterion to check if Sniper is unscoped
+  * Added all Sniper payload responses to game_sounds_vo_handmade.txt
+  * Added all Sniper payload responses for Sniper, different versions of the same lines depending if you are scoped or not.
+
+  * "Time to inform your next of kin" added back to getting >3 kills with Rocket Launcher, was removed by valve
+
+  * Toned down Heavy melee swing responses to 50PercentChance (was 75PercentChance)
+
+  * Added unused Domination and Revenge lines for Sniper to game_sounds_vo_handmade.txt
+  * Added unused generic Domination lines for Sniper when scoped (whispers), 75% chance
+  * Added unused Revenge lines for Sniper, against certain classes. Lowered generic revenge lines to 30% chance
+  * Made the above uninterruptible
+  * Added a line for when you get an SMG kill, 30% chance
+  * - Removed a previously added but unused criterion from response_rules.txt
+  * Made achievement responses uninterruptible for Heavy and Scout
+  * Added a melee dare for Soldier
+
+  * Added 3 lines for when you throw Mad Milk as Scout
+
+  * Made regular domination lines uninterruptible for Sniper
+
+  * Fixed Engineer's auto assist response
+  * Fixed Engineer's Teleporter thanks response so it actually works now
+  * Added achievement responses for Sniper, cannot be interrupted by pain
+  * Added melee dare responses for Sniper
+  * Added manual and auto assist responses for Sniper
+
+  * Moved entries around in game_sounds_vo_handmade.txt and added unused special weapon lines to it
+  * Added special weapon lines for Sniper, use 'Battle Cry' voice command when holding a non-stock weapon
+  * Added ubercharge response lines for Sniper
+  * Added lines for when Sniper is scoped in and looking at an enemy ("Steady, steady..." etc)
+  * Modified the Soldier and Spy kill responses to be split between normal shots and headshots, whispers only play on headshots, updated the Spy normal kills lines to play regardless of weapon and added a line to the Soldier headshot one
+  * Added whisper revenge unused lines, for getting a scoped revenge kill as Sniper
+  * Added unused lines to standard revenge response group for Sniper
+  * Added a line for getting a kill with the Tribalman's Shiv
+  * Added a normal and headshot line for killing a Heavy
+  * Huntsman can now play killing spree lines and any normal, unscoped and non-headshot rifle kill lines
+  * Made normal unused domination lines uninterruptible for Sniper
+  * Updated the Scout double jump response to have a 10% chance of firing only after having fired a weapon, to help ninja Scouts, updated tf.txt to make this work
+  * Added a bunch of criterions to help distinguish between Scout melees
+  * Split up bat kill lines so that only the Bat and Sandman play bat related lines on kill, Basher, Candy Cane, Sun-on-a-Stick and Mackerel now have their own kill lines. All Scout melees use a generic, non-bat related kill response group, though.
+
+  * Added vocal to Huntsman taunt (taunt04.vcd)
+  * Added new vocal variant to Kukri taunt (taunt03_v4.vcd)
+  * Updated tf.txt to allow this
+  * Rebuild scenes.image to allow this
+
+  * Attached the unused PlayerTaunts responses to the positive voice menu option for Sniper
+
+----
+====0.5 {{{05.02.2011}}}====
   * Added base Pyro.txt for diff purposes
 
   * Added criterion IsNotDominating
