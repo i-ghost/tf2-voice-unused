@@ -19,6 +19,7 @@ Criterion "SniperNotSaidCartMovingStoppedO" "SaidCartMovingStoppedO" "!=1" "requ
 Criterion "SniperNotAwardSpeech" "SniperAwardSpeech" "!=1" "required" weight 0
 Criterion "SniperNotAssistSpeech" "SniperAssistSpeech" "!=1" "required" weight 0
 Criterion "SniperNotHoldStill" "SniperHoldStill" "!=1" "required" weight 0
+Criterion "IsTauntsSniper" "TauntsSniper" "1" "required" weight 0
 
 
 Response PlayerCloakedSpyDemomanSniper
@@ -1786,6 +1787,7 @@ Response PlayerPositiveSniper
 Rule PlayerPositiveSniper
 {
 	criteria ConceptPlayerPositive IsSniper
+	ApplyContext "TauntsSniper:1:10"
 	Response PlayerPositiveSniper
 }
 
@@ -1800,7 +1802,7 @@ Response PlayerTauntsSniper
 }
 Rule PlayerTauntsSniper
 {
-	criteria ConceptPlayerTaunts IsSniper
+	criteria ConceptPlayerPositive IsSniper IsTauntsSniper
 	Response PlayerTauntsSniper
 }
 
