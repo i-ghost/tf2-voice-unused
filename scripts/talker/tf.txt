@@ -710,6 +710,7 @@
 	Rule PlayerExpressionAttackScout
 	{
 		criteria ConceptFireWeapon IsScout
+		ApplyContext "ScoutFired:1:7" // Apply the ScoutFired context, to allow Scouts to say double jump lines
 		Response PlayerExpressionAttackScout
 	}
 	
