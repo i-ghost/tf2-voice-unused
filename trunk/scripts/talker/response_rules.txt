@@ -408,6 +408,15 @@ criterion "WeaponIsNotVanillaMelee" "loadout_slot_melee" "" "required" weight 10
 criterion "LoadoutIsDrink" "loadout_slot_secondary" "!=Crit-a-Cola" "required" weight 10
 criterion "LoadoutIsCritDrink" "loadout_slot_secondary" "Crit-a-Cola" "required" weight 10
 criterion "LoadoutIsNotRobotArm" "loadout_slot_melee" "!=The Gunslinger" "required" weight 10
+criterion "WeaponIsJarate" "item_name" "Jarate" "required" weight 10
+criterion "WeaponIsBasher" "item_name" "The Boston basher" "required" weight 10
+criterion "WeaponIsCandy" "item_name" "The Candy Cane" "required" weight 10
+criterion "WeaponIsMace" "item_name" "Sun-on-a-Stick" "required" weight 10
+criterion "WeaponIsNotBasher" "item_name" "!=The Boston basher" "required" weight 10
+criterion "WeaponIsNotCandy" "item_name" "!=The Candy Cane" "required" weight 10
+criterion "WeaponIsNotMace" "item_name" "!=Sun-on-a-Stick" "required" weight 10
+criterion "WeaponIsNotFish" "item_name" "!=The Holy Mackerel" "required" weight 10
+criterion "WeaponIsShiv" "item_name" "The Tribalman's Shiv" "required" weight 10
 
 //Custom healed concept and critical hit
 criterion "IsBeingHealed" "beinghealed" "1" "required"

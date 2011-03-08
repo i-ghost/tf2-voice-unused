@@ -27,6 +27,7 @@ Criterion "ScoutNotAwardSpeech" "ScoutAwardSpeech" "!=1" "required" weight 0
 Criterion "ScoutNotDrinkReadySpeech" "ScoutDrinkReadySpeech" "!=1" "required" weight 0
 Criterion "ScoutIsNotCrit" "ScoutIsCrit" "1" "required" weight 0
 Criterion "IsTauntsScout" "TauntsScout" "1" "required" weight 0
+Criterion "ScoutHasFired" "ScoutFired" "1" "required" weight 0
 
 Response PlayerCloakedSpyDemomanScout
 {
@@ -448,24 +449,101 @@ Rule KilledPlayerManyScout
 	Response KilledPlayerManyScout
 }
 
-Response KilledPlayerMeleeScout
+// Custom modified stuff
+// Modified to split into groups
+// Baseball bats use generic and bat lines
+// Candy, Basher, Fish and Mace will use their own lines in addition to the generic lines
+
+Response KilledPlayerMeleeBatScout
 {
-	scene "scenes/Player/Scout/low/476.vcd" 
-	scene "scenes/Player/Scout/low/477.vcd" 
 	scene "scenes/Player/Scout/low/479.vcd" 
 	scene "scenes/Player/Scout/low/482.vcd" 
 	scene "scenes/Player/Scout/low/481.vcd" 
 	scene "scenes/Player/Scout/low/483.vcd" 
-	scene "scenes/Player/Scout/low/484.vcd" 
-	scene "scenes/Player/Scout/low/498.vcd" 
 	scene "scenes/Player/Scout/low/501.vcd" 
 }
-Rule KilledPlayerMeleeScout
+
+Response KilledPlayerMeleeGenericScout
 {
-	criteria ConceptKilledPlayer KilledPlayerDelay 30PercentChance  IsWeaponMelee ScoutNotKillSpeechMelee IsScout
+	scene "scenes/Player/Scout/low/476.vcd" 
+	scene "scenes/Player/Scout/low/477.vcd" 
+	scene "scenes/Player/Scout/low/484.vcd" 
+	scene "scenes/Player/Scout/low/498.vcd" 
+}
+
+// This rule excludes all weapons that are not the Sandman or vanilla bat
+
+Rule KilledPlayerMeleeBatScout
+{
+	criteria ConceptKilledPlayer KilledPlayerDelay 30PercentChance  IsWeaponMelee WeaponIsNotCandy WeaponIsNotBasher WeaponIsNotMace WeaponIsNotFish ScoutNotKillSpeechMelee IsScout
 	ApplyContext "ScoutKillSpeechMelee:1:10"
 	applycontexttoworld
-	Response KilledPlayerMeleeScout
+	Response KilledPlayerMeleeBatScout
+	Response KilledPlayerMeleeGenericScout
+}
+
+Response KilledPlayerMeleeBasherScout
+{
+	scene "scenes/player/Scout/low/2586.vcd"
+	scene "scenes/player/Scout/low/2643.vcd"
+}
+
+Rule KilledPlayerMeleeBasherScout
+{
+	criteria ConceptKilledPlayer KilledPlayerDelay 30PercentChance IsWeaponMelee WeaponIsBasher ScoutNotKillSpeechMelee IsScout
+	ApplyContext "ScoutKillSpeechMelee:1:10"
+	applycontexttoworld
+	Response KilledPlayerMeleeBasherScout
+	Response KilledPlayerMeleeGenericScout
+}
+
+Response KilledPlayerMeleeCandyScout
+{
+	scene "scenes/player/Scout/low/377.vcd"
+	scene "scenes/player/Scout/low/503.vcd"
+	scene "scenes/player/Scout/low/505.vcd"
+}
+
+Rule KilledPlayerMeleeCandyScout
+{
+	criteria ConceptKilledPlayer KilledPlayerDelay 30PercentChance IsWeaponMelee WeaponIsCandy ScoutNotKillSpeechMelee IsScout
+	ApplyContext "ScoutKillSpeechMelee:1:10"
+	applycontexttoworld
+	Response KilledPlayerMeleeCandyScout
+	Response KilledPlayerMeleeGenericScout
+}
+
+Response KilledPlayerMeleeMaceScout
+{
+	scene "scenes/player/Scout/low/2560.vcd"
+	scene "scenes/player/Scout/low/1289.vcd"
+	scene "scenes/player/Scout/low/2706.vcd"
+}
+
+Rule KilledPlayerMeleeMaceScout
+{
+	criteria ConceptKilledPlayer KilledPlayerDelay 30PercentChance  IsWeaponMelee WeaponIsMace ScoutNotKillSpeechMelee IsScout
+	ApplyContext "ScoutKillSpeechMelee:1:10"
+	applycontexttoworld
+	Response KilledPlayerMeleeMaceScout
+	Response KilledPlayerMeleeGenericScout
+}
+
+Response KilledPlayerMeleeFishScout
+{
+	scene "scenes/player/Scout/low/433.vcd"
+	scene "scenes/player/Scout/low/435.vcd"
+	scene "scenes/player/Scout/low/1308.vcd"
+	scene "scenes/player/Scout/low/2554.vcd"
+}
+
+Rule KilledPlayerMeleeFishScout
+{
+	criteria ConceptKilledPlayer KilledPlayerDelay 30PercentChance  IsWeaponMelee WeaponIsHolyMackerel ScoutNotKillSpeechMelee IsScout
+	ApplyContext "ScoutKillSpeechMelee:1:10"
+	applycontexttoworld
+	Response KilledPlayerMeleeFishScout
+	Response KilledPlayerMeleeGenericScout
 }
 
 Response KilledPlayerMeleeScoutFatScout
@@ -581,8 +659,8 @@ Response DoubleJumpScout
 }
 Rule DoubleJumpScout
 {
-	criteria ConceptDoubleJump IsScout IsNotDoubleJumping WeaponIsNotScattergunDouble ScoutNotDoubleJumpSpeech 10PercentChance
-	ApplyContext "ScoutDoubleJumpSpeech:1:30"
+	criteria ConceptDoubleJump IsScout IsNotDoubleJumping WeaponIsNotScattergunDouble ScoutHasFired ScoutNotDoubleJumpSpeech 10PercentChance
+	ApplyContext "ScoutDoubleJumpSpeech:1:15"
 	Response DoubleJumpScout
 }
 

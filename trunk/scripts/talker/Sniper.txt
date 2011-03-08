@@ -10,6 +10,7 @@ Criterion "SniperNotSaidCartMovingBackwardD" "SaidCartMovingBackwardD" "!=1" "re
 Criterion "SniperNotSaidHealThanks" "SniperSaidHealThanks" "!=1" "required"
 Criterion "IsHelpCapSniper" "SniperHelpCap" "1" "required" weight 0
 // Custom stuff
+Criterion "SniperNotInvulnerableSpeech" "SniperInvulnerableSpeech" "!=1" "required" weight 0
 Criterion "SniperNotSaidCartMovingBackwardO" "SaidCartMovingBackwardO" "!=1" "required" weight 0
 Criterion "SniperNotSaidCartMovingForwardD" "SaidCartMovingForwardD" "!=1" "required" weight 0
 Criterion "SniperNotSaidCartMovingForwardO" "SaidCartMovingForwardO" "!=1" "required" weight 0
@@ -17,6 +18,7 @@ Criterion "SniperNotSaidCartMovingStoppedD" "SaidCartMovingStoppedD" "!=1" "requ
 Criterion "SniperNotSaidCartMovingStoppedO" "SaidCartMovingStoppedO" "!=1" "required" weight 0
 Criterion "SniperNotAwardSpeech" "SniperAwardSpeech" "!=1" "required" weight 0
 Criterion "SniperNotAssistSpeech" "SniperAssistSpeech" "!=1" "required" weight 0
+Criterion "SniperNotHoldStill" "SniperHoldStill" "!=1" "required" weight 0
 
 
 Response PlayerCloakedSpyDemomanSniper
@@ -109,33 +111,100 @@ Rule PlayerCloakedSpySpySniper
 	Response PlayerCloakedSpySpySniper
 }
 
+
+// Modified to only have whisper lines when headshot with rifle.
+// Other lines for when you get a kill with rifle/bow against a Soldier.
+Response SniperKillSoldier
+{
+	scene "scenes/Player/Sniper/low/1719.vcd" predelay "1"
+	scene "scenes/Player/Sniper/low/1727.vcd" predelay "1"
+	scene "scenes/Player/Sniper/low/1731.vcd" predelay "1"
+	scene "scenes/Player/Sniper/low/1757.vcd" predelay "1"
+}
+Rule SniperKillSoldier
+{
+	criteria ConceptKilledPlayer IsSniper WeaponIsSniperRifle 50PercentChance IsVictimSoldier
+	ApplyContext "SniperKillSpeech:1:10"
+	Response SniperKillSoldier
+}
+Rule SniperKillSoldierBow
+{
+	criteria ConceptKilledPlayer IsSniper WeaponIsBow 50PercentChance IsVictimSoldier
+	ApplyContext "SniperKillSpeech:1:10"
+	Response SniperKillSoldier
+}
+
 Response SniperHeadShotKillSoldier
 {
-	scene "scenes/Player/Sniper/low/1719.vcd" predelay "1.75"
 	scene "scenes/Player/Sniper/low/1725.vcd" predelay "1.75"
-	scene "scenes/Player/Sniper/low/1727.vcd" predelay "1.75"
-	scene "scenes/Player/Sniper/low/1731.vcd" predelay "1.75"
+	scene "scenes/Player/Sniper/low/1807.vcd" predelay "1.75"
+	scene "scenes/Player/Sniper/low/1803.vcd" predelay "1.75"
+	scene "scenes/Player/Sniper/low/1831.vcd" predelay "1.75"
 }
 Rule SniperHeadShotKillSoldier
 {
-	criteria ConceptKilledPlayer IsSniper WeaponIsSniperrifle IsHeadShot 50PercentChance IsVictimSoldier
+	criteria ConceptKilledPlayer IsSniper WeaponIsSniperrifle IsHeadShot 75PercentChance IsVictimSoldier
 	ApplyContext "SniperKillSpeech:1:10"
 	Response SniperHeadShotKillSoldier
 }
 
+// Same for the Heavy
+
+Response SniperKillHeavy
+{
+	scene "scenes/Player/Sniper/low/1758.vcd" predelay "1"
+}
+Rule SniperKillHeavy
+{
+	criteria ConceptKilledPlayer IsSniper WeaponIsSniperRifle 50PercentChance IsVictimHeavy
+	ApplyContext "SniperKillSpeech:1:10"
+	Response SniperKillHeavy
+}
+Rule SniperKillHeavyBow
+{
+	criteria ConceptKilledPlayer IsSniper WeaponIsBow 50PercentChance IsVictimHeavy
+	ApplyContext "SniperKillSpeech:1:10"
+	Response SniperKillHeavy
+}
+
+Response SniperHeadShotKillHeavy
+{
+	scene "scenes/Player/Sniper/low/1832.vcd" predelay "1.75"
+}
+Rule SniperHeadShotKillHeavy
+{
+	criteria ConceptKilledPlayer IsSniper WeaponIsSniperrifle IsHeadShot 75PercentChance IsVictimHeavy
+	ApplyContext "SniperKillSpeech:1:10"
+	Response SniperHeadShotKillHeavy
+}
+
+// Modified to only have whisper lines when headshot with rifle.
+// Other lines for when you get a kill with any weapon against a Spy.
+Response SniperKillSpy
+{
+	scene "scenes/Player/Sniper/low/1712.vcd" predelay "1"
+	scene "scenes/Player/Sniper/low/1723.vcd" predelay "1"
+	scene "scenes/Player/Sniper/low/1729.vcd" predelay "1"
+	scene "scenes/Player/Sniper/low/1732.vcd" predelay "1"
+}
+Rule SniperKillSpy
+{
+	criteria ConceptKilledPlayer IsSniper 50PercentChance IsVictimSpy
+	ApplyContext "SniperKillSpeech:1:10"
+	Response SniperKillSpy
+}
+
 Response SniperHeadShotKillSpy
 {
-	scene "scenes/Player/Sniper/low/1712.vcd" predelay "1.75"
-	scene "scenes/Player/Sniper/low/1723.vcd" predelay "1.75"
-	scene "scenes/Player/Sniper/low/1729.vcd" predelay "1.75"
-	scene "scenes/Player/Sniper/low/1732.vcd" predelay "1.75"
 	scene "scenes/Player/Sniper/low/1805.vcd" predelay "1.75"
 	scene "scenes/Player/Sniper/low/1806.vcd" predelay "1.75"
 	scene "scenes/Player/Sniper/low/1808.vcd" predelay "1.75"
+	scene "scenes/Player/Sniper/low/1798.vcd" predelay "1.75"
+	scene "scenes/Player/Sniper/low/1799.vcd" predelay "1.75"
 }
 Rule SniperHeadShotKillSpy
 {
-	criteria ConceptKilledPlayer IsSniper WeaponIsSniperrifle IsHeadShot 50PercentChance IsVictimSpy
+	criteria ConceptKilledPlayer IsSniper WeaponIsSniperrifle IsHeadShot 75PercentChance IsVictimSpy
 	ApplyContext "SniperKillSpeech:1:10"
 	Response SniperHeadShotKillSpy
 }
@@ -514,6 +583,24 @@ Rule DefendOnThePointSniper
 	Response DefendOnThePointSniper
 }
 
+// Custom stuff
+
+Response InvulnerableSpeechSniper
+{
+	scene "scenes/Player/Sniper/low/1750.vcd"
+	scene "scenes/Player/Sniper/low/1751.vcd"
+	scene "scenes/Player/Sniper/low/1754.vcd"
+	scene "scenes/Player/Sniper/low/1756.vcd"
+}
+Rule InvulnerableSpeechSniper
+{
+	criteria ConceptFireWeapon IsSniper IsInvulnerable SniperNotInvulnerableSpeech
+	ApplyContext "SniperInvulnerableSpeech:1:30"
+	Response InvulnerableSpeechSniper
+}
+
+// End custom
+
 Response KilledPlayerManySniper
 {
 	scene "scenes/Player/Sniper/low/1670.vcd" 
@@ -534,6 +621,18 @@ Rule KilledPlayerManySniper
 	Response KilledPlayerManySniper
 }
 
+// Custom stuff
+// Allow the Huntsman to use the above response group
+Rule KilledPlayerManySniperBow
+{
+	criteria ConceptKilledPlayer IsManyRecentKills 30PercentChance WeaponIsBow KilledPlayerDelay SniperNotKillSpeech IsSniper
+	ApplyContext "SniperKillSpeech:1:10"
+	applycontexttoworld
+	Response KilledPlayerManySniper
+}
+
+// End custom
+
 Response KilledPlayerMeleeSniper
 {
 	scene "scenes/Player/Sniper/low/1717.vcd" 
@@ -546,6 +645,24 @@ Rule KilledPlayerMeleeSniper
 	applycontexttoworld
 	Response KilledPlayerMeleeSniper
 }
+
+// Custom stuff
+// Shiv kill
+
+Response KilledPlayerShivSniper
+{
+	scene "scenes/Player/Sniper/low/2387.vcd" 
+}
+Rule KilledPlayerShivSniper
+{
+	criteria ConceptKilledPlayer KilledPlayerDelay 30PercentChance  IsWeaponMelee WeaponIsShiv SniperNotKillSpeechMelee IsSniper
+	ApplyContext "SniperKillSpeechMelee:1:10"
+	applycontexttoworld
+	Response KilledPlayerShivSniper
+	Response KilledPlayerMeleeSniper
+}
+
+// End custom
 
 Response KilledPlayerVeryManySniper
 {
@@ -561,6 +678,16 @@ Response KilledPlayerVeryManySniper
 Rule KilledPlayerVeryManySniper
 {
 	criteria ConceptKilledPlayer IsVeryManyRecentKills 50PercentChance IsWeaponPrimary KilledPlayerDelay SniperNotKillSpeech IsSniper
+	ApplyContext "SniperKillSpeech:1:10"
+	applycontexttoworld
+	Response KilledPlayerVeryManySniper
+}
+
+// Custom stuff
+// Allow the Huntsman to use the above response group
+Rule KilledPlayerVeryManySniperBow
+{
+	criteria ConceptKilledPlayer IsVeryManyRecentKills 50PercentChance WeaponIsBow KilledPlayerDelay SniperNotKillSpeech IsSniper
 	ApplyContext "SniperKillSpeech:1:10"
 	applycontexttoworld
 	Response KilledPlayerVeryManySniper
@@ -664,6 +791,7 @@ Rule KilledPlayerDominatingSniper
 {
 	criterion ConceptKilledPlayer IsSniper DeployedContext 75PercentChance IsDominated
 	ApplyContext "SniperKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response KilledPlayerDominatingSniper
 }
 // End custom
@@ -829,12 +957,30 @@ Response PlayerKilledForRevengeSniper
 	scene "scenes/Player/Sniper/low/1708.vcd" predelay "2.5"
 	scene "scenes/Player/Sniper/low/1709.vcd" predelay "2.5"
 	scene "scenes/Player/Sniper/low/1741.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/1740.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/1752.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/1753.vcd" predelay "2.5"
 }
 Rule PlayerKilledForRevengeSniper
 {
 	criteria ConceptKilledPlayer IsSniper IsRevenge 30PercentChance
 	ApplyContext "SniperKillSpeech:1:10"
 	ApplyContext "IsDominating:1:10"
+	Response PlayerKilledForRevengeSniper
+}
+
+// Scoped revenge lines, whispers
+Response PlayerKilledForRevengeSoftSniper
+{
+	scene "scenes/Player/Sniper/low/1815.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/1815.vcd" predelay "2.5"
+}
+Rule PlayerKilledForRevengeSoftSniper
+{
+	criteria ConceptKilledPlayer IsSniper IsRevenge DeployedContext 30PercentChance
+	ApplyContext "SniperKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
+	Response PlayerKilledForRevengeSoftSniper
 	Response PlayerKilledForRevengeSniper
 }
 
@@ -965,20 +1111,109 @@ Rule PlayerKilledForRevengeHeavySniper
 
 // End directed revenge lines
 
+// Here we have normal kills, normal scoped kills and headshots
+// Scoped kills are whisper lines, normal kills are not
+// So Huntsman kills shouldn't be whispers
+// Only headshot kills use all three response groups, to spice things up
+
+Response SniperKill
+{
+	scene "scenes/Player/Sniper/low/1724.vcd" predelay "1"
+	scene "scenes/Player/Sniper/low/1834.vcd" predelay "1"
+	scene "scenes/Player/Sniper/low/1759.vcd" predelay "1"
+	scene "scenes/Player/Sniper/low/1731.vcd" predelay "1"
+	scene "scenes/Player/Sniper/low/1745.vcd" predelay "1"
+	scene "scenes/Player/Sniper/low/1746.vcd" predelay "1"
+	scene "scenes/Player/Sniper/low/1747.vcd" predelay "1"
+	scene "scenes/Player/Sniper/low/1750.vcd" predelay "1"
+	scene "scenes/Player/Sniper/low/1751.vcd" predelay "1"
+	scene "scenes/Player/Sniper/low/1754.vcd" predelay "1"
+	scene "scenes/Player/Sniper/low/1756.vcd" predelay "1"
+}
+
+Response SniperKillSoft
+{
+	scene "scenes/Player/Sniper/low/1809.vcd" predelay "1"
+	scene "scenes/Player/Sniper/low/1813.vcd" predelay "1"
+	scene "scenes/Player/Sniper/low/1826.vcd" predelay "1"
+	scene "scenes/Player/Sniper/low/1827.vcd" predelay "1"
+	scene "scenes/Player/Sniper/low/1828.vcd" predelay "1"
+	scene "scenes/Player/Sniper/low/1816.vcd" predelay "1"
+	scene "scenes/Player/Sniper/low/1817.vcd" predelay "1"
+	scene "scenes/Player/Sniper/low/1818.vcd" predelay "1"
+	scene "scenes/Player/Sniper/low/1819.vcd" predelay "1"
+	scene "scenes/Player/Sniper/low/1820.vcd" predelay "1"
+}
+
+Rule SniperKill
+{
+	criteria ConceptKilledPlayer IsSniper WeaponIsSniperrifle 30PercentChance
+	ApplyContext "SniperKillSpeech:1:10"
+	Response SniperKill
+}
+
+Rule SniperKillSoft
+{
+	criteria ConceptKilledPlayer IsSniper WeaponIsSniperrifle DeployedContext 30PercentChance
+	ApplyContext "SniperKillSpeech:1:10"
+	Response SniperKillSoft
+}
+
+Rule SniperKillBow
+{
+	criteria ConceptKilledPlayer IsSniper WeaponIsBow 30PercentChance
+	ApplyContext "SniperKillSpeech:1:10"
+	Response SniperKill
+}
+
 Response SniperHeadShotKill
 {
 	scene "scenes/Player/Sniper/low/1790.vcd" predelay "1.75"
 	scene "scenes/Player/Sniper/low/1795.vcd" predelay "1.75"
 	scene "scenes/Player/Sniper/low/1801.vcd" predelay "1.75"
 	scene "scenes/Player/Sniper/low/1802.vcd" predelay "1.75"
+	scene "scenes/Player/Sniper/low/1713.vcd" predelay "1.75"
+	scene "scenes/Player/Sniper/low/1728.vcd" predelay "1.75"
+	scene "scenes/Player/Sniper/low/1789.vcd" predelay "1.75"
+	scene "scenes/Player/Sniper/low/1791.vcd" predelay "1.75"
+	scene "scenes/Player/Sniper/low/1792.vcd" predelay "1.75"
+	scene "scenes/Player/Sniper/low/1800.vcd" predelay "1.75"
+	scene "scenes/Player/Sniper/low/1811.vcd" predelay "1.75"
+	scene "scenes/Player/Sniper/low/1738.vcd" predelay "1.75"
+	scene "scenes/Player/Sniper/low/1812.vcd" predelay "1.75"
 }
 Rule SniperHeadShotKill
 {
-	criteria ConceptKilledPlayer IsSniper WeaponIsSniperrifle IsHeadShot 50PercentChance
+	criteria ConceptKilledPlayer IsSniper WeaponIsSniperrifle IsHeadShot
 	ApplyContext "SniperKillSpeech:1:10"
 	Response SniperHeadShotKill
+	Response SniperKillSoft
+	Response SniperKill
 }
 
+// Response to play when looking at enemy in scope
+
+Response SniperHoldStill
+{
+	scene "scenes/Player/Sniper/low/1835.vcd"
+	scene "scenes/Player/Sniper/low/1804.vcd"
+	scene "scenes/Player/Sniper/low/1833.vcd"
+	scene "scenes/Player/Sniper/low/1829.vcd"
+	scene "scenes/Player/Sniper/low/1830.vcd"
+	scene "scenes/Player/Sniper/low/1821.vcd"
+	scene "scenes/Player/Sniper/low/1822.vcd"
+	scene "scenes/Player/Sniper/low/1823.vcd"
+	scene "scenes/Player/Sniper/low/1824.vcd"
+	scene "scenes/Player/Sniper/low/1825.vcd"
+}
+Rule SniperHoldStill
+{
+	criteria ConceptPlayerExpression IsSniper IsCrosshairEnemy DeployedContext SniperNotHoldStill
+	ApplyContext "SniperHoldStill:1:10"
+	Response SniperHoldStill
+}
+
+// End custom
 
 //--------------------------------------------------------------------------------------------------------------
 // Auto Speech Pain
@@ -1162,6 +1397,27 @@ Rule PlayerHelpCapture2Sniper
 	criteria ConceptPlayerHelp IsSniper IsOnCappableControlPoint IsHelpCapSniper
 	Response PlayerHelpCapture2Sniper
 }
+
+// Custom stuff
+// Response for when the Sniper is fighting on a cappable point
+Response PlayerGetOnPointSniper
+{
+	scene "scenes/Player/Sniper/low/2289.vcd" 
+	scene "scenes/Player/Sniper/low/2290.vcd" 
+	scene "scenes/Player/Sniper/low/2291.vcd" 
+	scene "scenes/Player/Sniper/low/2418.vcd" 
+	scene "scenes/Player/Sniper/low/2419.vcd" 
+	scene "scenes/Player/Sniper/low/2420.vcd" 
+}
+
+Rule PlayerGetOnPointSniper
+{
+	criterion ConceptFireWeapon IsSniper IsOnCappableControlPoint NotDefendOnThePointSpeech
+	ApplyContext "DefendOnThePointSpeech:1:15"
+	applycontexttoworld
+	Response PlayerGetOnPointSniper
+}
+// End custom
 
 Response PlayerHelpDefendSniper
 {
@@ -1370,6 +1626,54 @@ Rule MeleeDareCombatSniper
 	criteria ConceptPlayerBattleCry IsWeaponMelee IsSniper IsCrosshairEnemy
 	Response MeleeDareCombatSniper
 }
+
+// New wepaon lines
+
+Response PlayerShinyCrySniper
+{
+	scene "scenes/Player/Sniper/low/2284.vcd"
+	scene "scenes/Player/Sniper/low/2285.vcd"
+	scene "scenes/Player/Sniper/low/2286.vcd"
+	scene "scenes/Player/Sniper/low/2287.vcd"
+	scene "scenes/Player/Sniper/low/2288.vcd"
+	scene "scenes/Player/Sniper/low/2421.vcd"
+	scene "scenes/Player/Sniper/low/2422.vcd"
+	scene "scenes/Player/Sniper/low/2433.vcd"
+	scene "scenes/Player/Sniper/low/2477.vcd"
+}
+Rule PlayerShinyCrySniper
+{
+	criteria ConceptPlayerBattleCry IsSniper 30PercentChance IsWeaponPrimary WeaponIsNotVanillaPrimary
+	Response PlayerShinyCrySniper
+}
+
+Rule PlayerShinyCrySniperBow
+{
+	criteria ConceptPlayerBattleCry IsSniper 30PercentChance WeaponIsBow WeaponIsNotVanillaPrimary
+	Response PlayerShinyCrySniper
+}
+
+// This rule is here for future-proofing
+
+Rule PlayerShinyCrySniperSecondary
+{
+	criteria ConceptPlayerBattleCry IsSniper 30PercentChance IsWeaponSecondary WeaponIsNotVanillaSecondary
+	Response PlayerShinyCrySniper
+}
+
+// Some achievement weapons seem to use the item1 etc weapon mode, so we use a hard rule for Jarate or Bow
+Rule PlayerShinyCrySniperJarate
+{
+	criteria ConceptPlayerBattleCry IsSniper 30PercentChance WeaponIsJarate WeaponIsNotVanillaSecondary
+	Response PlayerShinyCrySniper
+}
+
+Rule PlayerShinyCrySniperMelee
+{
+	criteria ConceptPlayerBattleCry IsSniper 30PercentChance IsWeaponMelee WeaponIsNotVanillaMelee
+	Response PlayerShinyCrySniper
+}
+
 //End custom
 
 Response PlayerCheersSniper
