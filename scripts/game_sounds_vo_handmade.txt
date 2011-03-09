@@ -1521,3 +1521,60 @@
  "soundlevel"  "SNDLVL_95dB"
  "wave"  "vo/sniper_SpecialWeapon09.wav"
 }
+
+// Sniper unused fight on cap
+
+
+"Sniper.FightOnCap01"
+{
+	"channel"		"CHAN_VOICE"
+	"volume"		"0.820"
+	"pitch"		"PITCH_NORM"
+	"soundlevel"		"SNDLVL_95dB"
+	"wave"		"vo/Sniper_FightOnCap01.wav"
+}
+
+"Sniper.FightOnCap02"
+{
+	"channel"		"CHAN_VOICE"
+	"volume"		"0.820"
+	"pitch"		"PITCH_NORM"
+	"soundlevel"		"SNDLVL_95dB"
+	"wave"		"vo/Sniper_FightOnCap02.wav"
+}
+
+"Sniper.FightOnCap03"
+{
+	"channel"		"CHAN_VOICE"
+	"volume"		"0.820"
+	"pitch"		"PITCH_NORM"
+	"soundlevel"		"SNDLVL_95dB"
+	"wave"		"vo/Sniper_FightOnCap03.wav"
+}
+
+"Sniper.FightOnCap04"
+{
+	"channel"		"CHAN_VOICE"
+	"volume"		"0.820"
+	"pitch"		"PITCH_NORM"
+	"soundlevel"		"SNDLVL_95dB"
+	"wave"		"vo/Sniper_FightOnCap04.wav"
+}
+
+"Sniper.FightOnCap05"
+{
+	"channel"		"CHAN_VOICE"
+	"volume"		"0.820"
+	"pitch"		"PITCH_NORM"
+	"soundlevel"		"SNDLVL_95dB"
+	"wave"		"vo/Sniper_FightOnCap05.wav"
+}
+
+"Sniper.FightOnCap06"
+{
+	"channel"		"CHAN_VOICE"
+	"volume"		"0.820"
+	"pitch"		"PITCH_NORM"
+	"soundlevel"		"SNDLVL_95dB"
+	"wave"		"vo/Sniper_FightOnCap06.wav"
+}
