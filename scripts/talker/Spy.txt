@@ -241,10 +241,26 @@ Response KilledPlayerMeleeSpy
 }
 Rule KilledPlayerMeleeSpy
 {
-	criteria ConceptKilledPlayer KilledPlayerDelay 30PercentChance  IsWeaponMelee SpyNotKillSpeechMelee IsSpy
+	criteria ConceptKilledPlayer KilledPlayerDelay 30PercentChance IsWeaponMelee SpyNotKillSpeechMelee IsSpy
 	ApplyContext "SpyKillSpeechMelee:1:10"
 	applycontexttoworld
 	Response KilledPlayerMeleeSpy
+}
+
+Response KilledPlayerMeleeDisguisedSpy
+{
+	scene "scenes/Player/Spy/low/816.vcd" predelay "0.75"
+	scene "scenes/Player/Spy/low/823.vcd" predelay "0.75"
+	scene "scenes/Player/Spy/low/827.vcd" predelay "0.75"
+	scene "scenes/Player/Spy/low/838.vcd" predelay "0.75"
+}
+Rule KilledPlayerMeleeDisguisedSpy
+{
+	criteria ConceptKilledPlayer KilledPlayerDelay IsDisguised 30PercentChance IsWeaponMelee SpyNotKillSpeechMelee IsSpy
+	ApplyContext "SpyKillSpeechMelee:1:10"
+	applycontexttoworld
+	Response KilledPlayerMeleeSpy
+	Response KilledPlayerMeleeDisguisedSpy
 }
 
 Response MedicFollowSpy
@@ -442,6 +458,9 @@ Response PlayerKilledForRevengeSpy
 	scene "scenes/Player/Spy/low/743.vcd" predelay "2.5"
 	scene "scenes/Player/Spy/low/812.vcd" predelay "2.5"
 	scene "scenes/Player/Spy/low/813.vcd" predelay "2.5"
+	scene "scenes/Player/Spy/low/3017.vcd" predelay "2.5"
+	scene "scenes/Player/Spy/low/3038.vcd" predelay "2.5"
+	scene "scenes/Player/Spy/low/3039.vcd" predelay "2.5"
 }
 Rule PlayerKilledForRevengeSpy
 {
