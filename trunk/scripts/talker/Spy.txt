@@ -227,7 +227,7 @@ Response KilledPlayerManySpy
 }
 Rule KilledPlayerManySpy
 {
-	criteria ConceptKilledPlayer IsManyRecentKills 30PercentChance IsWeaponPrimary KilledPlayerDelay SpyNotKillSpeech IsSpy
+	criteria ConceptKilledPlayer IsManyRecentKills 30PercentChance IsWeaponSecondary KilledPlayerDelay SpyNotKillSpeech IsSpy
 	ApplyContext "SpyKillSpeech:1:10"
 	applycontexttoworld
 	Response KilledPlayerManySpy
