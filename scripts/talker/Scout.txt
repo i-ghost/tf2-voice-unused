@@ -377,13 +377,12 @@ Rule DefendOnThePointScout
 }
 
 // Custom stuff
-// TODO: These lines were added for testing, as such they are not final. Need to change this.
 Response InvulnerableSpeechScout
 {
 	scene "scenes/Player/Scout/low/486.vcd" 
 	scene "scenes/Player/Scout/low/491.vcd" 
-	scene "scenes/Player/Scout/low/494.vcd" 
-	scene "scenes/Player/Scout/low/496.vcd" 
+	scene "scenes/Player/Scout/low/2505.vcd" 
+	scene "scenes/Player/Scout/low/499.vcd" 
 }
 Rule InvulnerableSpeechScout
 {
@@ -1452,6 +1451,8 @@ Response MeleeDareCombatScout
 	scene "scenes/Player/Scout/low/2581.vcd" 
 	scene "scenes/Player/Scout/low/2642.vcd" 
 	scene "scenes/Player/Scout/low/500.vcd" 
+	scene "scenes/Player/Scout/low/494.vcd"
+	scene "scenes/Player/Scout/low/496.vcd"
 }
 Rule MeleeDareCombatScout
 {

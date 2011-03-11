@@ -388,6 +388,7 @@ criterion "ItemIsGoldenWrench" "item_name" "Golden Wrench" "required" weight 10
 criterion "WeaponIsShortstop" "item_name" "The Shortstop" "required" weight 10
 criterion "WeaponIsMadMilk" "item_name" "Mad Milk" "required" weight 10
 criterion "WeaponIsHolyMackerel" "item_name" "The Holy Mackerel" "required" weight 10
+criterion "WeaponIsSashimono" "item_name" "Soldier's Sashimono" "required" weight 10
 // Custom added criterion
 criterion "WeaponIsBenja" "item_name" "The Dalokohs Bar" "required" weight 10
 criterion "WeaponIsSteak" "item_name" "The Buffalo Steak Sandvich" "required" weight 10 // Not actually used for the auto-eat response. Used for distinction in the taunts.
