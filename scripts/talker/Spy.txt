@@ -8,6 +8,15 @@ Criterion "SpyNotKillSpeech" "SpyKillSpeech" "!=1" "required" weight 0
 Criterion "SpyNotKillSpeechMelee" "SpyKillSpeechMelee" "!=1" "required" weight 0
 Criterion "SpyNotSaidHealThanks" "SpySaidHealThanks" "!=1" "required"
 Criterion "IsHelpCapSpy" "SpyHelpCap" "1" "required" weight 0
+// Custom stuff
+Criterion "IsTauntsSpy" "TauntsSpy" "1" "required" weight 0
+Criterion "EngineerWasKilled" "EngyKilled" "1" "required" weight 0
+Criterion "SapperDestroyed" "LostSapper" "1" "required" weight 0
+Criterion "ToysMurdered" "ObjectDestroyed" "1" "required" weight 0
+Criterion "NotSapSpeech" "SapKillSpeech" "!=1" "required" weight 0
+Criterion "NotSapperLostSpeech" "SpySapperLostSpeech" "!=1" "required" weight 0
+Criterion "SpyNotAssistSpeech" "SpyAssistSpeech" "!=1" "required" weight 0
+Criterion "SpyNotInvulnerableSpeech" "SpyInvulnerableSpeech" "!=1" "required" weight 0
 
 
 Response PlayerCloakedSpyDemomanSpy
@@ -213,6 +222,36 @@ Rule DefendOnThePointSpy
 	Response DefendOnThePointSpy
 }
 
+// Custom stuff
+Response InvulnerableSpeechSpy
+{
+	scene "scenes/Player/Spy/low/836.vcd" 
+	scene "scenes/Player/Spy/low/848.vcd" 
+	scene "scenes/Player/Spy/low/843.vcd" 
+}
+Rule InvulnerableSpeechSpy
+{
+	criteria ConceptFireWeapon IsSpy IsInvulnerable SpyNotInvulnerableSpeech
+	ApplyContext "SpyInvulnerableSpeech:1:30"
+	Response InvulnerableSpeechSpy
+}
+
+// auto assist
+
+Response KilledPlayerAssistAutoSpy
+{
+	scene "scenes/Player/Spy/low/828.vcd" predelay "2.5"
+	scene "scenes/Player/Spy/low/829.vcd" predelay "2.5"
+}
+Rule KilledPlayerAssistAutoSpy
+{
+	criteria ConceptKilledPlayer IsSpy IsBeingHealed IsARecentKill KilledPlayerDelay 20PercentChance SpyNotAssistSpeech
+	ApplyContext "SpyAssistSpeech:1:20"
+	Response KilledPlayerAssistAutoSpy
+}
+
+// End custom
+
 Response KilledPlayerManySpy
 {
 	scene "scenes/Player/Spy/low/772.vcd" 
@@ -233,12 +272,94 @@ Rule KilledPlayerManySpy
 	Response KilledPlayerManySpy
 }
 
+// Custom stuff
+// If a Sapper has been removed in the past 10 seconds and the Spy gets a kill on an Engineer these can play
+Response PlayerSapperKillSpy
+{
+	scene "scenes/Player/Spy/low/840.vcd" 
+	scene "scenes/Player/Spy/low/839.vcd" 
+}
+Rule PlayerSapperKillSpy
+{
+	criteria ConceptKilledPlayer IsSpy IsVictimEngineer 50PercentChance SapperDestroyed NotSapperLostSpeech
+	ApplyContext "SpyKillSpeechMelee:1:10"
+	ApplyContext "SpySapperLostSpeech:1:10"
+	Response PlayerSapperKillSpy
+}
+
+Rule SapperLost
+{
+	criteria ConceptLostObject IsSpy
+	ApplyContext "LostSapper:1:10"
+	Response PlayerExpressionAttackSpy
+}
+
+// This rule is for sapping after you kill an Engy
+// It checks if you have already said the line in the past 10 seconds and fails if you have
+// It checks if you have killed an Engineer in the past 10 seconds and fails if you have not
+//
+// Stab and Sap
+Response PlayerKilledObjectSpy
+{
+	scene "scenes/Player/Spy/low/821.vcd" 
+}
+Rule PlayerKilledObjectSpy
+{
+	criteria ConceptKilledObject IsSpy 50PercentChance EngineerWasKilled NotSapSpeech
+	ApplyContext "ObjectDestroyed:1:5"
+	Response PlayerKilledObjectSpy
+}
+
+// This simply checks if you have killed an Engineer in the past 10 seconds
+Rule EngineerKilled
+{
+	criteria ConceptKilledPlayer IsSpy IsVictimEngineer
+	ApplyContext "EngyKilled:1:10"
+	Response PlayerExpressionAttackSpy // Seems to require a response for the context to actually set
+}
+
+// This checks if you have destroyed a building in the past five seconds
+// Sap and Stab
+Rule PlayerKilledObjectSpyContext
+{
+	criteria ConceptKilledObject IsSpy 
+	ApplyContext "ObjectDestroyed:1:5"
+	Response PlayerExpressionAttackSpy
+}
+
+// If you have then this checks if you have killed an Engineer in the past ten seconds
+// If you have then the line plays
+// So essentially we accommodate both stab and sap and sap and stab
+Rule EngineerKilledAfterSap
+{
+	criteria ConceptKilledPlayer IsSpy IsVictimEngineer ToysMurdered
+	ApplyContext "SapKillSpeech:1:10"
+	Response PlayerKilledObjectSpy
+}
+
+Response KilledPlayerSniperSpy
+{
+	scene "scenes/Player/Spy/low/825.vcd" 
+	scene "scenes/Player/Spy/low/839.vcd" 
+}
+
+Rule KilledPlayerMeleeSniperSpy
+{
+	criteria ConceptKilledPlayer KilledPlayerDelay 30PercentChance IsWeaponMelee SpyNotKillSpeechMelee IsVictimSniper IsSpy
+	ApplyContext "SpyKillSpeechMelee:1:10"
+	applycontexttoworld
+	Response KilledPlayerSniperSpy
+}
+
+// End custom
+
 Response KilledPlayerMeleeSpy
 {
 	scene "scenes/Player/Spy/low/817.vcd" 
 	scene "scenes/Player/Spy/low/818.vcd" 
 	scene "scenes/Player/Spy/low/826.vcd" 
 }
+
 Rule KilledPlayerMeleeSpy
 {
 	criteria ConceptKilledPlayer KilledPlayerDelay 30PercentChance IsWeaponMelee SpyNotKillSpeechMelee IsSpy
@@ -247,12 +368,16 @@ Rule KilledPlayerMeleeSpy
 	Response KilledPlayerMeleeSpy
 }
 
+// Custom stuff
 Response KilledPlayerMeleeDisguisedSpy
 {
 	scene "scenes/Player/Spy/low/816.vcd" predelay "0.75"
 	scene "scenes/Player/Spy/low/823.vcd" predelay "0.75"
 	scene "scenes/Player/Spy/low/827.vcd" predelay "0.75"
 	scene "scenes/Player/Spy/low/838.vcd" predelay "0.75"
+	scene "scenes/Player/Spy/low/819.vcd" predelay "0.75"
+	scene "scenes/Player/Spy/low/820.vcd" predelay "0.75"
+	scene "scenes/Player/Spy/low/822.vcd" predelay "0.75"
 }
 Rule KilledPlayerMeleeDisguisedSpy
 {
@@ -262,6 +387,7 @@ Rule KilledPlayerMeleeDisguisedSpy
 	Response KilledPlayerMeleeSpy
 	Response KilledPlayerMeleeDisguisedSpy
 }
+// End custom
 
 Response MedicFollowSpy
 {
@@ -318,6 +444,7 @@ Rule PlayerKilledDominatingDemomanSpy
 {
 	criteria ConceptKilledPlayer IsSpy IsDominated  IsVictimDemoman
 	ApplyContext "SpyKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingDemomanSpy
 }
 
@@ -334,6 +461,7 @@ Rule PlayerKilledDominatingEngineerSpy
 {
 	criteria ConceptKilledPlayer IsSpy IsDominated  IsVictimEngineer
 	ApplyContext "SpyKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingEngineerSpy
 }
 
@@ -352,6 +480,7 @@ Rule PlayerKilledDominatingHeavySpy
 {
 	criteria ConceptKilledPlayer IsSpy IsDominated  IsVictimHeavy
 	ApplyContext "SpyKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingHeavySpy
 }
 
@@ -368,6 +497,7 @@ Rule PlayerKilledDominatingMedicSpy
 {
 	criteria ConceptKilledPlayer IsSpy IsDominated  IsVictimMedic
 	ApplyContext "SpyKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingMedicSpy
 }
 
@@ -383,6 +513,7 @@ Rule PlayerKilledDominatingPyroSpy
 {
 	criteria ConceptKilledPlayer IsSpy IsDominated  IsVictimPyro
 	ApplyContext "SpyKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingPyroSpy
 }
 
@@ -401,12 +532,14 @@ Rule PlayerKilledDominatingScoutSpy
 {
 	criteria ConceptKilledPlayer IsSpy IsDominated  IsVictimScout
 	ApplyContext "SpyKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingScoutSpy
 }
 
 Response PlayerKilledDominatingSniperSpy
 {
 	scene "scenes/Player/Spy/low/3012.vcd" predelay "2.5"
+	scene "scenes/Player/Spy/low/831.vcd" predelay "2.5"
 	scene "scenes/Player/Spy/low/3020.vcd" predelay "2.5"
 	scene "scenes/Player/Spy/low/3033.vcd" predelay "2.5"
 	scene "scenes/Player/Spy/low/3050.vcd" predelay "2.5"
@@ -418,6 +551,7 @@ Rule PlayerKilledDominatingSniperSpy
 {
 	criteria ConceptKilledPlayer IsSpy IsDominated  IsVictimSniper
 	ApplyContext "SpyKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingSniperSpy
 }
 
@@ -433,6 +567,7 @@ Rule PlayerKilledDominatingSoldierSpy
 {
 	criteria ConceptKilledPlayer IsSpy IsDominated  IsVictimSoldier
 	ApplyContext "SpyKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingSoldierSpy
 }
 
@@ -448,6 +583,7 @@ Rule PlayerKilledDominatingSpySpy
 {
 	criteria ConceptKilledPlayer IsSpy IsDominated  IsVictimSpy
 	ApplyContext "SpyKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledDominatingSpySpy
 }
 
@@ -458,6 +594,7 @@ Response PlayerKilledForRevengeSpy
 	scene "scenes/Player/Spy/low/743.vcd" predelay "2.5"
 	scene "scenes/Player/Spy/low/812.vcd" predelay "2.5"
 	scene "scenes/Player/Spy/low/813.vcd" predelay "2.5"
+	scene "scenes/Player/Spy/low/841.vcd" predelay "2.5"
 	scene "scenes/Player/Spy/low/3017.vcd" predelay "2.5"
 	scene "scenes/Player/Spy/low/3038.vcd" predelay "2.5"
 	scene "scenes/Player/Spy/low/3039.vcd" predelay "2.5"
@@ -466,6 +603,7 @@ Rule PlayerKilledForRevengeSpy
 {
 	criteria ConceptKilledPlayer IsSpy IsRevenge
 	ApplyContext "SpyKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
 	Response PlayerKilledForRevengeSpy
 }
 
@@ -483,7 +621,7 @@ Response PlayerAttackerPainSpy
 }
 Rule PlayerAttackerPainSpy
 {
-	criteria ConceptAttackerPain IsSpy
+	criteria ConceptAttackerPain IsSpy IsNotDominating
 	Response PlayerAttackerPainSpy
 }
 
@@ -493,7 +631,7 @@ Response PlayerOnFireSpy
 }
 Rule PlayerOnFireSpy
 {
-	criteria ConceptFire IsSpy SpyIsNotStillonFire
+	criteria ConceptFire IsSpy SpyIsNotStillonFire IsNotDominating
 	ApplyContext "SpyOnFire:1:7"
 	Response PlayerOnFireSpy
 }
@@ -505,7 +643,7 @@ Response PlayerOnFireRareSpy
 }
 Rule PlayerOnFireRareSpy
 {
-	criteria ConceptFire IsSpy 10PercentChance SpyIsNotStillonFire
+	criteria ConceptFire IsSpy 10PercentChance SpyIsNotStillonFire IsNotDominating
 	ApplyContext "SpyOnFire:1:7"
 	Response PlayerOnFireRareSpy
 }
@@ -519,7 +657,7 @@ Response PlayerPainSpy
 }
 Rule PlayerPainSpy
 {
-	criteria ConceptPain IsSpy
+	criteria ConceptPain IsSpy IsNotDominating
 	Response PlayerPainSpy
 }
 
@@ -529,7 +667,7 @@ Response PlayerStillOnFireSpy
 }
 Rule PlayerStillOnFireSpy
 {
-	criteria ConceptFire IsSpy  SpyIsStillonFire
+	criteria ConceptFire IsSpy  SpyIsStillonFire IsNotDominating
 	ApplyContext "SpyOnFire:1:7"
 	Response PlayerStillOnFireSpy
 }
@@ -717,6 +855,23 @@ Rule PlayerThanksSpy
 	Response PlayerThanksSpy
 }
 
+// Custom Assist kill response
+// As there is no actual concept for assist kills, this is the second best method.
+// Say thanks after you kill more than one person.
+
+Response KilledPlayerAssistSpy
+{
+	scene "scenes/Player/Spy/low/828.vcd"
+	scene "scenes/Player/Spy/low/829.vcd"
+}
+Rule KilledPlayerAssistSpy
+{
+	criteria ConceptPlayerThanks IsSpy IsARecentKill KilledPlayerDelay SpyNotAssistSpeech
+	ApplyContext "SpyAssistSpeech:1:20"
+	Response KilledPlayerAssistSpy
+}
+// End custom
+
 Response PlayerYesSpy
 {
 	scene "scenes/Player/Spy/low/857.vcd" 
@@ -828,6 +983,24 @@ Rule PlayerBattleCrySpy
 	Response PlayerBattleCrySpy
 }
 
+// Custom stuff - melee dare
+// Look at enemy, then do battle cry voice command while holding a melee weapon.
+Response MeleeDareCombatSpy
+{
+	scene "scenes/Player/Spy/low/3016.vcd"
+	scene "scenes/Player/Spy/low/3023.vcd"
+	scene "scenes/Player/Spy/low/834.vcd"
+	scene "scenes/Player/Spy/low/845.vcd"
+	scene "scenes/Player/Spy/low/847.vcd"
+	scene "scenes/Player/Spy/low/846.vcd"
+	scene "scenes/Player/Spy/low/824.vcd"
+}
+Rule MeleeDareCombatSpy
+{
+	criteria ConceptPlayerBattleCry IsWeaponMelee IsSpy IsCrosshairEnemy
+	Response MeleeDareCombatSpy
+}
+
 Response PlayerCheersSpy
 {
 	scene "scenes/Player/Spy/low/710.vcd" 
@@ -843,17 +1016,6 @@ Rule PlayerCheersSpy
 {
 	criteria ConceptPlayerCheers IsSpy
 	Response PlayerCheersSpy
-}
-
-Response PlayerDisguisedTauntsSpy
-{
-	scene "scenes/Player/Spy/low/840.vcd" 
-	scene "scenes/Player/Spy/low/839.vcd" 
-}
-Rule PlayerDisguisedTauntsSpy
-{
-	criteria ConceptPlayerTaunts IsDisguised IsSpy
-	Response PlayerDisguisedTauntsSpy
 }
 
 Response PlayerGoodJobSpy
@@ -934,6 +1096,7 @@ Rule PlayerNiceShotSpy
 Response PlayerPositiveSpy
 {
 	scene "scenes/Player/Spy/low/809.vcd" 
+	scene "scenes/Player/Spy/low/837.vcd" 
 	scene "scenes/Player/Spy/low/810.vcd" 
 	scene "scenes/Player/Spy/low/811.vcd" 
 	scene "scenes/Player/Spy/low/812.vcd" 
@@ -942,6 +1105,7 @@ Response PlayerPositiveSpy
 Rule PlayerPositiveSpy
 {
 	criteria ConceptPlayerPositive IsSpy
+	ApplyContext "TauntsSpy:1:10"
 	Response PlayerPositiveSpy
 }
 
@@ -955,7 +1119,7 @@ Response PlayerTauntsSpy
 }
 Rule PlayerTauntsSpy
 {
-	criteria ConceptPlayerTaunts IsSpy
+	criteria ConceptPlayerPositive IsSpy IsTauntsSpy
 	Response PlayerTauntsSpy
 }
 
