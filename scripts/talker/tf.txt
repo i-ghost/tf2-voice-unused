@@ -399,7 +399,7 @@
 	}
 	response "MedicTauntKritzkrieg"
 	{
-	scene "scenes/player/medic/low/taunt06.vcd"
+		scene "scenes/player/medic/low/taunt06.vcd"
 	}
 	response "MedicTauntUbersaw"
 	{
@@ -547,7 +547,16 @@
 		criteria ConceptPlayerTaunt IsSoldier WeaponIsBanner
 		response SoldierTauntBanner
 	}
-		
+	rule SoldierTauntSashimono
+	{
+		criteria ConceptPlayerTaunt IsSoldier WeaponIsSashimono
+		response SoldierTauntBanner
+	}
+	rule SoldierTauntKatana
+	{
+		criteria ConceptPlayerTaunt IsSoldier WeaponIsKatana
+		response SoldierTauntDirectHit
+	}		
 	Response PlayerExpressionIdleSoldier
 	{
 		scene "scenes/player/soldier/low/idleloop01.vcd"
@@ -981,6 +990,12 @@
 		criteria ConceptPlayerTaunt IsDemoman WeaponIsSword WeaponIsNotAxe // Modified to exclude Skullcutter.
 		response DemomanTauntSword
 	}
+	rule DemomanTauntKatana
+	{
+		criteria ConceptPlayerTaunt IsDemoman WeaponIsKatana
+		response DemomanTauntSword
+	}
+	
 	// Custom Stuff
 	rule DemomanTauntCaber
 	{
