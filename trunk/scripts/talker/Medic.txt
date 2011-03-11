@@ -11,6 +11,8 @@ Criterion "MedicNotKillSpeechMelee" "MedicKillSpeechMelee" "!=1" "required" weig
 Criterion "MedicNotSaidHealThanks" "MedicSaidHealThanks" "!=1" "required"
 Criterion "IsHelpCapMedic" "MedicHelpCap" "1" "required" weight 0
 Criterion "IsTauntsMedic" "TauntsMedic" "1" "required" weight 0
+// Custom stuff
+Criterion "MedicNotAssistSpeech" "MedicAssistSpeech" "!=1" "required" weight 0
 
 
 Response MedicChargeReady
@@ -252,16 +254,50 @@ Rule InvulnerableSpeechMedic
 	Response InvulnerableSpeechMedic
 }
 
-Response InvulnerableSpeechMeleeMedic
+// Custom stuff
+Response InvulnerableSpeechCombatMedic
 {
-	scene "scenes/Player/Medic/low/taunt05_vocal16.vcd" 
+	scene "scenes/Player/Medic/low/646.vcd" 
+	scene "scenes/Player/Medic/low/647.vcd" 
+	scene "scenes/Player/Medic/low/653.vcd" 
 }
-Rule InvulnerableSpeechMedic
+Rule InvulnerableSpeechCombatMedic
 {
-	criteria ConceptFireWeapon IsMedic IsWeaponMelee  IsInvulnerable MedicNotInvulnerableSpeech
+	criteria ConceptFireWeapon IsMedic IsInvulnerable MedicNotInvulnerableSpeech
 	ApplyContext "MedicInvulnerableSpeech:1:30"
-	Response InvulnerableSpeechMeleeMedic
+	Response InvulnerableSpeechCombatMedic
 }
+
+Response KritzSpeechMedic
+{
+	scene "scenes/Player/Medic/low/663.vcd"  
+	scene "scenes/Player/Medic/low/664.vcd"  
+	scene "scenes/Player/Medic/low/676.vcd"  
+}
+Rule KritzSpeechMedic
+{
+	criteria ConceptMedicChargeDeployed IsMedic  MedicNotInvulnerableSpeech
+	ApplyContext "MedicInvulnerableSpeech:1:30"
+	Response InvulnerableSpeechMedic
+	Response KritzSpeechMedic
+}
+
+Response KilledPlayerAssistAutoMedic
+{
+	scene "scenes/Player/Medic/low/657.vcd" predelay "2.5"
+	scene "scenes/Player/Medic/low/658.vcd" predelay "2.5"
+}
+Rule KilledPlayerAssistAutoMedic
+{
+	criteria ConceptKilledPlayer IsMedic IsBeingHealed IsARecentKill KilledPlayerDelay 20PercentChance MedicNotAssistSpeech
+	ApplyContext "MedicAssistSpeech:1:20"
+	Response KilledPlayerAssistAutoMedic
+}
+
+// End custom
+
+// Modified so that Medic says pretty much any of his killstreak or domination lines when he gets a kill
+// Medic will rarely get kills let alone dominations himself so this is fine
 
 Response KilledPlayerManyMedic
 {
@@ -274,19 +310,6 @@ Rule KilledPlayerManyMedic
 	applycontexttoworld
 	Response KilledPlayerManyMedic
 }
-
-Response KilledPlayerMeleeMedic
-{
-	scene "scenes/Player/Medic/low/645.vcd" 
-}
-Rule KilledPlayerMeleeMedic
-{
-	criteria ConceptKilledPlayer KilledPlayerDelay 30PercentChance  IsWeaponMelee MedicNotKillSpeechMelee IsMedic
-	ApplyContext "MedicKillSpeechMelee:1:10"
-	applycontexttoworld
-	Response KilledPlayerMeleeMedic
-}
-
 Response KilledPlayerVeryManyMedic
 {
 	scene "scenes/Player/Medic/low/646.vcd" 
@@ -301,6 +324,24 @@ Rule KilledPlayerVeryManyMedic
 	applycontexttoworld
 	Response KilledPlayerVeryManyMedic
 }
+
+Response KilledPlayerMedic
+{
+	scene "scenes/Player/Medic/low/645.vcd" 
+}
+Rule KilledPlayerMedic
+{
+	criteria ConceptKilledPlayer KilledPlayerDelay 30PercentChance  MedicNotKillSpeechMelee IsMedic
+	ApplyContext "MedicKillSpeechMelee:1:10"
+	applycontexttoworld
+	Response InvulnerableSpeechCombatMedic
+	Response KilledPlayerMedic
+	Response KilledPlayerManyMedic
+	Response KilledPlayerVeryManyMedic
+	Response PlayerKilledDominatingMedic
+}
+
+// Done
 
 Response PlayerKilledCapperMedic
 {
@@ -619,6 +660,23 @@ Rule PlayerThanksMedic
 	Response PlayerThanksMedic
 }
 
+// Custom Assist kill response
+// As there is no actual concept for assist kills, this is the second best method.
+// Say thanks after you kill more than one person.
+
+Response KilledPlayerAssistMedic
+{
+	scene "scenes/Player/Medic/low/657.vcd"
+	scene "scenes/Player/Medic/low/658.vcd"
+}
+Rule KilledPlayerAssistMedic
+{
+	criteria ConceptPlayerThanks IsMedic IsARecentKill KilledPlayerDelay MedicNotAssistSpeech
+	ApplyContext "MedicAssistSpeech:1:20"
+	Response KilledPlayerAssistMedic
+}
+// End custom
+
 Response PlayerYesMedic
 {
 	scene "scenes/Player/Medic/low/689.vcd" 
@@ -741,6 +799,25 @@ Rule PlayerBattleCryMedic
 	criteria ConceptPlayerBattleCry IsMedic
 	Response PlayerBattleCryMedic
 }
+
+// Custom stuff - melee dare
+// Look at enemy, then do battle cry voice command while holding a melee weapon.
+Response MeleeDareCombatMedic
+{
+	scene "scenes/Player/Medic/low/661.vcd"
+	scene "scenes/Player/Medic/low/669.vcd"
+	scene "scenes/Player/Medic/low/672.vcd"
+	scene "scenes/Player/Medic/low/667.vcd"
+	scene "scenes/Player/Medic/low/677.vcd"
+	scene "scenes/Player/Medic/low/680.vcd"
+	scene "scenes/Player/Medic/low/1241.vcd"
+}
+Rule MeleeDareCombatMedic
+{
+	criteria ConceptPlayerBattleCry IsWeaponMelee IsMedic IsCrosshairEnemy
+	Response MeleeDareCombatMedic
+}
+//End custom
 
 Response PlayerCheersMedic
 {
