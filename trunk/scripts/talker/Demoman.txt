@@ -377,6 +377,25 @@ Rule KilledPlayerSword2Demoman
 // The above rule is for Demoman victims only.
 // End Eyelander responses
 
+// Katana response rules shared with Eyelander
+Rule KilledPlayerKatanaDemoman
+{
+	criteria ConceptKilledPlayer KilledPlayerDelay WeaponIsKatana 30PercentChance IsNotVictimDemoman  DemomanNotKillSpeechMelee IsDemoman
+	ApplyContext "DemomanKillSpeechMelee:1:10"
+	applycontexttoworld
+	Response KilledPlayerSwordDemoman
+}
+// The above rule is for non-Demoman victims only.
+Rule KilledPlayerKatana2Demoman
+{
+	criteria ConceptKilledPlayer KilledPlayerDelay WeaponIsKatana 30PercentChance IsVictimDemoman  DemomanNotKillSpeechMelee IsDemoman
+	ApplyContext "DemomanKillSpeechMelee:1:10"
+	applycontexttoworld
+	Response KilledPlayerSword2Demoman
+}
+// The above rule is for Demoman victims only.
+// End Katana responses
+
 // Pain Train responses
 // Shares responses with Frying Pan, saves having duplicate entries.
 Response KilledPlayerClubDemoman
