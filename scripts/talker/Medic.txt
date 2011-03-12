@@ -532,7 +532,7 @@ Response PlayerGoMedic
 	scene "scenes/Player/Medic/low/566.vcd" 
 	scene "scenes/Player/Medic/low/567.vcd" 
 	scene "scenes/Player/Medic/low/1226.vcd" 
-	scene "scenes/Player/Medic/low/1596.vcd" 
+	scene "scenes/Player/Medic/low/1596.vcd" // this doesnt exist
 }
 Rule PlayerGoMedic
 {
