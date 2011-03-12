@@ -1234,10 +1234,6 @@ Rule PlayerHelpCaptureScout
 
 Response PlayerHelpCapture2Scout
 {
-	scene "scenes/Player/Scout/low/2568.vcd" 
-	scene "scenes/Player/Scout/low/2569.vcd" 
-	scene "scenes/Player/Scout/low/2570.vcd" 
-	scene "scenes/Player/Scout/low/2572.vcd" 
 	scene "scenes/Player/Scout/low/489.vcd" 
 	scene "scenes/Player/Scout/low/1304.vcd" 
 	scene "scenes/Player/Scout/low/1305.vcd" 
@@ -1249,6 +1245,25 @@ Rule PlayerHelpCapture2Scout
 	criteria ConceptPlayerHelp IsScout IsOnCappableControlPoint IsHelpCapScout
 	Response PlayerHelpCapture2Scout
 }
+
+// Custom stuff
+// Response for when the Scout is fighting on a cappable point
+Response PlayerGetOnPointScout
+{
+	scene "scenes/Player/Scout/low/2568.vcd" 
+	scene "scenes/Player/Scout/low/2569.vcd" 
+	scene "scenes/Player/Scout/low/2570.vcd" 
+	scene "scenes/Player/Scout/low/2572.vcd" 
+}
+
+Rule PlayerGetOnPointScout
+{
+	criterion ConceptFireWeapon IsScout IsOnCappableControlPoint NotDefendOnThePointSpeech
+	ApplyContext "DefendOnThePointSpeech:1:15"
+	applycontexttoworld
+	Response PlayerGetOnPointScout
+}
+// End custom
 
 Response PlayerHelpDefendScout
 {
