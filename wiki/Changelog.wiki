@@ -4,6 +4,43 @@
 This is a history of all public releases.
 
 ----
+====0.7/RC1 {{{12.03.2011}}}====
+  * Added Sniper fight on cap entries to game_sounds_vo_handmade.txt, so you can actually hear the lines now.
+
+  * Added bases Spy.txt for diff purposes
+
+  * Updated Spy's multi-kill responses to actually work now, was incorrectly set by valve
+
+  * Added unused lines for getting a kill while disguised as a Spy
+
+  * Added spooky whistle to positive voice menu for Spy
+  * Attached unused PlayerTaunts to positive voice menu for Spy
+  * Added unused lines for when you kill an Engineer as a Spy after he removes your Sapper (formerly unused as PlayerDisguisedTauntsSpy)
+  * Added unused line for stab/sap and sap/stab as Spy
+  * Added unused revenge lines for Spy
+  * Added some more lines to revenge group for Spy
+  * Added melee dares for Spy
+  * Added ubercharge responses for Spy
+  * Added unused lines for when you get a kill while disguised as a Spy
+  * Added an unused line for killing a Sniper as a Spy
+  * Added an unused line for dominating a Sniper as a Spy
+
+  * ~ Included content in response_rules.txt from the latest release version
+  * Updated Scout ubercharge lines to be more appropriate
+
+  * ~ Included content in tf.txt from the latest release version
+
+  * Added automatic and manual assist lines for Medic
+  * Modified responses to that killstreak and domination lines have a chance of playing on a normal kill as a Medic
+  * Added responses for deploying Kritzkrieg ubercharge
+  * Added melee dares for Medic
+  * Updated ubercharge responses for Medic to be more appropriate
+
+  * Moved Scout's fightoncap lines to their own response group for when you fire your weapon on a cappable control point
+
+  * Finished what valve started by giving the Katana the Eyelander/Direct Hit taunt for Demoman/Soldier respectively; this was their original intention
+  * Katana shares the Eyelander kill responses for Demoman
+----
 ====0.6 {{{06.02.2011}}}====
   * Updated Heavy's 'all of you are babies' etc response to only play if you are not using a melee weapon, so it doesn't mix with his melee dares. Use 'Battle Cry' voice command on anybody but a Heavy whilst holding a non-melee weapon to hear.
 
