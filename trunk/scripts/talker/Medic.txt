@@ -270,7 +270,6 @@ Rule InvulnerableSpeechCombatMedic
 
 Response KritzSpeechMedic
 {
-	scene "scenes/Player/Medic/low/663.vcd"  
 	scene "scenes/Player/Medic/low/664.vcd"  
 	scene "scenes/Player/Medic/low/676.vcd"  
 }
@@ -286,6 +285,7 @@ Response KilledPlayerAssistAutoMedic
 {
 	scene "scenes/Player/Medic/low/657.vcd" predelay "2.5"
 	scene "scenes/Player/Medic/low/658.vcd" predelay "2.5"
+	scene "scenes/Player/Medic/low/663.vcd" predelay "2.5"
 }
 Rule KilledPlayerAssistAutoMedic
 {
@@ -668,6 +668,7 @@ Response KilledPlayerAssistMedic
 {
 	scene "scenes/Player/Medic/low/657.vcd"
 	scene "scenes/Player/Medic/low/658.vcd"
+	scene "scenes/Player/Medic/low/663.vcd"
 }
 Rule KilledPlayerAssistMedic
 {
