@@ -835,7 +835,6 @@ Response PlayerKilledDominatingHeavyScout
 	scene "scenes/Player/Scout/low/2712.vcd" predelay "2.5"
 	scene "scenes/Player/Scout/low/2713.vcd" predelay "2.5"
 	scene "scenes/Player/Scout/low/2642.vcd" predelay "2.5"
-	scene "scenes/Player/Scout/low/2643.vcd" predelay "2.5"
 }
 Rule PlayerKilledDominatingHeavyScout
 {
