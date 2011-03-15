@@ -1122,7 +1122,6 @@ Response SniperKill
 	scene "scenes/Player/Sniper/low/1724.vcd" predelay "1"
 	scene "scenes/Player/Sniper/low/1834.vcd" predelay "1"
 	scene "scenes/Player/Sniper/low/1759.vcd" predelay "1"
-	scene "scenes/Player/Sniper/low/1731.vcd" predelay "1"
 	scene "scenes/Player/Sniper/low/1745.vcd" predelay "1"
 	scene "scenes/Player/Sniper/low/1746.vcd" predelay "1"
 	scene "scenes/Player/Sniper/low/1747.vcd" predelay "1"
@@ -1671,7 +1670,7 @@ Rule PlayerShinyCrySniperJarate
 
 Rule PlayerShinyCrySniperMelee
 {
-	criteria ConceptPlayerBattleCry IsSniper 30PercentChance IsWeaponMelee WeaponIsNotVanillaMelee
+	criteria ConceptPlayerBattleCry IsSniper 30PercentChance IsWeaponMelee IsNotCrossHairEnemy WeaponIsNotVanillaMelee
 	Response PlayerShinyCrySniper
 }
 

@@ -336,21 +336,6 @@ Rule EngineerKilledAfterSap
 	ApplyContext "SapKillSpeech:1:10"
 	Response PlayerKilledObjectSpy
 }
-
-Response KilledPlayerSniperSpy
-{
-	scene "scenes/Player/Spy/low/825.vcd" 
-	scene "scenes/Player/Spy/low/839.vcd" 
-}
-
-Rule KilledPlayerMeleeSniperSpy
-{
-	criteria ConceptKilledPlayer KilledPlayerDelay 30PercentChance IsWeaponMelee SpyNotKillSpeechMelee IsVictimSniper IsSpy
-	ApplyContext "SpyKillSpeechMelee:1:10"
-	applycontexttoworld
-	Response KilledPlayerSniperSpy
-}
-
 // End custom
 
 Response KilledPlayerMeleeSpy

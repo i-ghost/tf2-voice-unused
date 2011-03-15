@@ -24,6 +24,7 @@ Criterion "IsHeavyFistsSwung" "HeavyFistsSwung" "1" "required" weight 0
 Criterion "IsNotHeavyFistsSwung" "HeavyFistsSwung" "!=1" "required" weight 0
 Criterion "NotGunTauntHeavy" "GunTauntHeavy" "!=1" "required" weight 0
 Criterion "IsTauntsHeavy" "TauntsHeavy" "1" "required" weight 0
+Criterion "IsNotDaring" "IsDaring" "!=1" "required" weight 0
 
 Response PlayerCloakedSpyDemomanHeavy
 {
@@ -549,7 +550,7 @@ Response HeavySwingFistsStart
 }
 Rule HeavySwingFistsStart
 {
-	criteria ConceptFireWeapon IsWeaponMelee 50PercentChance IsHeavy IsNotHeavyFistsSwung
+	criteria ConceptFireWeapon IsWeaponMelee 50PercentChance IsHeavy IsNotDaring IsNotHeavyFistsSwung
 	ApplyContext "HeavyFistsSwung:1:10"
 	Response HeavySwingFistsStart
 }
@@ -563,7 +564,7 @@ Response HeavySwingFists
 }
 Rule HeavySwingFists
 {
-	criteria ConceptFireWeapon IsWeaponMelee IsHeavyFistsSwung IsHeavy
+	criteria ConceptFireWeapon IsWeaponMelee IsHeavyFistsSwung IsNotDaring IsHeavy
 	Response HeavySwingFists
 }
 
@@ -1169,6 +1170,7 @@ Response MeleeDareCombatHeavy
 Rule MeleeDareCombatHeavy
 {
 	criteria ConceptPlayerBattleCry IsWeaponMelee IsHeavy IsCrosshairEnemy
+	ApplyContext "IsDaring:1:5"
 	Response MeleeDareCombatHeavy
 }
 
