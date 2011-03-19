@@ -570,6 +570,19 @@ Rule MedicFollowScout
 	Response MedicFollowScout
 }
 
+Response ScoutJarateHit
+{
+	scene "scenes/Player/Scout/low/364.vcd"  
+	scene "scenes/Player/Scout/low/426.vcd"  
+	scene "scenes/Player/Scout/low/450.vcd"  
+	scene "scenes/Player/Scout/low/451.vcd"  
+}
+Rule ScoutJarateHit
+{
+	criteria ConceptJarateHit IsScout
+	Response ScoutJarateHit
+}
+
 Response PlayerBeingShotInvincibleScout
 {
 	scene "scenes/Player/Scout/low/2632.vcd" 

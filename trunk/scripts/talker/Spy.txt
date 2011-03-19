@@ -368,8 +368,8 @@ Rule KilledPlayerMeleeDisguisedSpy
 	criteria ConceptKilledPlayer KilledPlayerDelay IsDisguised 30PercentChance IsWeaponMelee SpyNotKillSpeechMelee IsSpy
 	ApplyContext "SpyKillSpeechMelee:1:10"
 	applycontexttoworld
-	Response KilledPlayerMeleeSpy
 	Response KilledPlayerMeleeDisguisedSpy
+	Response KilledPlayerMeleeSpy
 }
 // End custom
 
