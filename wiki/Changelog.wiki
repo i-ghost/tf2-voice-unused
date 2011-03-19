@@ -4,6 +4,24 @@
 This is a history of all public releases.
 
 ----
+====0.75/RC2 {{{19.03.2011}}}====
+  * Moved a line to Medic's auto/manual assist lines group from the Kritz activation group
+
+  * Updated Heavy's fist swinging lines so that they cannot interrupt his melee dares
+  * Removed a duplicate entry in Scout.txt
+  * Removed a duplicate entry in Sniper.txt
+  * Made Sniper's 'new weapon' lines not interfere with his melee dares
+  * Removed Spy's Sniper kill lines, as they are already used elsewhere (as a Sniper domination) and I used a wrong line anyway (used an Engineer related lined, derp)
+
+  * Updated to match internal name change of Soldier's Sashimono/The Concheror (please make up your mind, valve)
+
+  * Updated how the PlayerTaunts responses work across all classes, should hear them more often now without the need to spam the 'positive' voice command
+  * Fixed a bug relating to Medic's domination responses
+
+  * Added Jarate/Milk responses for Sniper
+  * Added Jarate/Milk responses for Scout
+  * Re-prioritised a response in rule KilledPlayerMeleeDisguisedSpy in Spy.txt
+----
 ====0.7/RC1 {{{12.03.2011}}}====
   * Added Sniper fight on cap entries to game_sounds_vo_handmade.txt, so you can actually hear the lines now.
 
