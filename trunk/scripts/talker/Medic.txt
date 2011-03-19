@@ -10,7 +10,6 @@ Criterion "MedicNotKillSpeech" "MedicKillSpeech" "!=1" "required" weight 0
 Criterion "MedicNotKillSpeechMelee" "MedicKillSpeechMelee" "!=1" "required" weight 0
 Criterion "MedicNotSaidHealThanks" "MedicSaidHealThanks" "!=1" "required"
 Criterion "IsHelpCapMedic" "MedicHelpCap" "1" "required" weight 0
-Criterion "IsTauntsMedic" "TauntsMedic" "1" "required" weight 0
 // Custom stuff
 Criterion "MedicNotAssistSpeech" "MedicAssistSpeech" "!=1" "required" weight 0
 
@@ -325,6 +324,28 @@ Rule KilledPlayerVeryManyMedic
 	Response KilledPlayerVeryManyMedic
 }
 
+Response PlayerKilledDominatingMedic
+{
+	scene "scenes/Player/Medic/low/1227.vcd" predelay "2.5"
+	scene "scenes/Player/Medic/low/1232.vcd" predelay "2.5"
+	scene "scenes/Player/Medic/low/605.vcd" predelay "2.5"
+	scene "scenes/Player/Medic/low/606.vcd" predelay "2.5"
+	scene "scenes/Player/Medic/low/1229.vcd" predelay "2.5"
+	scene "scenes/Player/Medic/low/607.vcd" predelay "2.5"
+	scene "scenes/Player/Medic/low/608.vcd" predelay "2.5"
+	scene "scenes/Player/Medic/low/1230.vcd" predelay "2.5"
+	scene "scenes/Player/Medic/low/679.vcd" predelay "2.5"
+	scene "scenes/Player/Medic/low/1240.vcd" predelay "2.5"
+}
+Rule PlayerKilledDominatingMedic
+{
+	criteria ConceptKilledPlayer IsMedic IsDominated
+	ApplyContext "MedicKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
+	Response PlayerKilledDominatingMedic
+}
+
+
 Response KilledPlayerMedic
 {
 	scene "scenes/Player/Medic/low/645.vcd" 
@@ -357,27 +378,6 @@ Rule PlayerKilledCapperMedic
 	criteria ConceptCapBlocked IsMedic
 	ApplyContext "MedicKillSpeech:1:10"
 	Response PlayerKilledCapperMedic
-}
-
-Response PlayerKilledDominatingMedic
-{
-	scene "scenes/Player/Medic/low/1227.vcd" predelay "2.5"
-	scene "scenes/Player/Medic/low/1232.vcd" predelay "2.5"
-	scene "scenes/Player/Medic/low/605.vcd" predelay "2.5"
-	scene "scenes/Player/Medic/low/606.vcd" predelay "2.5"
-	scene "scenes/Player/Medic/low/1229.vcd" predelay "2.5"
-	scene "scenes/Player/Medic/low/607.vcd" predelay "2.5"
-	scene "scenes/Player/Medic/low/608.vcd" predelay "2.5"
-	scene "scenes/Player/Medic/low/1230.vcd" predelay "2.5"
-	scene "scenes/Player/Medic/low/679.vcd" predelay "2.5"
-	scene "scenes/Player/Medic/low/1240.vcd" predelay "2.5"
-}
-Rule PlayerKilledDominatingMedic
-{
-	criteria ConceptKilledPlayer IsMedic IsDominated
-	ApplyContext "MedicKillSpeech:1:10"
-	ApplyContext "IsDominating:1:10"
-	Response PlayerKilledDominatingMedic
 }
 
 Response PlayerKilledForRevengeMedic
@@ -919,12 +919,6 @@ Response PlayerPositiveMedic
 	scene "scenes/Player/Medic/low/1235.vcd" 
 	scene "scenes/Player/Medic/low/1236.vcd" 
 }
-Rule PlayerPositiveMedic
-{
-	criteria ConceptPlayerPositive IsMedic
-	ApplyContext "TauntsMedic:1:10"
-	Response PlayerPositiveMedic
-}
 
 Response PlayerTauntsMedic
 {
@@ -934,9 +928,9 @@ Response PlayerTauntsMedic
 	scene "scenes/Player/Medic/low/609.vcd" 
 	scene "scenes/Player/Medic/low/610.vcd" 
 }
-Rule PlayerTauntsMedic
+Rule PlayerPositiveMedic
 {
-	criteria ConceptPlayerPositive IsMedic IsTauntsMedic
+	criteria ConceptPlayerPositive IsMedic
+	Response PlayerPositiveMedic
 	Response PlayerTauntsMedic
 }
-

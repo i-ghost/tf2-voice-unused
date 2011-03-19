@@ -23,7 +23,6 @@ Criterion "HeavyNotAssistSpeech" "HeavyAssistSpeech" "!=1" "required" weight 0
 Criterion "IsHeavyFistsSwung" "HeavyFistsSwung" "1" "required" weight 0
 Criterion "IsNotHeavyFistsSwung" "HeavyFistsSwung" "!=1" "required" weight 0
 Criterion "NotGunTauntHeavy" "GunTauntHeavy" "!=1" "required" weight 0
-Criterion "IsTauntsHeavy" "TauntsHeavy" "1" "required" weight 0
 Criterion "IsNotDaring" "IsDaring" "!=1" "required" weight 0
 
 Response PlayerCloakedSpyDemomanHeavy
@@ -1313,14 +1312,7 @@ Response PlayerPositiveHeavy
 	scene "scenes/Player/Heavy/low/306.vcd" 
 	scene "scenes/Player/Heavy/low/307.vcd" 
 }
-Rule PlayerPositiveHeavy
-{
-	criteria ConceptPlayerPositive IsHeavy
-	ApplyContext "TauntsHeavy:1:10"
-	Response PlayerPositiveHeavy
-}
 
-// Modified to be an extension of the 'positive' voice command.
 Response PlayerTauntsHeavy
 {
 	scene "scenes/Player/Heavy/low/1270.vcd" 
@@ -1328,9 +1320,10 @@ Response PlayerTauntsHeavy
 	scene "scenes/Player/Heavy/low/1274.vcd" 
 	scene "scenes/Player/Heavy/low/1273.vcd" 
 }
-Rule PlayerTauntsHeavy
+Rule PlayerPositiveHeavy
 {
-	criteria ConceptPlayerPositive IsHeavy IsTauntsHeavy
+	criteria ConceptPlayerPositive IsHeavy
+	Response PlayerPositiveHeavy
 	Response PlayerTauntsHeavy
 }
-
+// Modified to be an extension of the 'positive' voice command.

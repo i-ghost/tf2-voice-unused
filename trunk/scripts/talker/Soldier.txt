@@ -12,7 +12,6 @@ Criterion "IsHelpCapSoldier" "SoldierHelpCap" "1" "required" weight 0
 // Custom criterion
 Criterion "SoldierNotAssistSpeech" "SoldierAssistSpeech" "!=1" "required" weight 0
 Criterion "SoldierNotInvulnerableSpeech" "SoldierInvulnerableSpeech" "!=1" "required" weight 0
-Criterion "IsTauntsSoldier" "TauntsSoldier" "1" "required" weight 0
 
 Response PlayerCloakedSpyDemomanSoldier
 {
@@ -1078,12 +1077,6 @@ Response PlayerPositiveSoldier
 	scene "scenes/Player/Soldier/low/1174.vcd" 
 	scene "scenes/Player/Soldier/low/1171.vcd" 
 }
-Rule PlayerPositiveSoldier
-{
-	criteria ConceptPlayerPositive IsSoldier
-	ApplyContext "TauntsSoldier:1:10"
-	Response PlayerPositiveSoldier
-}
 
 Response PlayerTauntsSoldier
 {
@@ -1093,9 +1086,9 @@ Response PlayerTauntsSoldier
 	scene "scenes/Player/Soldier/low/1351.vcd" 
 	scene "scenes/Player/Soldier/low/1352.vcd" 
 }
-Rule PlayerTauntsSoldier
+Rule PlayerPositiveSoldier
 {
-	criteria ConceptPlayerPositive IsSoldier IsTauntsSoldier
+	criteria ConceptPlayerPositive IsSoldier
+	Response PlayerPositiveSoldier
 	Response PlayerTauntsSoldier
 }
-

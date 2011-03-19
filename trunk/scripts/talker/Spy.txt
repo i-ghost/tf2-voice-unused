@@ -9,7 +9,6 @@ Criterion "SpyNotKillSpeechMelee" "SpyKillSpeechMelee" "!=1" "required" weight 0
 Criterion "SpyNotSaidHealThanks" "SpySaidHealThanks" "!=1" "required"
 Criterion "IsHelpCapSpy" "SpyHelpCap" "1" "required" weight 0
 // Custom stuff
-Criterion "IsTauntsSpy" "TauntsSpy" "1" "required" weight 0
 Criterion "EngineerWasKilled" "EngyKilled" "1" "required" weight 0
 Criterion "SapperDestroyed" "LostSapper" "1" "required" weight 0
 Criterion "ToysMurdered" "ObjectDestroyed" "1" "required" weight 0
@@ -1087,12 +1086,6 @@ Response PlayerPositiveSpy
 	scene "scenes/Player/Spy/low/812.vcd" 
 	scene "scenes/Player/Spy/low/813.vcd" 
 }
-Rule PlayerPositiveSpy
-{
-	criteria ConceptPlayerPositive IsSpy
-	ApplyContext "TauntsSpy:1:10"
-	Response PlayerPositiveSpy
-}
 
 Response PlayerTauntsSpy
 {
@@ -1102,9 +1095,9 @@ Response PlayerTauntsSpy
 	scene "scenes/Player/Spy/low/1315.vcd" 
 	scene "scenes/Player/Spy/low/1316.vcd" 
 }
-Rule PlayerTauntsSpy
+Rule PlayerPositiveSpy
 {
-	criteria ConceptPlayerPositive IsSpy IsTauntsSpy
+	criteria ConceptPlayerPositive IsSpy
+	Response PlayerPositiveSpy
 	Response PlayerTauntsSpy
 }
-

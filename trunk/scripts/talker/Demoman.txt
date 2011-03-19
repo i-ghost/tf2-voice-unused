@@ -12,7 +12,6 @@ Criterion "IsHelpCapDemoman" "DemomanHelpCap" "1" "required" weight 0
 // Custom stuff
 Criterion "DemomanNotInvulnerableSpeech" "DemomanInvulnerableSpeech" "!=1" "required" weight 0
 Criterion "DemomanNotAssistSpeech" "DemomanAssistSpeech" "!=1" "required" weight 0
-Criterion "IsTauntsDemoman" "TauntsDemoman" "1" "required" weight 0
 Criterion "IsDrunk" "NotSober" "1" "required" weight 0
 
 
@@ -1150,12 +1149,6 @@ Response PlayerPositiveDemoman
 	scene "scenes/Player/Demoman/low/992.vcd" 
 	scene "scenes/Player/Demoman/low/993.vcd" 
 }
-Rule PlayerPositiveDemoman
-{
-	criteria ConceptPlayerPositive IsDemoman
-	ApplyContext "TauntsDemoman:1:10"
-	Response PlayerPositiveDemoman
-}
 
 Response PlayerTauntsDemoman
 {
@@ -1163,9 +1156,9 @@ Response PlayerTauntsDemoman
 	scene "scenes/Player/Demoman/low/1382.vcd" 
 	scene "scenes/Player/Demoman/low/1386.vcd" 
 }
-Rule PlayerTauntsDemoman
+Rule PlayerPositiveDemoman
 {
-	criteria ConceptPlayerPositive IsDemoman IsTauntsDemoman
+	criteria ConceptPlayerPositive IsDemoman
+	Response PlayerPositiveDemoman
 	Response PlayerTauntsDemoman
 }
-
