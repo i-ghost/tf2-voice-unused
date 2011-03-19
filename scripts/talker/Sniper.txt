@@ -708,6 +708,32 @@ Rule MedicFollowSniper
 	Response MedicFollowSniper
 }
 
+// Custom stuff
+Response SniperJarateHit
+{
+	scene "scenes/Player/Sniper/low/1608.vcd"    
+	scene "scenes/Player/Sniper/low/1688.vcd"    
+	scene "scenes/Player/Sniper/low/1689.vcd"    
+}
+Rule SniperJarateHit
+{
+	criteria ConceptJarateHit IsSniper
+	Response SniperJarateHit
+}
+
+Response SniperJarateHitScoped
+{
+	scene "scenes/Player/Sniper/low/1780.vcd"    
+	scene "scenes/Player/Sniper/low/1690.vcd"    
+	scene "scenes/Player/Sniper/low/1778.vcd"    
+}
+Rule SniperJarateHitScoped
+{
+	criteria ConceptJarateHit IsSniper DeployedContext
+	Response SniperJarateHitScoped
+}
+// End custom
+
 Response PlayerJarateToss
 {
 	scene "scenes/Player/Sniper/low/3131.vcd" 
