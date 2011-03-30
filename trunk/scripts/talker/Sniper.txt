@@ -657,7 +657,6 @@ Rule KilledPlayerShivSniper
 {
 	criteria ConceptKilledPlayer KilledPlayerDelay 30PercentChance  IsWeaponMelee WeaponIsShiv SniperNotKillSpeechMelee IsSniper
 	ApplyContext "SniperKillSpeechMelee:1:10"
-	applycontexttoworld
 	Response KilledPlayerShivSniper
 	Response KilledPlayerMeleeSniper
 }
