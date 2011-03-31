@@ -294,7 +294,6 @@ Rule KillTauntsEngineerMiniSentry
 {
 	criteria ConceptKilledPlayer WeaponIsMiniSentrygun IsEngineer 20PercentChance
 	ApplyContext "EngineerKillSpeech:1:10"
-	applycontexttoworld
 	Response KillTauntsEngineerMiniSentry
 }
 
@@ -309,7 +308,6 @@ Rule KillTauntsEngineerSpecial
 {
 	criteria ConceptKilledPlayer IsManyRecentKills WeaponIsSentrygun KilledPlayerDelay EngineerNotKillSpeech IsEngineer 30PercentChance
 	ApplyContext "EngineerKillSpeech:1:10"
-	applycontexttoworld
 	Response KillTauntsEngineerSpecial
 }
 
@@ -321,9 +319,8 @@ Response KilledPlayerManyEngineer
 }
 Rule KilledPlayerManyEngineer
 {
-	criteria ConceptKilledPlayer IsManyRecentKills 30PercentChance IsWeaponPrimary KilledPlayerDelay EngineerNotKillSpeech IsEngineer
+	criteria ConceptKilledPlayer IsManyRecentKills 30PercentChance KilledPlayerDelay EngineerNotKillSpeech IsEngineer
 	ApplyContext "EngineerKillSpeech:1:10"
-	applycontexttoworld
 	Response KilledPlayerManyEngineer
 }
 
@@ -333,9 +330,8 @@ Response KilledPlayerMeleeEngineerEngineer
 }
 Rule KilledPlayerMeleeEngineerEngineer
 {
-	criteria ConceptKilledPlayer KilledPlayerDelay 30PercentChance  IsWeaponMelee EngineerNotKillSpeechMelee IsEngineer WeaponIsNotSentrygun
+	criteria ConceptKilledPlayer KilledPlayerDelay 30PercentChance  IsWeaponMelee EngineerNotKillSpeechMelee IsEngineer WeaponIsNotSentry
 	ApplyContext "EngineerKillSpeechMelee:1:10"
-	applycontexttoworld
 	Response KilledPlayerMeleeEngineerEngineer
 }
 
@@ -405,9 +401,8 @@ Response KilledPlayerVeryManyEngineer
 }
 Rule KilledPlayerVeryManyEngineer
 {
-	criteria ConceptKilledPlayer IsVeryManyRecentKills 50PercentChance IsWeaponPrimary KilledPlayerDelay EngineerNotKillSpeech IsEngineer
+	criteria ConceptKilledPlayer IsVeryManyRecentKills 50PercentChance KilledPlayerDelay EngineerNotKillSpeech IsEngineer
 	ApplyContext "EngineerKillSpeech:1:10"
-	applycontexttoworld
 	Response KilledPlayerVeryManyEngineer
 }
 
