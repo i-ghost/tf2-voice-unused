@@ -436,6 +436,7 @@ criterion "WeaponIsNotMiniSentrygun" "customdeath" "!=minisentrygun" "required"
 criterion "WeaponIsSentrygun" "customdeath" "sentrygun" "required"
 criterion "WeaponIsNotSentrygun" "customdeath" "" "required"
 criterion "WeaponIsNotSentry" "customdeath" "none" "required"
+// Note to valve: the customdeath "sentrygun" does not work if a sentry's rockets did the killing
 
 // Custom criterion to check if not scoped in, we do not want the lines to mix
 criterion "Unzoomed" "sniperzoomed" "!=1" "required"
