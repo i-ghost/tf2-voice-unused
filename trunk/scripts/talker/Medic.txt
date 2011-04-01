@@ -802,7 +802,7 @@ Rule PlayerBattleCryMedic
 // Look at enemy, then do battle cry voice command while holding a melee weapon.
 Response MeleeDareCombatMedic
 {
-	scene "scenes/Player/Medic/low/661_fixed.vcd"
+	scene "scenes/Player/Medic/low/661.vcd"
 	scene "scenes/Player/Medic/low/669.vcd"
 	scene "scenes/Player/Medic/low/672.vcd"
 	scene "scenes/Player/Medic/low/667.vcd"
