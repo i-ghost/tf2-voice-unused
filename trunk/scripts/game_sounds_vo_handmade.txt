@@ -1578,3 +1578,15 @@
 	"soundlevel"		"SNDLVL_95dB"
 	"wave"		"vo/Sniper_FightOnCap06.wav"
 }
+
+// 'Missing' Medic taunts
+"Medic.Taunts01_fixed"
+{
+	"channel"		"CHAN_VOICE"
+	"volume"		"0.620"
+	"pitch"			"PITCH_NORM"
+
+	"soundlevel"	"SNDLVL_95dB"
+
+	"wave"			"vo/taunts/medic_Taunts01.wav"
+}
