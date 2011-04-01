@@ -304,9 +304,8 @@ Response KilledPlayerManyMedic
 }
 Rule KilledPlayerManyMedic
 {
-	criteria ConceptKilledPlayer IsManyRecentKills 30PercentChance IsWeaponPrimary KilledPlayerDelay MedicNotKillSpeech IsMedic
+	criteria ConceptKilledPlayer IsManyRecentKills 30PercentChance KilledPlayerDelay MedicNotKillSpeech IsMedic
 	ApplyContext "MedicKillSpeech:1:10"
-	applycontexttoworld
 	Response KilledPlayerManyMedic
 }
 Response KilledPlayerVeryManyMedic
@@ -318,9 +317,8 @@ Response KilledPlayerVeryManyMedic
 }
 Rule KilledPlayerVeryManyMedic
 {
-	criteria ConceptKilledPlayer IsVeryManyRecentKills 50PercentChance IsWeaponPrimary KilledPlayerDelay MedicNotKillSpeech IsMedic
+	criteria ConceptKilledPlayer IsVeryManyRecentKills 50PercentChance KilledPlayerDelay MedicNotKillSpeech IsMedic
 	ApplyContext "MedicKillSpeech:1:10"
-	applycontexttoworld
 	Response KilledPlayerVeryManyMedic
 }
 
@@ -354,7 +352,6 @@ Rule KilledPlayerMedic
 {
 	criteria ConceptKilledPlayer KilledPlayerDelay 30PercentChance  MedicNotKillSpeechMelee IsMedic
 	ApplyContext "MedicKillSpeechMelee:1:10"
-	applycontexttoworld
 	Response InvulnerableSpeechCombatMedic
 	Response KilledPlayerMedic
 	Response KilledPlayerManyMedic
@@ -805,7 +802,7 @@ Rule PlayerBattleCryMedic
 // Look at enemy, then do battle cry voice command while holding a melee weapon.
 Response MeleeDareCombatMedic
 {
-	scene "scenes/Player/Medic/low/661.vcd"
+	scene "scenes/Player/Medic/low/661_fixed.vcd"
 	scene "scenes/Player/Medic/low/669.vcd"
 	scene "scenes/Player/Medic/low/672.vcd"
 	scene "scenes/Player/Medic/low/667.vcd"
