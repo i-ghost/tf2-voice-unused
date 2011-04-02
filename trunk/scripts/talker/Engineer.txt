@@ -344,7 +344,7 @@ Response EngySwingFistStart
 }
 Rule EngySwingFistStart
 {
-	criteria ConceptFireWeapon WeaponIsRobotArm 50PercentChance IsEngineer IsNotEngyFistSwung
+	criteria ConceptFireWeapon WeaponIsRobotArm IsEngineer EngineerNotKillSpeech IsNotDominating IsNotEngyFistSwung
 	ApplyContext "EngyFistSwung:1:7"
 	Response EngySwingFistStart
 }
@@ -357,7 +357,7 @@ Response EngySwingFist
 }
 Rule EngySwingFist
 {
-	criteria ConceptKilledPlayer KilledPlayerDelay EngineerNotKillSpeechMelee WeaponIsRobotArm IsEngyFistSwung IsEngineer WeaponIsNotMiniSentrygun
+	criteria ConceptKilledPlayer KilledPlayerDelay WeaponIsRobotArm IsEngyFistSwung IsEngineer WeaponIsNotMiniSentrygun
 	Response EngySwingFist
 }
 
