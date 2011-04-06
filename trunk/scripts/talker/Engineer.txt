@@ -429,6 +429,20 @@ Rule MedicFollowEngineer
 	Response MedicFollowEngineer
 }
 
+// Custom stuff
+Response EngineerJarateHit
+{
+	scene "scenes/Player/Engineer/low/22.vcd" 
+	scene "scenes/Player/Engineer/low/23.vcd" 
+	scene "scenes/Player/Engineer/low/150.vcd" 
+}
+Rule EngineerJarateHit
+{
+	criteria ConceptJarateHit IsEngineer
+	Response EngineerJarateHit
+}
+// End custom
+
 Response PlayerKilledCapperEngineer
 {
 	scene "scenes/Player/Engineer/low/36.vcd" 

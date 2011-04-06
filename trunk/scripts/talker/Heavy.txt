@@ -24,6 +24,8 @@ Criterion "IsHeavyFistsSwung" "HeavyFistsSwung" "1" "required" weight 0
 Criterion "IsNotHeavyFistsSwung" "HeavyFistsSwung" "!=1" "required" weight 0
 Criterion "NotGunTauntHeavy" "GunTauntHeavy" "!=1" "required" weight 0
 Criterion "IsNotDaring" "IsDaring" "!=1" "required" weight 0
+Criterion "HeavyNotKillSpeechObject" "HeavyKillSpeechObject" "!=1" "required" weight 0
+Criterion "HeavyNotShinySpeech" "HeavyShinySpeech" "!=1" "required" weight 0
 
 Response PlayerCloakedSpyDemomanHeavy
 {
@@ -480,7 +482,6 @@ Rule KilledPlayerManyHeavy
 {
 	criteria ConceptKilledPlayer IsManyRecentKills 30PercentChance IsWeaponPrimary KilledPlayerDelay HeavyNotKillSpeech IsHeavy
 	ApplyContext "HeavyKillSpeech:1:10"
-	applycontexttoworld
 	Response KilledPlayerManyHeavy
 }
 
@@ -493,7 +494,6 @@ Rule KilledPlayerMeleeHeavy
 {
 	criteria ConceptKilledPlayer KilledPlayerDelay 30PercentChance  IsWeaponMelee HeavyNotKillSpeechMelee IsHeavy
 	ApplyContext "HeavyKillSpeechMelee:1:10"
-	applycontexttoworld
 	Response KilledPlayerMeleeHeavy
 }
 
@@ -507,7 +507,6 @@ Rule KilledPlayerMeleeMetalHeavy
 {
 	criteria ConceptKilledPlayer KilledPlayerDelay 30PercentChance  WeaponIsMetalFists HeavyNotKillSpeechMelee IsHeavy
 	ApplyContext "HeavyKillSpeechMelee:1:10"
-	applycontexttoworld
 	Response KilledPlayerMeleeMetalHeavy
 	Response KilledPlayerMeleeHeavy
 }
@@ -523,8 +522,7 @@ Response KilledPlayerShinyHeavy
 Rule KilledPlayerShinyHeavy
 {
 	criterion ConceptKilledPlayer KilledPlayerDelay 20PercentChance IsManyRecentKills IsWeaponPrimary WeaponIsNotVanillaPrimary HeavyNotKillSpeech IsHeavy
-	ApplyContext "HeavyKillSpeech:1:60"
-	applycontexttoworld
+	ApplyContext "HeavyKillSpeech:1:30"
 	Response KilledPlayerShinyHeavy
 }
 
@@ -538,7 +536,6 @@ Rule KilledPlayerTauntHeavy
 {
 	criteria ConceptKilledPlayer KilledPlayerDelay 30PercentChance IsHeavy IsVictimEngineer IsCrosshairEnemy HeavyNotKillSpeech
 	ApplyContext "HeavyKillSpeech:1:10"
-	applycontexttoworld
 	Response KilledPlayerTauntHeavy
 }
 
@@ -549,7 +546,7 @@ Response HeavySwingFistsStart
 }
 Rule HeavySwingFistsStart
 {
-	criteria ConceptFireWeapon IsWeaponMelee 50PercentChance IsHeavy IsNotDaring IsNotHeavyFistsSwung
+	criteria ConceptFireWeapon IsWeaponMelee 50PercentChance IsHeavy IsNotDaring HeavyNotKillSpeechMelee IsNotDominating IsNotHeavyFistsSwung
 	ApplyContext "HeavyFistsSwung:1:10"
 	Response HeavySwingFistsStart
 }
@@ -563,7 +560,7 @@ Response HeavySwingFists
 }
 Rule HeavySwingFists
 {
-	criteria ConceptFireWeapon IsWeaponMelee IsHeavyFistsSwung IsNotDaring IsHeavy
+	criteria ConceptFireWeapon IsWeaponMelee IsHeavyFistsSwung IsNotDaring HeavyNotKillSpeechMelee IsNotDominating IsHeavy
 	Response HeavySwingFists
 }
 
@@ -583,7 +580,6 @@ Rule KilledPlayerVeryManyHeavy
 {
 	criteria ConceptKilledPlayer IsVeryManyRecentKills 50PercentChance IsWeaponPrimary KilledPlayerDelay HeavyNotKillSpeech IsHeavy
 	ApplyContext "HeavyKillSpeech:1:10"
-	applycontexttoworld
 	Response KilledPlayerVeryManyHeavy
 }
 
@@ -702,9 +698,8 @@ Response PlayerKilledObjectHeavy
 }
 Rule PlayerKilledObjectHeavy
 {
-	criteria ConceptKilledObject IsHeavy 30PercentChance IsARecentKill
+	criteria ConceptKilledObject IsHeavy 30PercentChance IsARecentKill HeavyNotKillSpeechObject
 	ApplyContext "HeavyKillSpeechObject:1:30"
-	applycontexttoworld
 	Response PlayerKilledObjectHeavy
 }
 
@@ -715,9 +710,8 @@ Response PlayerKilledSentryHeavy
 }
 Rule PlayerKilledSentryHeavy
 {
-	criteria ConceptKilledObject IsHeavy IsSentryGun 50PercentChance
+	criteria ConceptKilledObject IsHeavy IsSentryGun 50PercentChance HeavyNotKillSpeechObject
 	ApplyContext "HeavyKillSpeechObject:1:30"
-	applycontexttoworld
 	Response PlayerKilledSentryHeavy
 }
 
@@ -727,9 +721,8 @@ Response PlayerKilledDispenserHeavy
 }
 Rule PlayerKilledDispenserHeavy
 {
-	criteria ConceptKilledObject IsHeavy IsSentryGun 50PercentChance
+	criteria ConceptKilledObject IsHeavy IsDispenser 50PercentChance HeavyNotKillSpeechObject
 	ApplyContext "HeavyKillSpeechObject:1:30"
-	applycontexttoworld
 	Response PlayerKilledDispenserHeavy
 }
 // End custom
@@ -1184,6 +1177,13 @@ Response PlayerShinyCryHeavy
 Rule PlayerShinyCryHeavy
 {
 	criteria ConceptPlayerBattleCry 30PercentChance IsWeaponPrimary IsHeavy WeaponIsNotVanillaPrimary
+	Response PlayerShinyCryHeavy
+}
+
+Rule PlayerShinyWindupHeavy
+{
+	criteria ConceptWindMinigun IsWeaponPrimary IsHeavy WeaponIsNotVanillaPrimary 10PercentChance HeavyNotShinySpeech HeavyNotKillSpeech
+	ApplyContext "HeavyShinySpeech:1:30"
 	Response PlayerShinyCryHeavy
 }
 
