@@ -252,7 +252,6 @@ Rule KilledPlayerManySoldier
 {
 	criteria ConceptKilledPlayer IsManyRecentKills 30PercentChance IsWeaponPrimary KilledPlayerDelay SoldierNotKillSpeech IsSoldier
 	ApplyContext "SoldierKillSpeech:1:10"
-	applycontexttoworld
 	Response KilledPlayerManySoldier
 }
 
@@ -269,7 +268,6 @@ Rule KilledDemomanSoldier
 {
 	criterion ConceptKilledPlayer KilledPlayerDelay IsVictimDemoman 30PercentChance SoldierNotKillSpeech IsSoldier
 	ApplyContext "SoldierKillSpeech:1:10"
-	applycontexttoworld
 	Response KilledDemomanSoldier
 }
 
@@ -295,7 +293,6 @@ Rule SpreeMedicSoldier
 {
 	criteria ConceptKilledPlayer KilledPlayerDelay IsSoldier IsBeingHealed SoldierNotKillSpeech IsVeryManyRecentKills IsWeaponPrimary
 	ApplyContext "SoldierKillSpeech:1:20"
-	applycontexttoworld
 	Response SpreeMedicSoldier
 }
 
@@ -345,7 +342,6 @@ Rule KilledPlayerMeleeSoldier
 {
 	criteria ConceptKilledPlayer KilledPlayerDelay 30PercentChance  IsWeaponMelee SoldierNotKillSpeechMelee IsSoldier
 	ApplyContext "SoldierKillSpeechMelee:1:10"
-	applycontexttoworld
 	Response KilledPlayerMeleeSoldier
 }
 
@@ -358,7 +354,6 @@ Rule KilledPlayerVeryManySoldier
 {
 	criteria ConceptKilledPlayer IsVeryManyRecentKills 50PercentChance IsWeaponPrimary KilledPlayerDelay SoldierNotKillSpeech IsSoldier
 	ApplyContext "SoldierKillSpeech:1:10"
-	applycontexttoworld
 	Response KilledPlayerVeryManySoldier
 }
 
@@ -595,7 +590,6 @@ Rule PlayerKilledObjectSoldier
 {
 	criteria ConceptKilledObject IsSoldier 30PercentChance IsARecentKill
 	ApplyContext "SoldierKillSpeechObject:1:30"
-	applycontexttoworld
 	Response PlayerKilledObjectSoldier
 }
 
