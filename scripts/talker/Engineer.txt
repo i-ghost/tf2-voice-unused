@@ -14,6 +14,7 @@ Criterion "IsEngyFistSwung" "EngyFistSwung" "1" "required" weight 0
 Criterion "IsNotEngyFistSwung" "EngyFistSwung" "!=1" "required" weight 0
 Criterion "EngineerNotInvulnerableSpeech" "EngineerInvulnerableSpeech" "!=1" "required" weight 0
 Criterion "IsMiniSentryKill" "MiniSentryKill" "1" "required" weight 0
+Criterion "IsSentryKill" "SentryKill" "1" "required" weight 0
 
 Response PlayerCloakedSpyDemomanEngineer
 {
@@ -368,6 +369,8 @@ Rule EngySwingFist
 Response EngyCritsReady
 {
 	scene "scenes/player/Engineer/low/167.vcd"
+	scene "scenes/player/Engineer/low/172.vcd"
+	scene "scenes/player/Engineer/low/177.vcd"
 }
 
 Rule EngyCritsReady
@@ -377,11 +380,26 @@ Rule EngyCritsReady
 	Response EngyCritsReady
 }
 
+Rule EngyCritsReady2
+{
+	criteria ConceptLostObject IsSentryGun IsEngineer IsSentryKill WeaponIsFrontierJustice EngineerNotKillSpeech
+	ApplyContext "EngineerKillSpeech:1:10"
+	Response EngyCritsReady
+}
+
 
 // Check if mini sentry has had a kill in the past thirty seconds
 Rule MiniSentryKill
 {
 	criteria ConceptKilledPlayer WeaponIsMiniSentrygun IsEngineer
+	ApplyContext "MiniSentryKill:1:15"
+	Response PlayerExpressionAttackEngineer
+}
+
+// Check if sentry has had a kill in the past thirty seconds
+Rule SentryKill
+{
+	criteria ConceptKilledPlayer WeaponIsSentrygun IsEngineer
 	ApplyContext "MiniSentryKill:1:15"
 	Response PlayerExpressionAttackEngineer
 }
