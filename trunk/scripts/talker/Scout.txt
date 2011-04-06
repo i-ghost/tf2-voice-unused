@@ -442,8 +442,7 @@ Response KilledPlayerManyScout
 Rule KilledPlayerManyScout
 {
 	criteria ConceptKilledPlayer IsManyRecentKills 30PercentChance IsWeaponPrimary KilledPlayerDelay ScoutNotKillSpeech IsScout
-	ApplyContext "ScoutKillSpeech:1:10"
-	applycontexttoworld
+	ApplyContext "ScoutKillSpeech:1:5"
 	Response KilledPlayerManyScout
 }
 
@@ -475,7 +474,6 @@ Rule KilledPlayerMeleeBatScout
 {
 	criteria ConceptKilledPlayer KilledPlayerDelay 30PercentChance  IsWeaponMelee WeaponIsNotCandy WeaponIsNotBasher WeaponIsNotMace WeaponIsNotFish ScoutNotKillSpeechMelee IsScout
 	ApplyContext "ScoutKillSpeechMelee:1:10"
-	applycontexttoworld
 	Response KilledPlayerMeleeBatScout
 	Response KilledPlayerMeleeGenericScout
 }
@@ -490,7 +488,6 @@ Rule KilledPlayerMeleeBasherScout
 {
 	criteria ConceptKilledPlayer KilledPlayerDelay 30PercentChance IsWeaponMelee WeaponIsBasher ScoutNotKillSpeechMelee IsScout
 	ApplyContext "ScoutKillSpeechMelee:1:10"
-	applycontexttoworld
 	Response KilledPlayerMeleeBasherScout
 	Response KilledPlayerMeleeGenericScout
 }
@@ -506,7 +503,6 @@ Rule KilledPlayerMeleeCandyScout
 {
 	criteria ConceptKilledPlayer KilledPlayerDelay 30PercentChance IsWeaponMelee WeaponIsCandy ScoutNotKillSpeechMelee IsScout
 	ApplyContext "ScoutKillSpeechMelee:1:10"
-	applycontexttoworld
 	Response KilledPlayerMeleeCandyScout
 	Response KilledPlayerMeleeGenericScout
 }
@@ -522,7 +518,6 @@ Rule KilledPlayerMeleeMaceScout
 {
 	criteria ConceptKilledPlayer KilledPlayerDelay 30PercentChance  IsWeaponMelee WeaponIsMace ScoutNotKillSpeechMelee IsScout
 	ApplyContext "ScoutKillSpeechMelee:1:10"
-	applycontexttoworld
 	Response KilledPlayerMeleeMaceScout
 	Response KilledPlayerMeleeGenericScout
 }
@@ -539,7 +534,6 @@ Rule KilledPlayerMeleeFishScout
 {
 	criteria ConceptKilledPlayer KilledPlayerDelay 30PercentChance  IsWeaponMelee WeaponIsHolyMackerel ScoutNotKillSpeechMelee IsScout
 	ApplyContext "ScoutKillSpeechMelee:1:10"
-	applycontexttoworld
 	Response KilledPlayerMeleeFishScout
 	Response KilledPlayerMeleeGenericScout
 }
@@ -551,7 +545,6 @@ Rule KilledPlayerMeleeGunbaiScout
 {
 	criteria ConceptKilledPlayer KilledPlayerDelay 30PercentChance  IsWeaponMelee WeaponIsGunbai ScoutNotKillSpeechMelee IsScout
 	ApplyContext "ScoutKillSpeechMelee:1:10"
-	applycontexttoworld
 	Response KilledPlayerMeleeFishScout
 	Response KilledPlayerMeleeGenericScout
 }
@@ -564,7 +557,6 @@ Rule KilledPlayerMeleeScoutFatScout
 {
 	criteria ConceptKilledPlayer KilledPlayerDelay 75PercentChance  IsWeaponMelee ScoutNotKillSpeechMeleeFat IsScout IsVictimHeavy
 	ApplyContext "ScoutKillSpeechMeleeFat:1:10"
-	applycontexttoworld
 	Response KilledPlayerMeleeScoutFatScout
 }
 
@@ -1012,7 +1004,6 @@ Rule PlayerKilledObjectScout
 {
 	criteria ConceptKilledObject IsScout 30PercentChance IsARecentKill
 	ApplyContext "ScoutKillSpeechObject:1:30"
-	applycontexttoworld
 	Response PlayerKilledObjectScout
 }
 
