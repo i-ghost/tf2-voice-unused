@@ -401,7 +401,6 @@ Rule PlayerKilledObjectMedic
 {
 	criteria ConceptKilledObject IsMedic 30PercentChance IsARecentKill
 	ApplyContext "MedicKillSpeechObject:1:30"
-	applycontexttoworld
 	Response PlayerKilledObjectMedic
 }
 
