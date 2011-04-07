@@ -194,7 +194,6 @@ Rule KilledPlayerManyPyro
 {
 	criteria ConceptKilledPlayer IsManyRecentKills 30PercentChance IsWeaponPrimary KilledPlayerDelay PyroNotKillSpeech IsPyro
 	ApplyContext "PyroKillSpeech:1:10"
-	applycontexttoworld
 	Response KilledPlayerManyPyro
 }
 
@@ -209,7 +208,6 @@ Rule KilledPlayerMeleePyro
 {
 	criteria ConceptKilledPlayer KilledPlayerDelay 30PercentChance  IsWeaponMelee PyroNotKillSpeechMelee IsPyro
 	ApplyContext "PyroKillSpeechMelee:1:10"
-	applycontexttoworld
 	Response KilledPlayerMeleePyro
 }
 

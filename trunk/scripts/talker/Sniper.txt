@@ -617,7 +617,6 @@ Rule KilledPlayerManySniper
 {
 	criteria ConceptKilledPlayer IsManyRecentKills 30PercentChance IsWeaponPrimary KilledPlayerDelay SniperNotKillSpeech IsSniper
 	ApplyContext "SniperKillSpeech:1:10"
-	applycontexttoworld
 	Response KilledPlayerManySniper
 }
 
@@ -627,7 +626,6 @@ Rule KilledPlayerManySniperBow
 {
 	criteria ConceptKilledPlayer IsManyRecentKills 30PercentChance WeaponIsBow KilledPlayerDelay SniperNotKillSpeech IsSniper
 	ApplyContext "SniperKillSpeech:1:10"
-	applycontexttoworld
 	Response KilledPlayerManySniper
 }
 
@@ -642,7 +640,6 @@ Rule KilledPlayerMeleeSniper
 {
 	criteria ConceptKilledPlayer KilledPlayerDelay 30PercentChance  IsWeaponMelee SniperNotKillSpeechMelee IsSniper
 	ApplyContext "SniperKillSpeechMelee:1:10"
-	applycontexttoworld
 	Response KilledPlayerMeleeSniper
 }
 
@@ -678,7 +675,6 @@ Rule KilledPlayerVeryManySniper
 {
 	criteria ConceptKilledPlayer IsVeryManyRecentKills 50PercentChance IsWeaponPrimary KilledPlayerDelay SniperNotKillSpeech IsSniper
 	ApplyContext "SniperKillSpeech:1:10"
-	applycontexttoworld
 	Response KilledPlayerVeryManySniper
 }
 
@@ -688,7 +684,6 @@ Rule KilledPlayerVeryManySniperBow
 {
 	criteria ConceptKilledPlayer IsVeryManyRecentKills 50PercentChance WeaponIsBow KilledPlayerDelay SniperNotKillSpeech IsSniper
 	ApplyContext "SniperKillSpeech:1:10"
-	applycontexttoworld
 	Response KilledPlayerVeryManySniper
 }
 
