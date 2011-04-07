@@ -267,7 +267,6 @@ Rule KilledPlayerManySpy
 {
 	criteria ConceptKilledPlayer IsManyRecentKills 30PercentChance IsWeaponSecondary KilledPlayerDelay SpyNotKillSpeech IsSpy
 	ApplyContext "SpyKillSpeech:1:10"
-	applycontexttoworld
 	Response KilledPlayerManySpy
 }
 
@@ -347,8 +346,7 @@ Response KilledPlayerMeleeSpy
 Rule KilledPlayerMeleeSpy
 {
 	criteria ConceptKilledPlayer KilledPlayerDelay 30PercentChance IsWeaponMelee SpyNotKillSpeechMelee IsSpy
-	ApplyContext "SpyKillSpeechMelee:1:10"
-	applycontexttoworld
+	ApplyContext "SpyKillSpeechMelee:1:5"
 	Response KilledPlayerMeleeSpy
 }
 
@@ -366,8 +364,7 @@ Response KilledPlayerMeleeDisguisedSpy
 Rule KilledPlayerMeleeDisguisedSpy
 {
 	criteria ConceptKilledPlayer KilledPlayerDelay IsDisguised 30PercentChance IsWeaponMelee SpyNotKillSpeechMelee IsSpy
-	ApplyContext "SpyKillSpeechMelee:1:10"
-	applycontexttoworld
+	ApplyContext "SpyKillSpeechMelee:1:5"
 	Response KilledPlayerMeleeDisguisedSpy
 	Response KilledPlayerMeleeSpy
 }
