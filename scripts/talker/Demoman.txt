@@ -219,8 +219,6 @@ Rule DefendOnThePointDemoman
 	applycontexttoworld
 	Response DefendOnThePointDemoman
 }
-// CLEANUP: This section was initially added for testing purposes.
-// It has served its purpose, and should be overhauled with relevant content only.
 // Invuln responses for Grenade Launcher
 Response InvulnerableSpeechDemoman2
 {
