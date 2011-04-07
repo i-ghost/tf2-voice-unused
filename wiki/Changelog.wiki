@@ -4,6 +4,52 @@
 This is a history of all public releases.
 
 ----
+====0.8_FINAL {{{07/04/2011}}}====
+  * Fan O'War now shares kill responses with the Holy Mackerel
+
+  * Fixed unwanted behaviour relating to Medic's combat ubercharge responses playing when he deploys an ubercharge.
+
+  * Removed applycontexttoworld for Sniper's Shiv kill response; stops him from saying it more than once within ten seconds (for real)
+
+  * Tweaked responses in Engineer.txt so that they correctly apply contexts, so that lines do not overlap etc. This seems to be a mistake on valve's part.
+  * Tweaked Engineer's multi-kill responses so that they can play after any type of kill, used to be restricted to primary weapon.
+
+  * Recompiled scenes.image and updated game_sounds_vo_handmade.txt to fix an issue with one of Medic's melee dare lines not playing
+  * Allowed Medic's multi-kill responses to play regardless of weapon
+  * Tweaked responses in Medic.txt so that they correctly apply contexts, so that lines do not overlap etc. This seems to be a mistake on valve's part.
+
+  * Fixed temporary entry in Medic.txt
+  * Rebuilt scenes.image to remove superfluous temporary debugging choreography file.
+
+  * Tweaked Gunslinger responses so that they do not interrupt domination/kill lines, removed superfluous EngineerNotKillSpeechmelee
+
+  * Reworked rule EngyCritsReady to actually check for a mini sentry kill in the past 15 seconds, used to simply check if the Engineer had a kill in the past 20 seconds.
+
+  * Added Jarate responses for Engineer
+  * Reworked some rules in Heavy.txt so they actually set contexts properly
+  * Fixed Heavy's Dispenser destruction response
+  * Tweaked punching responses so they cannot interrupt melee kill responses or domination responses, this also reduces Heavy's chattiness somewhat which is a good thing
+  * Included a new rule that has Heavy say his new weapon responses when he winds his minigun, 10 percent chance of occurring every 30 seconds - these responses are still on the 'Battle Cry' voice menu option
+
+  * Removed a response from the melee dare group (it's now a Jarate response and fits better there)
+
+  * Included normal Sentrygun in EngyCritsReady responses
+  * Added two new responses to EngyCritsReady response group
+
+  * Tweaked responses in Scout.txt to apply contexts correctly
+
+  * Added Achievement responses for Soldier
+
+  * Tweaked rules in Soldier.txt so they apply contexts correctly
+
+  * Tweaked rules to apply contexts correctly in Sniper.txt, Pyro.txt and Spy.txt
+
+  * Moved rules around for better viewing
+
+  * Tweaked rules to apply contexts correctly in Demoman.txt and Medic.txt
+
+  * Removed a notice
+----
 ====0.75/RC2 {{{19.03.2011}}}====
   * Moved a line to Medic's auto/manual assist lines group from the Kritz activation group
 
