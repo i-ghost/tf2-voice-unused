@@ -970,40 +970,6 @@ Rule PlayerKilledDominatingSpySniper
 	Response PlayerKilledDominatingSpySniper
 }
 
-Response PlayerKilledForRevengeSniper
-{
-	scene "scenes/Player/Sniper/low/1622.vcd" predelay "2.5"
-	scene "scenes/Player/Sniper/low/1641.vcd" predelay "2.5"
-	scene "scenes/Player/Sniper/low/1708.vcd" predelay "2.5"
-	scene "scenes/Player/Sniper/low/1709.vcd" predelay "2.5"
-	scene "scenes/Player/Sniper/low/1741.vcd" predelay "2.5"
-	scene "scenes/Player/Sniper/low/1740.vcd" predelay "2.5"
-	scene "scenes/Player/Sniper/low/1752.vcd" predelay "2.5"
-	scene "scenes/Player/Sniper/low/1753.vcd" predelay "2.5"
-}
-Rule PlayerKilledForRevengeSniper
-{
-	criteria ConceptKilledPlayer IsSniper IsRevenge 30PercentChance
-	ApplyContext "SniperKillSpeech:1:10"
-	ApplyContext "IsDominating:1:10"
-	Response PlayerKilledForRevengeSniper
-}
-
-// Scoped revenge lines, whispers
-Response PlayerKilledForRevengeSoftSniper
-{
-	scene "scenes/Player/Sniper/low/1815.vcd" predelay "2.5"
-	scene "scenes/Player/Sniper/low/1815.vcd" predelay "2.5"
-}
-Rule PlayerKilledForRevengeSoftSniper
-{
-	criteria ConceptKilledPlayer IsSniper IsRevenge DeployedContext 30PercentChance
-	ApplyContext "SniperKillSpeech:1:10"
-	ApplyContext "IsDominating:1:10"
-	Response PlayerKilledForRevengeSoftSniper
-	Response PlayerKilledForRevengeSniper
-}
-
 // Custom stuff
 // Directed revenge lines
 Response PlayerKilledForRevengeSniperSniper
@@ -1130,6 +1096,40 @@ Rule PlayerKilledForRevengeHeavySniper
 }
 
 // End directed revenge lines
+
+Response PlayerKilledForRevengeSniper
+{
+	scene "scenes/Player/Sniper/low/1622.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/1641.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/1708.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/1709.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/1741.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/1740.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/1752.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/1753.vcd" predelay "2.5"
+}
+Rule PlayerKilledForRevengeSniper
+{
+	criteria ConceptKilledPlayer IsSniper IsRevenge 30PercentChance
+	ApplyContext "SniperKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
+	Response PlayerKilledForRevengeSniper
+}
+
+// Scoped revenge lines, whispers
+Response PlayerKilledForRevengeSoftSniper
+{
+	scene "scenes/Player/Sniper/low/1815.vcd" predelay "2.5"
+	scene "scenes/Player/Sniper/low/1815.vcd" predelay "2.5"
+}
+Rule PlayerKilledForRevengeSoftSniper
+{
+	criteria ConceptKilledPlayer IsSniper IsRevenge DeployedContext 30PercentChance
+	ApplyContext "SniperKillSpeech:1:10"
+	ApplyContext "IsDominating:1:10"
+	Response PlayerKilledForRevengeSoftSniper
+	Response PlayerKilledForRevengeSniper
+}
 
 // Here we have normal kills, normal scoped kills and headshots
 // Scoped kills are whisper lines, normal kills are not
