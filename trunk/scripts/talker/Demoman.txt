@@ -277,7 +277,6 @@ Rule KilledPlayerManyDemoman
 {
 	criteria ConceptKilledPlayer IsManyRecentKills 30PercentChance IsWeaponPrimary KilledPlayerDelay DemomanNotKillSpeech IsDemoman
 	ApplyContext "DemomanKillSpeech:1:10"
-	applycontexttoworld
 	Response KilledPlayerManyDemoman
 }
 
@@ -293,7 +292,6 @@ Rule KilledSoldierDemoman
 {
 	criterion ConceptKilledPlayer KilledPlayerDelay IsVictimSoldier 30PercentChance DemomanNotKillSpeech IsDemoman WeaponClassIsNotAxe
 	ApplyContext "DemomanKillSpeech:1:10"
-	applycontexttoworld
 	Response KilledSoldierDemoman
 }
 
@@ -314,7 +312,6 @@ Rule KilledPlayerPanDemoman
 {
 	criteria ConceptKilledPlayer KilledPlayerDelay WeaponIsFryingPan 30PercentChance  DemomanNotKillSpeechMelee IsDemoman
 	ApplyContext "DemomanKillSpeechMelee:1:10"
-	applycontexttoworld
 	Response KilledPlayerPanDemoman
 }
 // End Frying Pan responses
@@ -338,7 +335,6 @@ Rule KilledPlayerMeleeDemoman
 {
 	criteria ConceptKilledPlayer KilledPlayerDelay WeaponIsBottle 30PercentChance  DemomanNotKillSpeechMelee IsDemoman
 	ApplyContext "DemomanKillSpeechMelee:1:10"
-	applycontexttoworld
 	Response KilledPlayerPanDemoman
 	Response KilledPlayerMeleeDemoman
 }
@@ -355,7 +351,6 @@ Rule KilledPlayerSwordDemoman
 {
 	criteria ConceptKilledPlayer KilledPlayerDelay WeaponIsSword 30PercentChance IsNotVictimDemoman  DemomanNotKillSpeechMelee IsDemoman
 	ApplyContext "DemomanKillSpeechMelee:1:10"
-	applycontexttoworld
 	Response KilledPlayerSwordDemoman
 }
 
@@ -370,7 +365,6 @@ Rule KilledPlayerSword2Demoman
 {
 	criteria ConceptKilledPlayer KilledPlayerDelay WeaponIsSword 30PercentChance IsVictimDemoman  DemomanNotKillSpeechMelee IsDemoman
 	ApplyContext "DemomanKillSpeechMelee:1:10"
-	applycontexttoworld
 	Response KilledPlayerSword2Demoman
 }
 // The above rule is for Demoman victims only.
@@ -381,7 +375,6 @@ Rule KilledPlayerKatanaDemoman
 {
 	criteria ConceptKilledPlayer KilledPlayerDelay WeaponIsKatana 30PercentChance IsNotVictimDemoman  DemomanNotKillSpeechMelee IsDemoman
 	ApplyContext "DemomanKillSpeechMelee:1:10"
-	applycontexttoworld
 	Response KilledPlayerSwordDemoman
 }
 // The above rule is for non-Demoman victims only.
@@ -389,7 +382,6 @@ Rule KilledPlayerKatana2Demoman
 {
 	criteria ConceptKilledPlayer KilledPlayerDelay WeaponIsKatana 30PercentChance IsVictimDemoman  DemomanNotKillSpeechMelee IsDemoman
 	ApplyContext "DemomanKillSpeechMelee:1:10"
-	applycontexttoworld
 	Response KilledPlayerSword2Demoman
 }
 // The above rule is for Demoman victims only.
@@ -406,7 +398,6 @@ Rule KilledPlayerClubDemoman
 {
 	criteria ConceptKilledPlayer KilledPlayerDelay WeaponIsPainTrain 30PercentChance  DemomanNotKillSpeechMelee IsDemoman
 	ApplyContext "DemomanKillSpeechMelee:1:10"
-	applycontexttoworld
 	Response KilledPlayerClubDemoman
 	Response KilledPlayerPanDemoman
 }
@@ -423,7 +414,6 @@ Rule KilledPlayerCaberDemoman
 {
 	criteria ConceptAttackerPain KilledPlayerDelay WeaponIsCaber IsCritical CaberHealthContext  DemomanNotKillSpeechMelee IsDemoman
 	ApplyContext "DemomanKillSpeechMelee:1:10"
-	applycontexttoworld
 	Response KilledPlayerCaberDemoman
 }
 
@@ -440,7 +430,6 @@ Rule KilledPlayerVeryManyDemoman
 {
 	criteria ConceptKilledPlayer IsVeryManyRecentKills 50PercentChance IsWeaponPrimary KilledPlayerDelay DemomanNotKillSpeech IsDemoman
 	ApplyContext "DemomanKillSpeech:1:10"
-	applycontexttoworld
 	Response KilledPlayerVeryManyDemoman
 }
 
@@ -653,7 +642,6 @@ Rule PlayerKilledObjectDemoman
 {
 	criteria ConceptKilledObject IsDemoman 30PercentChance IsARecentKill
 	ApplyContext "DemomanKillSpeechObject:1:30"
-	applycontexttoworld
 	Response PlayerKilledObjectDemoman
 }
 
